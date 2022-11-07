@@ -1,0 +1,4 @@
+This is a new file with the same name as the previous one
+
+This is actually the copy of the new file, but will the contents still change with it? 
+Probably not, but we'll find out.
