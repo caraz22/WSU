@@ -1,0 +1,28 @@
+.ORIG x3000
+
+ADD R3, R3, #1
+LD R2, Y
+BRz DONE     
+ 
+EXPONENT
+AND R0, R0, #0   
+LD R1, X       
+BRnp MULTIPLY     
+AND R3, R3, #0      
+BRz DONE       
+ 
+MULTIPLY
+ADD R0, R0, R3
+ADD R1, R1, #-1
+BRp MULTIPLY
+ 
+ADD R3, R0, #0
+ADD R2, R2, #-1
+BRp EXPONENT
+ 
+DONE
+HALT
+
+X .FILL x2
+Y .FILL x5
+.END
