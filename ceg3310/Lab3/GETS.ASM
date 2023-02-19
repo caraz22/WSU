@@ -89,15 +89,15 @@ OUT2	.STRINGZ	"The second string was: "
 GETS    	
 ADD R6, R6, #-1         ; Decrement R6 by #-1 (to allocate a word to store a return value) (R6: xFDFD)
 ADD R6, R6, #-1         ; Decrement R6 by #-1 (this moves to push R7, our return address, onto the stack) (R6: xFDFC)
-ST R7, R6, #0           ; Store contents of R7 at the address of R6 + #0 (to save a copy of the return address)
+STR R7, R6, #0           ; Store contents of R7 at the address of R6 + #0 (to save a copy of the return address)
 ADD R6, R6, #-1         ; Decrement R6 by #-1 again (this action pushes R5, the previous functions's frame pointer, onto the stack) (R6: xFDFB)
-ST R5, R6, #0           ; Store contents of R5 at the address of R6 + #0
+STR R5, R6, #0           ; Store contents of R5 at the address of R6 + #0
 ADD R5, R6, #-1         ; Decrement R6 by #-1 and store in R5 (this sets up a new frame pointer)  (R5: xFDFA)
 ADD R6, R6, #-3         ; Decrement R6 by #-3 (this allocates space for local variables) (R6: xFDF8)
-ST R0, R5, #0           ; Store contents of R0 at the memory address of R5 + #0 (In memory: xFDFA)
-ST R1, R5, #-1          ; Store contents of R1 at the memory address of R5 + #-1 (In memory: xFDF9)
-ST R2, R5, #-2          ; Store contents of R2 at the memory address of R5 + #-2 (In memory: xFDF8)
-LD R2, R5, #4           ; Load from memory address R5 + #4 and put contents into R2. (This step gets the address parameter.) (In memory: xFDFE)
+STR R0, R5, #0           ; Store contents of R0 at the memory address of R5 + #0 (In memory: xFDFA)
+STR R1, R5, #-1          ; Store contents of R1 at the memory address of R5 + #-1 (In memory: xFDF9)
+STR R2, R5, #-2          ; Store contents of R2 at the memory address of R5 + #-2 (In memory: xFDF8)
+LDR R2, R5, #4           ; Load from memory address R5 + #4 and put contents into R2. (This step gets the address parameter.) (In memory: xFDFE)
  
 LOOP    
 GETC                    ; Get character using GETC function call
@@ -106,27 +106,27 @@ OUT                     ; Print the character using the OUT function call
                         ; Check for a linefeed using the following steps: 
 AND R1, R1, #0          ; Clear R1
 ADD R1, R1, #-10        ; Decrement R1 by #-10 (#-13 on the UNIX desktop sim)
-AND R1, R1, R0          ; Compare R1 and R0 and store the result in R1 (If they are equal, R1 will be 0)
+ADD R1, R1, R0          ; Compare R1 and R0 and store the result in R1 (If they are equal, R1 will be 0)
 BRz DONE                ; Branch to DONE if zero (if not the program will continue down)
  
                         ; If the result is not zero, do the following steps: 
-ST R0, R2, #0           ; Store the character in R0 at the address of R2 + #0
+STR R0, R2, #0           ; Store the character in R0 at the address of R2 + #0
 ADD R2, R2, #1          ; Increment R2 by #1
 BRnzp LOOP              ; Unconditional branch back to loop
  
 DONE    
 AND R1, R1, #0          ; Clear R1
-ST R1, R2, #0           ; Store contents of R1 at the address of R2 + #0. (This adds the null character to the end of the string)
+STR R1, R2, #0           ; Store contents of R1 at the address of R2 + #0. (This adds the null character to the end of the string)
  
                         ; CLEAN UP STEPS
 	                ; Undoes the function stack. We do this to restore the registers and CPU state to before our function was called. The only side effect that remains after RET is the return value and anything after it. 
-LD R0, R5, #0           ; Load from memory address of R5 + #0 and put contents into R0 (to restore the callee-saved registers) (In memory: xFDFA)
-LD R1, R5, #-1          ; Load from memory address of R5 + #-1 and put contents into R1 (In memory: xFDF9)
-LD R2, R5, #-2          ; Load from memory address of R5 + #-2 and put contents into R2 (In memory: xFDF8)
+LDR R0, R5, #0           ; Load from memory address of R5 + #0 and put contents into R0 (to restore the callee-saved registers) (In memory: xFDFA)
+LDR R1, R5, #-1          ; Load from memory address of R5 + #-1 and put contents into R1 (In memory: xFDF9)
+LDR R2, R5, #-2          ; Load from memory address of R5 + #-2 and put contents into R2 (In memory: xFDF8)
 ADD R6, R5, #1          ; Increment R5 by #1 and store in R6. (This pops the local variables off the stack.)
-LD R5, R6, #0           ; Load from memory address of R6 + #0 and put contents into R5. (This restores the contents of R5 back to the original state)
+LDR R5, R6, #0           ; Load from memory address of R6 + #0 and put contents into R5. (This restores the contents of R5 back to the original state)
 ADD R6, R6, #1          ; Increment R6 by #1 (This pops off main's frame pointer since R5 was restored) (R6: xFDFB)
-LD R7, R6, #0           ; Load from memory address of R6 + #0 and put the contents into R7. (This restores the return address)
+LDR R7, R6, #0           ; Load from memory address of R6 + #0 and put the contents into R7. (This restores the return address)
 ADD R6, R6, #1          ; Increment R6 by #1 (This pops off the return address since R7 was restored) (R6: xFDFC)
 RET                     ; Return to caller
 .END
