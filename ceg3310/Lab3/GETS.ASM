@@ -86,19 +86,21 @@ OUT2	.STRINGZ	"The second string was: "
 ; The stack pointer will initially point to xFDFE
 ; Try drawing the below as a picture of a stack using the addresses provided.
  
-GETS	; Decrement R6 by #-1 (to allocate a word to store a return value) (R6: xFDFD)
-        ; Decrement R6 by #-1 (this moves to push R7, our return address, onto the stack) (R6: xFDFC)
-        ; Store contents of R7 at the address of R6 + #0 (to save a copy of the return address)
-        ; Decrement R6 by #-1 again (this action pushes R5, the previous functions's frame pointer, onto the stack) (R6: xFDFB)
-        ; Store contents of R5 at the address of R6 + #0
-        ; Decrement R6 by #-1 and store in R5 (this sets up a new frame pointer)  (R5: xFDFA)
-        ; Decrement R6 by #-3 (this allocates space for local variables) (R6: xFDF8)
-        ; Store contents of R0 at the memory address of R5 + #0 (In memory: xFDFA)
-        ; Store contents of R1 at the memory address of R5 + #-1 (In memory: xFDF9)
-        ; Store contents of R2 at the memory address of R5 + #-2 (In memory: xFDF8)
-        ; Load from memory address R5 + #4 and put contents into R2. (This step gets the address parameter.) (In memory: xFDFE)
+GETS	
+ADD R6, R6, #-1        ; Decrement R6 by #-1 (to allocate a word to store a return value) (R6: xFDFD)
+ADD R6, R6, #-1        ; Decrement R6 by #-1 (this moves to push R7, our return address, onto the stack) (R6: xFDFC)
+ST R7, R6, #0          ; Store contents of R7 at the address of R6 + #0 (to save a copy of the return address)
+ADD R6, R6, #-1        ; Decrement R6 by #-1 again (this action pushes R5, the previous functions's frame pointer, onto the stack) (R6: xFDFB)
+ST R5, R6, #0          ; Store contents of R5 at the address of R6 + #0
+ADD R5, R6, #-1        ; Decrement R6 by #-1 and store in R5 (this sets up a new frame pointer)  (R5: xFDFA)
+ADD R6, R6, #-3        ; Decrement R6 by #-3 (this allocates space for local variables) (R6: xFDF8)
+ST R0, R5, #0          ; Store contents of R0 at the memory address of R5 + #0 (In memory: xFDFA)
+ST R1, R5, #-1         ; Store contents of R1 at the memory address of R5 + #-1 (In memory: xFDF9)
+ST R2, R5, #-2         ; Store contents of R2 at the memory address of R5 + #-2 (In memory: xFDF8)
+LD R2, R5, #4          ; Load from memory address R5 + #4 and put contents into R2. (This step gets the address parameter.) (In memory: xFDFE)
  
-LOOP    ; Get character using GETC function call
+LOOP    
+GETC        ; Get character using GETC function call
         ; Print the character using the OUT function call
  
         ; Check for a linefeed using the following steps: 
