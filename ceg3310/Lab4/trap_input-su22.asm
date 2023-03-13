@@ -47,7 +47,7 @@ ADD R3, R3, #-1                 ; Decrement R3 by 1
 BRnzp BITSHIFT                  ; Branch unconditionally to BITSHIFT
 
 NUMERIC_DETECTED                ; Detects if the character was numeric and converts it from ASCII to HEX
-AND R3, R1, #-1                 ; Checking if BITSHIFT is necessary
+ADD R3, R1, #-1                 ; Checking if BITSHIFT is necessary
 BRz CHAR_FINISHED               ; Brand if ZERO to CHAR_FINISHED
 ADD R3, R3, #-1                 ; Decrement R3 by 1
 
