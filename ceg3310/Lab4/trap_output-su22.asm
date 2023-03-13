@@ -14,7 +14,7 @@ STR R7, R6, #-7                     ; Store the contents of R7 to the stack usin
 ADD R6, R6, #-8                     ; Decrement R6 by #-8 (Moves Stack Pointer back so we can call other functions later (like WORD_OUT, or OUT or others))
  
 ADD R4, R0, #0                      ; Copy R0 to R4
-ADD R5, R1, #0                     ; Copy R1 to R5
+ADD R5, R1, #0                      ; Copy R1 to R5
 
                                     ; (Print line:  "Memory contents " ADDRESS " to " ADDRESS ":" NEWLINE)
 LEA R0, MEMCONBEGIN                 ; Load address of variable MEMCONBEGIN to R0 (HINT: What type of load do we use for printing strings?)
