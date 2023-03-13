@@ -50,7 +50,8 @@ JSR WORD_OUT                        ; Jump subroutine to WORD_OUT
  
 LD R0, CHAR_SPACE                   ; Load variable CHAR_SPACE into R0
 OUT                                 ; Print it 3 times (using OUT)
- 
+OUT
+OUT
                                     ; The below prints the value *at* the address
 LDR R0, R4, #0                      ; Load the contents of the address held by R4 into R0 (HINT: we use an offset here) (in memory: at user defined address)
 JSR WORD_OUT                        ; Jump subroutine to WORD_OUT
@@ -103,7 +104,7 @@ BRz WO_NIB_SHIFT_DONE               ; Branch only if zero to WO_NIB_SHIFT_DONE
 WO_CLS_LOOP                         ; This function sets up the circular left shift. This part calculates whether we need to continue shifting, as well as checking if we need to set a carry bit. 
 AND R2, R0, R1                      ; AND the contents of R0 and R1; place them into R2 (checks whether or not we need to add a 1)
 BRz WO_CLS                          ; Branch only if zero to WO_CLS
-AND R2, R2, 0                       ; Clear R2
+AND R2, R2, #0                       ; Clear R2
 ADD R2, R2, #1                      ; Increment R2 by #1
  
 
