@@ -118,7 +118,7 @@ BRp WO_CLS_LOOP                     ; Branch only if positive to WO_CLS_LOOP
 
 WO_NIB_SHIFT_DONE                   ; We are done shifting and now we need to determine if the character is alphabetical or numeric. 
 LD R1, NUM_MASK                     ; Load the NUM_MASK variable into R1
-ADD R0, R1, R0                      ; And the contents of R1 and R0 together and place them back into R0
+AND R0, R1, R0                      ; And the contents of R1 and R0 together and place them back into R0
  
 LD R1, CHAR_NL                      ; Load 0xA (aka: CHAR_NL) into R1 (NOTE: if you are on a UNIX system: do NOT change this value. We WANT x0A here)
 NOT R1, R1                          ; 2's complement R1
