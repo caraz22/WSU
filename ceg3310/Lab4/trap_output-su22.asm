@@ -78,7 +78,7 @@ RET                                 ; (If your IDE complains: Use JMP R7 for the
 
 WORD_OUT                            ; WORD_OUT will take a 16 bit word and print it out as ASCII characters. 
                                     ; First of all, we must save the registers onto the stack...
-STR R6, R0, #0                      ; Store the contents of R0 to the memory location CURRENTLY held by R6 (NOTE: this is a store with offset, since we are storing register to register with an offset of #0!) (in memory: x5FF7)
+STR R0, R6, #0                      ; Store the contents of R0 to the memory location CURRENTLY held by R6 (NOTE: this is a store with offset, since we are storing register to register with an offset of #0!) (in memory: x5FF7)
 STR R1, R6, #-1                     ; Store the contents of R1 to the stack using an offset 1 word behind the stack pointer in memory (in memory: x5FF6)
 STR R2, R6, #-2                     ; Store the contents of R2 to the stack using an offset 2 words behind the stack pointer in memory (in memory: x5FF5)
 STR R3, R6, #-3                     ; Store the contents of R3 to the stack using an offset 3 words behind the stack pointer in memory (in memory: x5FF4)
