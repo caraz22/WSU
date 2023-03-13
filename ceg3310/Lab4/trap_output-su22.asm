@@ -38,7 +38,7 @@ OUT                                 ; Call OUT TRAP function to print it
 
 MDLOOP                              ; Prints out each address and the value at that address in the range given by R4 and R5
                                     ; C equivalent of the below: if((R5 - R4) < 0) goto MDMP_EXIT
-ADD R4, R3, #0                      ; Copy R4 to R3
+ADD R3, R4, #0                      ; Copy R4 to R3
 NOT R3, R3                          ; Do the 2's complement of R3 (two steps)
 ADD R3, R3, #1
 ADD R3, R5, R3                      ; Add R5 and R3 and store in R3
