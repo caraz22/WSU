@@ -2,7 +2,7 @@
 ;WRITE YOUR CODE HERE
 
 STI R6, STACK_R6                ; Store R6 to the address held at STACK_R6
-LDI R6, STACK                   ; Load STACK into R6
+LD R6, STACK                   ; Load STACK into R6
 ST R0, R6                       ; Store contents of R0 to the memory location CURRENTLY held by R6
 STR R1, R6, #-1                 ; Store contents of R1 to the stack using an offset 1 word behind the stack pointer
 STR R2, R6, #-2                 ; Store contents of R1 to the stack using an offset 2 words behind the stack pointer
