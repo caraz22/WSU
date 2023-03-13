@@ -2,8 +2,8 @@
 ;WRITE YOUR CODE HERE
 
 STI R6, STACK_R6                ; Store R6 to the address held at STACK_R6
-LD R6, STACK                   ; Load STACK into R6
-STR R0, R6, #0                       ; Store contents of R0 to the memory location CURRENTLY held by R6
+LD R6, STACK                    ; Load STACK into R6
+STR R0, R6, #0                  ; Store contents of R0 to the memory location CURRENTLY held by R6
 STR R1, R6, #-1                 ; Store contents of R1 to the stack using an offset 1 word behind the stack pointer
 STR R2, R6, #-2                 ; Store contents of R1 to the stack using an offset 2 words behind the stack pointer
 STR R3, R6, #-3                 ; Store contents of R1 to the stack using an offset 3 words behind the stack pointer
@@ -22,17 +22,20 @@ OUT                             ; OUT TRAP function
 
 LD R2, X_VAL                    ; Load X_VAL into R2
 NOT R2, R2                      ; 2's complement on R2
-AND R2, R0, R2                  ; Comparing contents of R2 and R0
+ADD R2, R2, #1
+ADD R2, R0, R2                  ; Comparing contents of R2 and R0
 BRz X_DETECTED                  ; Branching if ZERO to X_DETECTED
 
 LD R2, ALPHA_VAL                ; Load ALPHA_VAL into R2
 NOT R2, R2                      ; 2's complement on R2
-AND R2, R0, R2                  ; Comparing contents of R2 and R0
+ADD R2, R2, #1
+ADD R2, R0, R2                  ; Comparing contents of R2 and R0
 BRzp ALPHA_DETECTED             ; Branching if NON-NEGATIVE to ALPHA_DETECTED
 
 LD R2, NUMERIC_VAL              ; Load NUMERIC_VAL into R2
 NOT R2, R2                      ; 2's complement on R2
-AND R2, R0, R2                  ; Comparing contents of R2 and R0
+ADD R2, R2 #1
+ADD R2, R0, R2                  ; Comparing contents of R2 and R0
 BRzp NUMERIC_DETECTED           ; Branching if NON-NEGATIVE to NUMERIC_DETECTED
 BRnzp CHAR_FINISHED             ; Branching unconditionally to CHAR_FINISHED
 
