@@ -155,7 +155,7 @@ LDR R5, R6, #-5                     ; Load the contents at the memory location 5
 LDR R6, R6, #-6                     ; Load the contents at the memory location 6 words behind R6's current address into R6 (in memory: x5FF1)
 LDR R7, R6, #-7                     ; Load the contents at the memory location 7 words behind R6's current address into R7 (in memory: x5FF0)
  
-    RET
+RET
  
 ; --------------------------------------
 ; GLOBAL VARIABLES
