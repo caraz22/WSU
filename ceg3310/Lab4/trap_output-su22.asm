@@ -21,13 +21,13 @@ LEA R0, MEMCONBEGIN                 ; Load address of variable MEMCONBEGIN to R0
 PUTS                                ; Call PUTS TRAP function
  
 ADD R0, R4, #0                      ; Copy R4 to R0
-JSR WORD_OUT                         ; Jump subroutine to WORD_OUT
+JSR WORD_OUT                        ; Jump subroutine to WORD_OUT
  
 LEA R0, MEMCONMIDDLE                ; Load address of variable MEMCONMIDDLE to R0
 PUTS                                ; Call PUTS TRAP function
  
 ADD R0, R5, #0                      ; Copy R5 to R0
-JSR WORD_OUT                         ; Jump subroutine to WORD_OUT
+JSR WORD_OUT                        ; Jump subroutine to WORD_OUT
  
 LEA R0, MEMCONEND                   ; Load address of variable MEMCONEND to R0
 PUTS                                ; Call PUTS TRAP function
