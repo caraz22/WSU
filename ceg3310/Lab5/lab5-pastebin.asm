@@ -20,8 +20,7 @@ Lab 5 TA Notes:
  
 ; ************************************************************************************************
  
-.ORIG x3000
-;	Your main() function starts here
+.ORIG x3000                 ;	Your main() function starts here
 LD R6, STACK_PTR			;	LOAD the pointer to the bottom of the stack in R6	(R6 = x5013)
 ADD R6, R6, #-1				;	Allocate room for your return value 				(R6 = x5012)
 ADD R5, R6, #0				;	MAKE your frame pointer R5 point to local variables	(R5 = x5012)
@@ -62,12 +61,11 @@ STACK_PTR		.FILL x5013	;	STACK_PTR is a pointer to the bottom of the stack	(x501
  
 ; ************************************************************************************************
  
-sumOfSquares
-;	Your sumOfSquares() function starts here
+sumOfSquares                ;	Your sumOfSquares() function starts here
  
-;	Allocate room for your return value relative to R6				(R6 = x500D)
+ADD R6, R6, #-1             ;	Allocate room for your return value relative to R6				(R6 = x500D)
  
-;	STORE the return address in the stack (which register holds the return address?)				(R6 = x500D)
+ST R6, R7                   ;	STORE the return address in the stack (which register holds the return address?)				(R6 = x500D)
 ;	MAKE stack pointer go back one address (HINT: try using addition to move the stack pointer!)				(R6 = x500C)
  
 ;	STORE R5 (previous frame pointer) in stack			(R6 = x500C)
