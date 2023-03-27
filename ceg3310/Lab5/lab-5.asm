@@ -88,7 +88,7 @@ ADD R2, R2, #1
 
 WHILE_LOOP					    ;	START of while loop
 ADD R1, R3, R2                  ;	CHECK if we should stop looping, i.e. counter > arraySize (HINT: what happens if counter is greater than or equal to arraySize? Remember that we did the 2's complement of arraySize previously! Also, which register holds our output? It's not R2 or R3.) 
-BRzp DONE                       ;   Branch to DONE if these conditions are met
+BRz DONE                        ;   Branch to DONE if these conditions are met
  
 LDR R0, R5, #9                  ;	LOAD array pointer into R0	(HINT: This refers to *a! Where is *a located on in the sumOfSquares() stack image relative to R5?)					(R5 = x5007)
 ADD R0, R3, R0                  ;	ADD counter + array address into R0 to get value at index (HINT: where are the array address and counter both stored?)
@@ -97,7 +97,7 @@ STR R0, R5, #-2                 ;	STORE value from array in stack (int x)	(HINT:
  
 ADD R6, R6, #-1                 ;	MAKE stack pointer go back one address				(R6 = x5004)
 JSR square                      ;	CALL square() function (REMEMBER: We WILL want to return here!)
-LDR R0, R5, #-2                 ;	LOAD return value of square() into R0	(HINT: refer to the second and third columns of the graphic of the stack for the offset value)			(R5 = x5007)
+LDR R0, R5, #-3                 ;	LOAD return value of square() into R0	(HINT: refer to the second and third columns of the graphic of the stack for the offset value)			(R5 = x5007)
 LDR R1, R5, #-1                 ;	LOAD current running sum into R1	(HINT: Where is the sum stored relative to R5's current location?)				(R5 = x5007)
 ADD R0, R0, R1                  ;	ADD current running sum to return value of squares() (HINT: Use R0 and R1 for this)
 STR R0, R5, #-1                 ;	STORE new sum into stack	(HINT: replace the old one)						(R5 = x5007)
