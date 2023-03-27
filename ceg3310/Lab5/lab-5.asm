@@ -75,7 +75,7 @@ ADD R6, R6, #-1                 ;	MAKE stack pointer go back one address				(R6 
 STR R0, R6, #0                  ;	STORE R0 in stack									(R6 = x5008)
 ADD R6, R6, #-1                 ;	MAKE stack pointer go back one address				(R6 = x5007)
  
-ADD R5, R5, #-1                 ;	MAKE frame pointer point to local variables				(R5 = x5007)
+ADD R5, R6, #0                  ;	MAKE frame pointer point to local variables				(R5 = x5007)
 ADD R6, R6, #-2                 ;	MAKE stack pointer point to top of stack (HINT: the TOP of the stack, not the BOTTOM that is given in the variable STACK_PTR)			(R6 = x5005)
  
 LDR R2, R5, #8                  ;	LOAD input from main() (arraySize) into R2 (HINT: Where is arraySize located relative to the frame pointer? Use that as the offset!)		(R5 = x5007)
@@ -92,7 +92,7 @@ BRz DONE                        ;   Branch to DONE if these conditions are met
  
 LDR R0, R5, #9                  ;	LOAD array pointer into R0	(HINT: This refers to *a! Where is *a located on in the sumOfSquares() stack image relative to R5?)					(R5 = x5007)
 ADD R0, R3, R0                  ;	ADD counter + array address into R0 to get value at index (HINT: where are the array address and counter both stored?)
-LDR R0, R3, #0                  ;	LOAD value at the current array address into R0 (HINT: your offset will be zero!)
+LDR R0, R0, #0                  ;	LOAD value at the current array address into R0 (HINT: your offset will be zero!)
 STR R0, R5, #-2                 ;	STORE value from array in stack (int x)	(HINT: Refer to the second column of the graphic of the stack to place int x relative to R5)			(R5 = x5007)
  
 ADD R6, R6, #-1                 ;	MAKE stack pointer go back one address				(R6 = x5004)
@@ -101,7 +101,7 @@ LDR R0, R5, #-3                 ;	LOAD return value of square() into R0	(HINT: r
 LDR R1, R5, #-1                 ;	LOAD current running sum into R1	(HINT: Where is the sum stored relative to R5's current location?)				(R5 = x5007)
 ADD R0, R0, R1                  ;	ADD current running sum to return value of squares() (HINT: Use R0 and R1 for this)
 STR R0, R5, #-1                 ;	STORE new sum into stack	(HINT: replace the old one)						(R5 = x5007)
-ADD R3, R3 #1                   ;	ADD 1 to counter
+ADD R3, R3, #1                  ;	ADD 1 to counter
 STR R3, R5, #0                  ;	STORE counter into stack							(R5 = x5007)
 BRnzp WHILE_LOOP                ;   Branch unconditionally back to WHILE_LOOP
  
@@ -109,7 +109,7 @@ DONE                            ;   DONE serves to put the stack back to the way
 LDR R0, R5, #-1                 ;	LOAD int sum into R0								(R5 = x5007)
 STR R0, R5, #7                  ;	STORE int sum into return value on stack	(HINT: where is sum on the stack relative to the frame pointer's current location?)		(R5 = x5007)
  
-ADD R6, R5, #3                  ;	MAKE stack pointer go to end of frame		(HINT: where is R6 relative to R5?)		(R6 = x5007)
+ADD R6, R6, #2                  ;	MAKE stack pointer go to end of frame		(HINT: where is R6 relative to R5?)		(R6 = x5007)
  
 ADD R6, R6, #1                  ;	MAKE stack pointer go forward one address			(R6 = x5008)
 LDR R0, R6, #0                  ;	RESTORE R0 to value stored on stack		(HINT: Where is R0 relative to R6's current location? Refer to the graphic for the offset)			(R6 = x5008)
@@ -160,11 +160,11 @@ ADD R6, R6, #-1                 ;	MAKE stack pointer go back one address				(R6 
 ADD R5, R6, #0                  ;	MAKE frame pointer point to local vars		(HINT: the local variable in this case is the product variable. Refer to the third column of the stack graphic)	(R5 = x4FFD)
  
 AND R0, R0, #0                  ;	CLEAR R0 for calculations
-STR R0, R6, #0                  ;	STORE product = 0 into stack						(R5 = x4FFD)
+STR R0, R5, #0                  ;	STORE product = 0 into stack						(R5 = x4FFD)
  
 LDR R1, R5, #8                  ;	LOAD int x into R1 for multiplication		(HINT: where is int x relative to the frame pointer's current location?)		(R5 = x4FFD)
  
-ADD R2, R5, #8                  ;	COPY int x into R2 for multiplication
+ADD R2, R1, #0                  ;	COPY int x into R2 for multiplication
  
 MULTIPLY_LOOP
 ADD R0, R1, R0                  ;	ADD R1 + R0 to keep running total of multiplication
