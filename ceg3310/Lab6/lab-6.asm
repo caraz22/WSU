@@ -13,17 +13,16 @@
 ; R7 is the return address. It must be preserved between functions. 
  
 ; ****************************************************************
-BEGINNING
-;	Your main() function starts here
-;	LOAD the pointer to the bottom of the stack in R6 (HINT: Use STACK_PTR for this!)	(R6 = x5013)
-;	Allocate room for your return value 	(HINT: Move the stack pointer back to allocate space.)			(R6 = x5012)
-;	MAKE your frame pointer R5 point to local variables	(HINT: We are setting up the frame pointer for BEGINNING. Which register do we initialize R5 relative to?) (R5 = x5012)
-;	MAKE your global var pointer R4 point to globals	(R4 = ADDRESS(GLOBAL_VARS))
-;	LOAD the start of the string into R0 (HINT: We can use PROMPT0 for this! And, which load do we use for printing text: LD, LDI, LDR, or LEA? Think about it!)
-;	PRINT the prompt (HINT: It's a Trap! But which one? Note the difference between prompt and output!)
-;	GET the character the user entered (HINT: It's a Trap! But which one?)
-;	PRINT the character the user entered (HINT: It's a Trap! But which one?)
-;	LOAD the value to subtract from an ASCII number to convert to decimal (HINT: Use R1 to hold the value since R0 is already in use. We can use ASCII_NUM to initialize it.)
+BEGINNING                           ;	Your main() function starts here
+LD R6, STACK_PTR                    ;	LOAD the pointer to the bottom of the stack in R6 (HINT: Use STACK_PTR for this!)	(R6 = x5013)
+ADD R6, R6, #-1                     ;	Allocate room for your return value 	(HINT: Move the stack pointer back to allocate space.)			(R6 = x5012)
+ADD R5, R6, #0                      ;	MAKE your frame pointer R5 point to local variables	(HINT: We are setting up the frame pointer for BEGINNING. Which register do we initialize R5 relative to?) (R5 = x5012)
+LEA R4, GLOBAL_VARS                 ;	MAKE your global var pointer R4 point to globals	(R4 = ADDRESS(GLOBAL_VARS))
+LEA R0, PROMPT0                     ;	LOAD the start of the string into R0 (HINT: We can use PROMPT0 for this! And, which load do we use for printing text: LD, LDI, LDR, or LEA? Think about it!)
+PUTS                                ;	PRINT the prompt (HINT: It's a Trap! But which one? Note the difference between prompt and output!)
+GETC                                ;	GET the character the user entered (HINT: It's a Trap! But which one?)
+OUT                                 ;	PRINT the character the user entered (HINT: It's a Trap! But which one?)
+LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII number to convert to decimal (HINT: Use R1 to hold the value since R0 is already in use. We can use ASCII_NUM to initialize it.)
 ;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
 ;	COPY R0 into R1 for later use (HINT: How did we copy in previous labs? There's no MOV command.)
 ;	STORE the decimal input to fibonacci on the stack	(HINT: The value stored will be located in the destination register from the previous step.) (R6 = x5012)
@@ -44,8 +43,8 @@ BEGINNING
 ;	COPY R2 to R3
 ;	CLEAR R1
  
-; Checks the amount of tens in your ASCII digit (REMEMBER: You will be getting out two characters. For example, if we enter a one, we'd get out x31. To convert to decimal, we subtract ASCII zero and then, if there's a tens place value, strip it down to a digit so we can print it.)
-CHECK_10S
+
+CHECK_10S                       ; Checks the amount of tens in your ASCII digit (REMEMBER: You will be getting out two characters. For example, if we enter a one, we'd get out x31. To convert to decimal, we subtract ASCII zero and then, if there's a tens place value, strip it down to a digit so we can print it.)
 ;	INCREMENT R1 to start counting the number of 10s
 ;	SUBTRACT 10 from R3
 ;	BRANCH to CHECK_10s if R3 is non negative
@@ -58,13 +57,13 @@ CHECK_10S
 ;	ADD R0 and R1 to add the amount of tens places to get the tens place digit
 ;	PRINT the character (HINT: It's a Trap! But which one?)
  
-; If there's no tens place value
-SKIP_PRINT10S
+
+SKIP_PRINT10S                   ; If there's no tens place value
 ;	ADD #10 to R3 (HINT: This is a failsafe to keep the value from going negative.)
 ;	CLEAR R1
  
-;	Checks the ones place value
-CHECK_1S
+
+CHECK_1S                        ;	Checks the ones place value
 ;	ADD #1 to R1 (HINT: This indicates we have at least a 1 value.)
 ;	DECREMENT R3 (HINT: R3 is your counter.)
 ;	BRANCH back to CHECK_1s if R3 is non negative
@@ -81,10 +80,10 @@ CHECK_1S
 ;	BRANCH unconditionally back to BEGINNING
 ;	HALT the program (HINT: It's a Trap! But which one?)
  
-GLOBAL_VARS					;	Your global variables start here
+GLOBAL_VARS					    ;	Your global variables start here
 PROMPT0 		.STRINGz	"Please enter a number n: ";	The first prompt to print
-STACK_PTR		.FILL x5013	;	STACK_PTR is a pointer to the bottom of the stack	(x5013)
-ASCII_NUM		.FILL #-48	;
+STACK_PTR		.FILL x5013	    ;	STACK_PTR is a pointer to the bottom of the stack	(x5013)
+ASCII_NUM		.FILL #-48	    ;
 PROMPT1 		.STRINGz	"\nF(";	The second prompt
 PROMPT2 		.STRINGz	") = ";	The second prompt
 PROMPT3			.STRINGz	"\n"
@@ -101,8 +100,8 @@ PROMPT3			.STRINGz	"\n"
  
 ; ****************************************************************
  
-FIBONACCI
-;	Your fibonacci subroutine starts here
+FIBONACCI                       ;	Your fibonacci subroutine starts here
+
 ;	Allocate room for your return value 				(R6 = x5010)
  
 ;	STORE the return address in the stack	(HINT: What register is the return address held in? Do we do this operation relative to the stack pointer or the frame pointer?)			(R6 = x5010)
