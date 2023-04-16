@@ -23,7 +23,7 @@ PUTS                                ;	PRINT the prompt (HINT: It's a Trap! But w
 GETC                                ;	GET the character the user entered (HINT: It's a Trap! But which one?)
 OUT                                 ;	PRINT the character the user entered (HINT: It's a Trap! But which one?)
 LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII number to convert to decimal (HINT: Use R1 to hold the value since R0 is already in use. We can use ASCII_NUM to initialize it.)
-;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
+ADD R0, R0, R1                      ;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
 ADD R1, R0, #0                      ;	COPY R0 into R1 for later use (HINT: How did we copy in previous labs? There's no MOV command.)
 ADD R1, R6, #0                      ;	STORE the decimal input to fibonacci on the stack	(HINT: The value stored will be located in the destination register from the previous step.) (R6 = x5012)
 ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x5011)
@@ -36,7 +36,7 @@ ADD R0, R1, #0                      ;	Copy the value in R1 to R0
 LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII number to convert to decimal (HINT: Use R1 to hold the value since R0 is already in use. We can use ASCII_NUM to initialize it.)
 NOT R1, R1                          ;	Do a two's complement (HINT: Do a two's complement for this step. Please note that a two's complement is two commands: A negate and an add #1!)
 ADD R1, R1, #1                      ;	Second step of two's complement
-;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
+ADD R0, R0, R1                      ;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
 PUTS                                ;	Print out output (HINT: It's a Trap! But which one?)
 LEA R0, PROMPT2                     ;	Load the prompt into the output register (HINT: Load PROMPT2 into your output register. Which output register did we use for printing PROMPT0?)
 PUTS                                ;	Print the prompt (HINT: It's a Trap! But which one?)
@@ -45,7 +45,7 @@ AND R1, R1, #0                      ;	CLEAR R1
  
 
 CHECK_10S                           ;   Checks the amount of tens in your ASCII digit (REMEMBER: You will be getting out two characters. For example, if we enter a one, we'd get out x31. To convert to decimal, we subtract ASCII zero and then, if there's a tens place value, strip it down to a digit so we can print it.)
-;	INCREMENT R1 to start counting the number of 10s
+ADD R1, R1, #1                      ;	INCREMENT R1 to start counting the number of 10s
 ADD R3, R3, #-10                    ;	SUBTRACT 10 from R3
 BRzp CHECK_10S                      ;	BRANCH to CHECK_10s if R3 is non negative
 ADD R1, R1, #-1                     ;	SUBTRACT 1 from R1
@@ -71,21 +71,21 @@ ADD R0, R1, #-1                     ;	DECREMENT R1 and store in R0 (HINT: This i
 LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII number to convert to decimal (HINT: Use R1 to hold the value since R0 is already in use. We can use ASCII_NUM to initialize it.)
 NOT R1, R1                          ;	Do a two's complement (HINT: Do a two's complement for this step. Please note that a two's complement is two commands: A negate and an add #1!)
 ADD R1, R1, #1                      ;	Second step of two's complement
-;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
+ADD R0, R0, R1                      ;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
 OUT                                 ;	PRINT a character (HINT: It's a Trap! But which one?)
-PUTS                                ;	PRINT out the prompt (HINT: Use PROMPT3 for this, as well as the same load command and register you used in previous steps.)
-;	Print the string of characters (HINT: It's a Trap! But which one?)
+LEA R0, PROMPT3                     ;	Load the prompt (HINT: Use PROMPT3 for this, as well as the same load command and register you used in previous steps.)
+PUTS                                ;	Print the string of characters (HINT: It's a Trap! But which one?)
 STR R2, R5, #0                      ;	STORE main() return value into stack (HINT: Use R2 for this!)				(R5 = x5012)
 ADD R6, R6, #2                      ;	POP stack (HINT: Draw a picture of the stack. How many variables do we have to pop off the stack in order to return R6 to its starting location?)											(R6 = x5014)
 BR BEGINNING                        ;	BRANCH unconditionally back to BEGINNING
 HALT                                ;	HALT the program (HINT: It's a Trap! But which one?)
  
-GLOBAL_VARS					        ;	Your global variables start here
-PROMPT0 		.STRINGz	"Please enter a number n: ";	The first prompt to print
-STACK_PTR		.FILL x5013	        ;	STACK_PTR is a pointer to the bottom of the stack	(x5013)
+GLOBAL_VARS					                                ;	Your global variables start here
+PROMPT0 		.STRINGz	"Please enter a number n: "     ;	The first prompt to print
+STACK_PTR		.FILL x5013	                                ;	STACK_PTR is a pointer to the bottom of the stack	(x5013)
 ASCII_NUM		.FILL #-48	        
-PROMPT1 		.STRINGz	"\nF("  ;	The second prompt
-PROMPT2 		.STRINGz	") = "  ;	The second prompt
+PROMPT1 		.STRINGz	"\nF("                          ;	The second prompt
+PROMPT2 		.STRINGz	") = "                          ;	The second prompt
 PROMPT3			.STRINGz	"\n"
  
 ; ****************************************************************
