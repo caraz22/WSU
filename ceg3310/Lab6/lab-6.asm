@@ -102,52 +102,52 @@ PROMPT3			.STRINGz	"\n"
  
 FIBONACCI                           ;	Your fibonacci subroutine starts here
 
-;	Allocate room for your return value 				(R6 = x5010)
+ADD R6, R6, #-1                     ;	Allocate room for your return value 				(R6 = x5010)
  
 ;	STORE the return address in the stack	(HINT: What register is the return address held in? Do we do this operation relative to the stack pointer or the frame pointer?)			(R6 = x5010)
-;	MAKE stack pointer go back one address				(R6 = x500F)
+ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x500F)
  
-;	STORE R5 (previous frame pointer) in stack	(HINT: We are currently storing the frame pointer for BEGINNING in the stack so that when we RET back to it, the frame pointer is preserved. Once this store is done, we can modify R5 again.)		(R6 = x500F)
-;	MAKE stack pointer go back one address				(R6 = x500E)
+STR R5, R6, #0                      ;	STORE R5 (previous frame pointer) in stack	(HINT: We are currently storing the frame pointer for BEGINNING in the stack so that when we RET back to it, the frame pointer is preserved. Once this store is done, we can modify R5 again.)		(R6 = x500F)
+ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x500E)
  
-;	STORE R3 in stack									(R6 = x500E)
-;	MAKE stack pointer go back one address				(R6 = x500D)
+STR R3, R6, #0                      ;	STORE R3 in stack									(R6 = x500E)
+ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x500D)
  
-;	STORE R2 in stack									(R6 = x500D)
-;	MAKE stack pointer go back one address				(R6 = x500C)
+STR R2, R6, #0                      ;	STORE R2 in stack									(R6 = x500D)
+ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x500C)
  
-;	STORE R1 in stack									(R6 = x500C)
-;	MAKE stack pointer go back one address				(R6 = x500B)
+STR R1, R6, #0                      ;	STORE R1 in stack									(R6 = x500C)
+ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x500B)
  
-;	STORE R0 in stack									(R6 = x500B)
-;	MAKE stack pointer go back one address				(R6 = x500A)
+STR R0, R6, #0                      ;	STORE R0 in stack									(R6 = x500B)
+ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x500A)
  
-;	MAKE R5 point to R6		(HINT: Now your stack pointer will point at the bottom of FIBONACCI's local variables. What is the offset relative to R6?)							(R5 = x500A)
+ADD R5, R6, #0                      ;	MAKE R5 point to R6		(HINT: Now your stack pointer will point at the bottom of FIBONACCI's local variables. What is the offset relative to R6?)							(R5 = x500A)
  
 ;;;;;;
  
 ;	LOAD input from stack	(HINT: Which register will input go in? Where is the input located on the stack relative to the frame pointer?)							(R5 = x500A)
 ;	CHECK if input = 1	(HINT: We can use R1 as a compare register. What value should it hold?)
-;	BRANCH if zero to END_ALL_CASES
-;	ADD 1 to R0
+BRz END_ALL_CASES                   ;	BRANCH if zero to END_ALL_CASES
+ADD R0, R0, #1                      ;	ADD 1 to R0
 ;	CHECK if input = 0	(HINT: What value is in the input register right now? What do whe have to do to make it zero?)
-;	BRANCH if zero to END_ALL_CASES
+BRz END_ALL_CASES                   ;	BRANCH if zero to END_ALL_CASES
  
 ;	CALCULATE n-1	(HINT: First general case. What value is in the input register right now? How do we make it equal to (n-1)?)
 ;	STORE input to fibonacci(n-1) on stack		(HINT: We are storing ON THE STACK. Which register holds input? Where is the stack pointer right now?)		(R6 = x500A)
-;	MAKE stack pointer go back one address				(R6 = x5009)
-;	JUMP subroutine to FIBONACCI
+ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x5009)
+JSR FIBONACCI                       ;	JUMP subroutine to FIBONACCI
 ;	LOAD return value into R1							(R5 = x500A)
 ;	POP input to F(n-1)									(R6 = x500A)
  
 ;	CALCULATE n-1-1 (n-2)	(HINT: second general case. What value is in the input register right now? How do we make it equal to (n-2)?)
 ;	STORE input to fibonacci(n-2) on stack		(HINT: We are storing ON THE STACK. Which register holds input? Where is the stack pointer right now?)		(R6 = x500A)
-;	MAKE stack pointer go back one address				(R6 = x5009)
-;	JUMP subroutine to FIBONACCI
+ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x5009)
+JSR FIBONACCI                       ;	JUMP subroutine to FIBONACCI
 ;	LOAD return value into R2	(HINT: Which register do we load relative to? Where is the return value in memory relative to where this register is pointing?)						(R5 = x500A)
 ;	POP input to F(n-2)									(R6 = x500A)
  
-;	ADD R1 + R2 -> R0, aka F(n-1) + F(n-2) -> R0
+ADD R0, R1, R2                      ;	ADD R1 + R2 -> R0, aka F(n-1) + F(n-2) -> R0
  
 END_ALL_CASES
 ;;;;;;
@@ -155,25 +155,25 @@ END_ALL_CASES
  
 ;	MAKE stack pointer go to end of frame	(HINT: Which register are we MODIFYING, R5 or R6? The other will serve as the source.)			(R6 = x500A)
  
-;	MAKE stack pointer go forward one address			(R6 = x500B)
-;	RESTORE R0 to value stored on stack			(HINT: Do we use stack or frame pointer for this? It will be the same one as your loads.)		(R6 = x500B)
+ADD R6, R6, #1                      ;	MAKE stack pointer go forward one address			(R6 = x500B)
+LDR R0, R6, #0                      ;	RESTORE R0 to value stored on stack			(HINT: Do we use stack or frame pointer for this? It will be the same one as your loads.)		(R6 = x500B)
  
-;	MAKE stack pointer go forward one address			(R6 = x500C)
-;	RESTORE R1 to value stored on stack					(R6 = x500C)
+ADD R6, R6, #1                      ;	MAKE stack pointer go forward one address			(R6 = x500C)
+LDR R1, R6, #0                      ;	RESTORE R1 to value stored on stack					(R6 = x500C)
  
-;	MAKE stack pointer go forward one address			(R6 = x500D)
-;	RESTORE R2 to value stored on stack					(R6 = x500D)
+ADD R6, R6, #1                      ;	MAKE stack pointer go forward one address			(R6 = x500D)
+LDR R2, R6, #0                      ;	RESTORE R2 to value stored on stack					(R6 = x500D)
  
-;	MAKE stack pointer go forward one address			(R6 = x500E)
-;	RESTORE R3 to value stored on stack					(R6 = x500E)
+ADD R6, R6, #1                      ;	MAKE stack pointer go forward one address			(R6 = x500E)
+LDR R3, R6, #0                      ;	RESTORE R3 to value stored on stack					(R6 = x500E)
  
-;	MAKE stack pointer go forward one address			(R6 = x500F)
-;	RESTORE R5 to value stored on stack			(HINT: This will restore the previous frame pointer from BEGINNING.)		(R6 = x500F)
+ADD R6, R6, #1                      ;	MAKE stack pointer go forward one address			(R6 = x500F)
+LDR R5, R6, #0                      ;	RESTORE R5 to value stored on stack			(HINT: This will restore the previous frame pointer from BEGINNING.)		(R6 = x500F)
  
-;	MAKE stack pointer go forward one address			(R6 = x5010)
-;	RESTORE R7 to value stored on stack		(HINT: This will restore the return address for the previous function.)			(R6 = x5010)
+ADD R6, R6, #1                      ;	MAKE stack pointer go forward one address			(R6 = x5010)
+LDR R7, R6, #0                      ;	RESTORE R7 to value stored on stack		(HINT: This will restore the return address for the previous function.)			(R6 = x5010)
  
-;	POP stack		(HINT: What is left to pop off the stack at this point? Move the SP forward that many locations.)									(R6 = x5011)	
+ADD R6, R6, #1                      ;	POP stack		(HINT: What is left to pop off the stack at this point? Move the SP forward that many locations.)									(R6 = x5011)	
 RET
  
 .END
