@@ -25,7 +25,7 @@ OUT                                 ;	PRINT the character the user entered (HINT
 LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII number to convert to decimal (HINT: Use R1 to hold the value since R0 is already in use. We can use ASCII_NUM to initialize it.)
 ADD R0, R0, R1                      ;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
 ADD R1, R0, #0                      ;	COPY R0 into R1 for later use (HINT: How did we copy in previous labs? There's no MOV command.)
-ADD R1, R6, #0                      ;	STORE the decimal input to fibonacci on the stack	(HINT: The value stored will be located in the destination register from the previous step.) (R6 = x5012)
+STR R1, R6, #0                      ;	STORE the decimal input to fibonacci on the stack	(HINT: The value stored will be located in the destination register from the previous step.) (R6 = x5012)
 ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x5011)
 JSR FIBONACCI                       ;	CALL FIBONACCI (HINT: FIBONACCI is NOT a trap but a user function. How do we call user functions?)
 LDR R2, R5, #??                     ;	LOAD return value of FIBONACCI into R2	(HINT: We start here after we return from FIBONACCI. Which register do we want to use to load the return value into R2? R5 or R6?)			(R5 = x5012)
@@ -37,7 +37,7 @@ LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII n
 NOT R1, R1                          ;	Do a two's complement (HINT: Do a two's complement for this step. Please note that a two's complement is two commands: A negate and an add #1!)
 ADD R1, R1, #1                      ;	Second step of two's complement
 ADD R0, R0, R1                      ;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
-PUTS                                ;	Print out output (HINT: It's a Trap! But which one?)
+OUT                                ;	Print out output (HINT: It's a Trap! But which one?)
 LEA R0, PROMPT2                     ;	Load the prompt into the output register (HINT: Load PROMPT2 into your output register. Which output register did we use for printing PROMPT0?)
 PUTS                                ;	Print the prompt (HINT: It's a Trap! But which one?)
 ADD R3, R2, #0                      ;	COPY R2 to R3
@@ -65,7 +65,7 @@ AND R1, R1, 0                       ;	CLEAR R1
 
 CHECK_1S                            ;	Checks the ones place value
 ADD R1, R1, #1                      ;	ADD #1 to R1 (HINT: This indicates we have at least a 1 value.)
-ADD R3, R3, #0                      ;	DECREMENT R3 (HINT: R3 is your counter.)
+ADD R3, R3, #-1                     ;	DECREMENT R3 (HINT: R3 is your counter.)
 BRzp CHECK_1S                       ;	BRANCH back to CHECK_1s if R3 is non negative
 ADD R0, R1, #-1                     ;	DECREMENT R1 and store in R0 (HINT: This is because the CHECK_1s will overshoot by one.)
 LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII number to convert to decimal (HINT: Use R1 to hold the value since R0 is already in use. We can use ASCII_NUM to initialize it.)
@@ -75,7 +75,7 @@ ADD R0, R0, R1                      ;	CONVERT ASCII numeric character to decimal
 OUT                                 ;	PRINT a character (HINT: It's a Trap! But which one?)
 LEA R0, PROMPT3                     ;	Load the prompt (HINT: Use PROMPT3 for this, as well as the same load command and register you used in previous steps.)
 PUTS                                ;	Print the string of characters (HINT: It's a Trap! But which one?)
-STR R2, R5, #0                      ;	STORE main() return value into stack (HINT: Use R2 for this!)				(R5 = x5012)
+STR R2, R5, #??                     ;	STORE main() return value into stack (HINT: Use R2 for this!)				(R5 = x5012)
 ADD R6, R6, #2                      ;	POP stack (HINT: Draw a picture of the stack. How many variables do we have to pop off the stack in order to return R6 to its starting location?)											(R6 = x5014)
 BR BEGINNING                        ;	BRANCH unconditionally back to BEGINNING
 HALT                                ;	HALT the program (HINT: It's a Trap! But which one?)
