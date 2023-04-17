@@ -60,7 +60,7 @@ OUT                                 ;	PRINT the character (HINT: It's a Trap! Bu
 
 SKIP_PRINT10S                       ; If there's no tens place value
 ADD R3, R3, #10                     ;	ADD #10 to R3 (HINT: This is a failsafe to keep the value from going negative.)
-AND R1, R1, 0                       ;	CLEAR R1
+AND R1, R1, #0                       ;	CLEAR R1
  
 
 CHECK_1S                            ;	Checks the ones place value
