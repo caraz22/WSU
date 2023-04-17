@@ -28,7 +28,7 @@ ADD R1, R0, #0                      ;	COPY R0 into R1 for later use (HINT: How d
 STR R1, R6, #0                      ;	STORE the decimal input to fibonacci on the stack	(HINT: The value stored will be located in the destination register from the previous step.) (R6 = x5012)
 ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x5011)
 JSR FIBONACCI                       ;	CALL FIBONACCI (HINT: FIBONACCI is NOT a trap but a user function. How do we call user functions?)
-LDR R2, R5, #??                     ;	LOAD return value of FIBONACCI into R2	(HINT: We start here after we return from FIBONACCI. Which register do we want to use to load the return value into R2? R5 or R6?)			(R5 = x5012)
+LDR R2, R5, #-1                     ;	LOAD return value of FIBONACCI into R2	(HINT: We start here after we return from FIBONACCI. Which register do we want to use to load the return value into R2? R5 or R6?)			(R5 = x5012)
 ADD R6, R6, #1                      ;	POP input to FIBONACCI off the stack (HINT: Remember that the stack pointer is ALWAYS the top of the stack. If SP goes below a value, that value is no longer part of the stack (although it still remains in memory). Knowing this, how do we pop input off of the stack?) 				(R6 = x5012)
 LEA R0, PROMPT1                     ;	Load the prompt into the output register (HINT: Load PROMPT1 into your output register. Which output register did we use for printing PROMPT0?)
 PUTS                                ;	Print the prompt (HINT: It's a Trap! But which one?)
@@ -37,7 +37,7 @@ LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII n
 NOT R1, R1                          ;	Do a two's complement (HINT: Do a two's complement for this step. Please note that a two's complement is two commands: A negate and an add #1!)
 ADD R1, R1, #1                      ;	Second step of two's complement
 ADD R0, R0, R1                      ;	CONVERT ASCII numeric character to decimal (HINT: Which register is the ASCII character held in? Which register is the conversion value held in? And which register of those two should we place our result in?)
-OUT                                ;	Print out output (HINT: It's a Trap! But which one?)
+OUT                                 ;	Print out output (HINT: It's a Trap! But which one?)
 LEA R0, PROMPT2                     ;	Load the prompt into the output register (HINT: Load PROMPT2 into your output register. Which output register did we use for printing PROMPT0?)
 PUTS                                ;	Print the prompt (HINT: It's a Trap! But which one?)
 ADD R3, R2, #0                      ;	COPY R2 to R3
@@ -54,7 +54,7 @@ ADD R0, R1, #0                      ;	COPY R1 to R0 for conversion
 LD R1, ASCII_NUM                    ;	LOAD the value to subtract from an ASCII number to convert to decimal (HINT: Use R1 to hold the value since R0 is already in use. We can use ASCII_NUM to initialize it.)
 NOT R1, R1                          ;	Do a two's complement (HINT: Do a two's complement for this step. Please note that a two's complement is two commands: A negate and an add #1!)
 ADD R1, R1, #1                      ;	Second step of two's complement
-;	ADD R0 and R1 to add the amount of tens places to get the tens place digit
+ADD R0, R0, R1                      ;	ADD R0 and R1 to add the amount of tens places to get the tens place digit
 OUT                                 ;	PRINT the character (HINT: It's a Trap! But which one?)
  
 
@@ -75,8 +75,8 @@ ADD R0, R0, R1                      ;	CONVERT ASCII numeric character to decimal
 OUT                                 ;	PRINT a character (HINT: It's a Trap! But which one?)
 LEA R0, PROMPT3                     ;	Load the prompt (HINT: Use PROMPT3 for this, as well as the same load command and register you used in previous steps.)
 PUTS                                ;	Print the string of characters (HINT: It's a Trap! But which one?)
-STR R2, R5, #??                     ;	STORE main() return value into stack (HINT: Use R2 for this!)				(R5 = x5012)
-ADD R6, R6, #2                      ;	POP stack (HINT: Draw a picture of the stack. How many variables do we have to pop off the stack in order to return R6 to its starting location?)											(R6 = x5014)
+STR R2, R5, #0                      ;	STORE main() return value into stack (HINT: Use R2 for this!)				(R5 = x5012)
+ADD R6, R6, #1                      ;	POP stack (HINT: Draw a picture of the stack. How many variables do we have to pop off the stack in order to return R6 to its starting location?)											(R6 = x5014)
 BR BEGINNING                        ;	BRANCH unconditionally back to BEGINNING
 HALT                                ;	HALT the program (HINT: It's a Trap! But which one?)
  
@@ -126,34 +126,34 @@ ADD R5, R6, #0                      ;	MAKE R5 point to R6		(HINT: Now your stack
  
 ;;;;;;
  
-;	LOAD input from stack	(HINT: Which register will input go in? Where is the input located on the stack relative to the frame pointer?)							(R5 = x500A)
-;	CHECK if input = 1	(HINT: We can use R1 as a compare register. What value should it hold?)
+LDR R0, R5, #8                      ;	LOAD input from stack	(HINT: Which register will input go in? Where is the input located on the stack relative to the frame pointer?)							(R5 = x500A)
+ADD R1, R0, #-1                     ;  	CHECK if input = 1	(HINT: We can use R1 as a compare register. What value should it hold?)
 BRz END_ALL_CASES                   ;	BRANCH if zero to END_ALL_CASES
 ADD R0, R0, #1                      ;	ADD 1 to R0
-;	CHECK if input = 0	(HINT: What value is in the input register right now? What do whe have to do to make it zero?)
+ADD R0, R0, #-1                     ;	CHECK if input = 0	(HINT: What value is in the input register right now? What do whe have to do to make it zero?)
 BRz END_ALL_CASES                   ;	BRANCH if zero to END_ALL_CASES
- 
-;	CALCULATE n-1	(HINT: First general case. What value is in the input register right now? How do we make it equal to (n-1)?)
-;	STORE input to fibonacci(n-1) on stack		(HINT: We are storing ON THE STACK. Which register holds input? Where is the stack pointer right now?)		(R6 = x500A)
+
+ADD R0, R0, #-1                     ;	CALCULATE n-1	(HINT: First general case. What value is in the input register right now? How do we make it equal to (n-1)?)
+STR R0, R6, #0                      ;	STORE input to fibonacci(n-1) on stack		(HINT: We are storing ON THE STACK. Which register holds input? Where is the stack pointer right now?)		(R6 = x500A)
 ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x5009)
 JSR FIBONACCI                       ;	JUMP subroutine to FIBONACCI
-;	LOAD return value into R1							(R5 = x500A)
-;	POP input to F(n-1)									(R6 = x500A)
+LDR R1, R5, #-1                     ;	LOAD return value into R1							(R5 = x500A)
+ADD R6, R6, #1                      ;	POP input to F(n-1)									(R6 = x500A)
  
-;	CALCULATE n-1-1 (n-2)	(HINT: second general case. What value is in the input register right now? How do we make it equal to (n-2)?)
-;	STORE input to fibonacci(n-2) on stack		(HINT: We are storing ON THE STACK. Which register holds input? Where is the stack pointer right now?)		(R6 = x500A)
+ADD R0, R0, #-1                     ;	CALCULATE n-1-1 (n-2)	(HINT: second general case. What value is in the input register right now? How do we make it equal to (n-2)?)
+STR R0, R6, #0                      ;	STORE input to fibonacci(n-2) on stack		(HINT: We are storing ON THE STACK. Which register holds input? Where is the stack pointer right now?)		(R6 = x500A)
 ADD R6, R6, #-1                     ;	MAKE stack pointer go back one address				(R6 = x5009)
 JSR FIBONACCI                       ;	JUMP subroutine to FIBONACCI
-;	LOAD return value into R2	(HINT: Which register do we load relative to? Where is the return value in memory relative to where this register is pointing?)						(R5 = x500A)
-;	POP input to F(n-2)									(R6 = x500A)
+LDR R2, R5, #-1                     ;	LOAD return value into R2	(HINT: Which register do we load relative to? Where is the return value in memory relative to where this register is pointing?)						(R5 = x500A)
+ADD R6, R6, #1                     ;	POP input to F(n-2)									(R6 = x500A)
  
 ADD R0, R1, R2                      ;	ADD R1 + R2 -> R0, aka F(n-1) + F(n-2) -> R0
  
 END_ALL_CASES
 ;;;;;;
-;	STORE return (R0) into return value on stack	(HINT: Where is the return value for FIBONACCI relative to the frame pointer? Draw a picture of the stack and count the steps between the two.)	(R5 = x500A)
+STR R0, R5, #7                      ;	STORE return (R0) into return value on stack	(HINT: Where is the return value for FIBONACCI relative to the frame pointer? Draw a picture of the stack and count the steps between the two.)	(R5 = x500A)
  
-;	MAKE stack pointer go to end of frame	(HINT: Which register are we MODIFYING, R5 or R6? The other will serve as the source.)			(R6 = x500A)
+ADD R6, R5, #0                      ;	MAKE stack pointer go to end of frame	(HINT: Which register are we MODIFYING, R5 or R6? The other will serve as the source.)			(R6 = x500A)
  
 ADD R6, R6, #1                      ;	MAKE stack pointer go forward one address			(R6 = x500B)
 LDR R0, R6, #0                      ;	RESTORE R0 to value stored on stack			(HINT: Do we use stack or frame pointer for this? It will be the same one as your loads.)		(R6 = x500B)
