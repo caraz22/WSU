@@ -1,0 +1,9 @@
+1. docker run -p 80:80 9c201d193f4e
+2. webhook -hooks hook-config.yaml -verbose
+3. 54.161.156.237:80
+4. vim website/index.html
+5. git tag -a v2.7.2 -m "version 2.7.2" | git push origin v2.7.2 
+6. check workflow 
+7. check dockerhub 
+8. check webhook terminal 
+9. refresh ip
