@@ -1,2 +1,2 @@
 # WSU
-Files used in class that aren't supposed to be put into another repo
+Files used in class that are not supposed to be in another repo and repos from past semesters
