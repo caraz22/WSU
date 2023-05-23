@@ -27,3 +27,18 @@ Coordinate system changes are relative to the origin
 
 Delta time = time from one frame to another; used to move at constant rates  
 
+Comments should by used to tell __why__ the commented section has been integrated into your code  
+
+prefabs: something about creating a copy?  
+
+3D units do not have a predetermined definition?  
+
+arbitrary values are values that if changed, they do not break the game  
+
+turning in: delete library folder (if it exists)  
+
+assets are anything that have values, things that take time and money to create  
+
+manifold is a shape that if you we're to fill it up with water, the water could get everywhere inside the shape without a leak, i.e. a beach ball  
+
+3D warehouse for 3D models to use in unity
