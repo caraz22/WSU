@@ -2,3 +2,11 @@ Quizzes => 25%, ,online, 3 attempts allowed, takes highest score
 Mini projects => 30%, take home
 Final project => 20%, take home
 Final exam => 25%?, online
+
+home page options:
+default.html
+INDEX.html
+INDEX.php
+INDEX.aspt
+index.html
+index.htm
