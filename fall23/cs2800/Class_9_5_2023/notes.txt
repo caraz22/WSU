@@ -1,0 +1,24 @@
+<div class="main">
+<div class="header">
+<div class="section">
+<div class="article">
+<div class="aside">
+
+block elements cannot be nested 
+<p> <p> </p> </p>     <-- WRONG
+
+main>article   
+=
+<main>
+    <article>
+    </article>
+</main>
+
+<a></a>  
+=
+anchor
+
+padding has four directions: top, right, bottom, left
+formatted in that order
+padding: <px px px px> = <top right bottom left>
+padding: <px px> <top&bottom right&left>

@@ -1,0 +1,23 @@
+header nav {
+    font-style: italic;
+    background-color: #000;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+header ul {
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    list-style-type: none;
+    display: inline;
+    padding-left: 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #FFF;
+}
