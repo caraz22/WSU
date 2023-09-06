@@ -8,8 +8,9 @@ int main() {
     p = myArray;
 
     for (int i = 0; i < 5; i++) {
-        *p = *p * 2;
-        p = p + 1;
+        *p = *p * 2;    // *p *= 2;
+        p = p + 1;  // p++;
+        // p[i] *= 2;
     }
 
     for (int i = 0; i < 5; i++) {
