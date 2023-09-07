@@ -21,3 +21,37 @@ header nav ul li a {
     text-decoration: none;
     color: #FFF;
 }
+
+body main article h1 {
+    color: aqua;
+}
+
+header {
+    border-bottom: #000 3px solid;
+    margin-bottom: 7px;
+    padding-bottom: 25px;
+}
+
+div {
+    background-color: gray;
+    border: 3px solid #579555;
+    padding: 11px;
+    background-image: radial-gradient(whitesmoke, #579555);
+}
+
+main aside ul {
+    border: solid #000 2px;
+    width: 250px;
+    /* list-style-type: none; */
+    margin-left: 11px;
+    background-color: gray;
+    background-image: radial-gradient(rgb(152, 114, 114), #579555);
+}
+
+article {
+    float: left;
+}
+
+aside {
+    float: left;
+}

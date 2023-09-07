@@ -22,3 +22,5 @@ padding has four directions: top, right, bottom, left
 formatted in that order
 padding: <px px px px> = <top right bottom left>
 padding: <px px> <top&bottom right&left>
+
+defining border requires color, width, and length
