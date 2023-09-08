@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -6,7 +7,7 @@ void startPlaying(const Playlist &);
 
 int main() {
     Playlist myPlaylist;
-    startPlaying(myPlaylist)
+    startPlaying(myPlaylist);
 }
 
 void startPlaying(const Playlist & theList) {
