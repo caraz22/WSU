@@ -32,6 +32,8 @@ int main() {
 
     // Release myArray
     // delete [] myArray;
+    // Anything created with "new" needs to be deleted or there will be a memory leak
+    // Anything created with "new" goes to the heap
 
     // Print out the array
     for (int i = 0; i < 5; i++) {

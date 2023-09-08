@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/cszok/VS Code/WSU/fall23/cs3100/inClass",
-      "program": "c:/Users/cszok/VS Code/WSU/fall23/cs3100/inClass/build/Debug/outDebug",
+      "cwd": "c:/Users/cszok/VS Code/WSU/fall23/cs3100/inClass/methods",
+      "program": "c:/Users/cszok/VS Code/WSU/fall23/cs3100/inClass/methods/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
