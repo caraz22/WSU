@@ -1,0 +1,15 @@
+body img {
+    border-left: #000 2px solid;
+}
+
+body h1 {
+    font-family: 'Comic Sans MS';
+    color: white;
+    background-color: gray;
+    text-decoration: underline;
+}
+
+body ul {
+    list-style-type: none;
+    padding-left: 0px;
+}
