@@ -1,0 +1,12 @@
+2. array data is stored in the stack
+   variable containing the array's address is stored in the stack
+3. it doesn't delete the address, but it severs the connection between the pointer and the address
+4. b
+
+CORRECTED VERSION
+2. The array data is located on the heap, since the space was created using the ‘new’ operator. The
+variable array (the pointer to the array) is an automatic local variable and is located on the stack.
+3. Delete does not change the value in ptr (try it in visual studio by placing cout << ptr both before
+and after the delete [] instruction). It tells the gives the memory pointed to by ptr back to the
+operating system. This memory is no longer owned by the program, and should not be accessed again.
+4. a, b, & c
