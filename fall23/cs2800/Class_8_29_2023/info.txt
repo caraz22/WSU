@@ -1,4 +1,4 @@
-Quizzes => 25%, ,online, 3 attempts allowed, takes highest score
+Quizzes => 25%, online, 3 attempts allowed, takes highest score
 Mini projects => 30%, take home
 Final project => 20%, take home
 Final exam => 25%?, online
