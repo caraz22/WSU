@@ -1,0 +1,30 @@
+/*
+Author: Cara Zozokos
+Date: 9/12/2023
+File name: main.css
+html file names: index.html
+*/
+
+
+/* section {
+    width: 95%;
+    margin: 10px auto;
+    border: 1px solid rgb(0, 0, 0);
+    margin: 10px auto 0;
+} */
+
+.sect {
+    width: 95%;
+    /* margin: 10px auto; */
+    border: 1px solid rgb(0, 0, 0);
+    margin: 10px auto 0;
+}
+
+.text {
+    font-style: italic;
+    font-weight: bold;
+}
+
+p.list {
+    background-color: bisque;
+}
