@@ -7,9 +7,23 @@ body h1 {
     color: white;
     background-color: gray;
     text-decoration: underline;
+    height: 50px;
+    margin-top: 0px;
 }
 
 body ul {
     list-style-type: none;
     padding-left: 0px;
+}
+
+body h2 {
+    font-size: 20px;
+}
+
+body p1 {
+    font-style: italic;
+}
+
+body p2 {
+    line-height: 150px;
 }
