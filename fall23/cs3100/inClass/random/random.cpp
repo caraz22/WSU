@@ -4,7 +4,7 @@
 using namespace std;
 
 int main() {
-    // srand(time(NULL));  // Needed before using rand()
+    srand(time(NULL));  // Needed before using rand()
 
     int randNum;
     randNum = (rand() % 6) + 1;

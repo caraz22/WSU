@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/cszok/VS Code/WSU/fall23/cs3100/Homeworks/Homework 1",
-      "program": "c:/Users/cszok/VS Code/WSU/fall23/cs3100/Homeworks/Homework 1/build/Debug/outDebug",
+      "cwd": "c:/Users/cszok/Coding/Code sync files/VS Code/WSU/fall23/cs3100/inClass/classes",
+      "program": "c:/Users/cszok/Coding/Code sync files/VS Code/WSU/fall23/cs3100/inClass/classes/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
