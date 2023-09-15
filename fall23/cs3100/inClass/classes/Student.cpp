@@ -18,6 +18,15 @@ Student::Student(int newUid, string newLastName, string newFirstName) : lastName
     gradeList = nullptr;
 }
 
+Student::~Student() {
+    GradeNode * current = gradeList;
+    while(current != nullptr) {
+        GradeNode * killMeNext = current->next;
+        delete current;
+        current = killMeNext;
+    }
+}
+
 int Student::getUid() {
     return uid;
 }
@@ -40,6 +49,16 @@ void Student::print(ostream& os) {
 }
 
 void Student::addGrade(char newGrade) {
-    gradeList = new GradeNode();
-    gradeList->grade = newGrade;
+    if (gradeList == nullptr) {
+        gradeList = new GradeNode();
+        gradeList->grade = newGrade;        
+    } else {
+        GradeNode * current = gradeList;
+        while (current->next != nullptr) {
+            current = current->next;
+        }       
+
+        current->next = new GradeNode();
+        current->next->grade = newGrade; 
+    }
 }

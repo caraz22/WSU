@@ -21,6 +21,9 @@ class Student {
     // Default
     Student();
 
+    // Destructor
+    ~Student();
+
     // Parameterized
     Student(int, string, string);
 
