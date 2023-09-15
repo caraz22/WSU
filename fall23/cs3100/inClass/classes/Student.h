@@ -1,4 +1,5 @@
 #include <string>
+#include "GradeNode.h"
 
 using namespace std;
 
@@ -9,14 +10,25 @@ class Student {
     int uid;
     string lastName;
     string firstName;
+    GradeNode* gradeList;
 
+    // SetUid is a private setter
+    // Can't change a student's UID once created
     void setUid(int);
 
     public:
     // Constructors
+    // Default
     Student();
+
+    // Parameterized
     Student(int, string, string);
 
     // Getters and setters
     int getUid();
+    void setLastName(string);
+
+    // Other methods
+    void print(ostream&);
+    void addGrade(char);
 };

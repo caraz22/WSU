@@ -1,4 +1,6 @@
 #include "Student.h"
+#include <iostream>
+#include <iomanip>
 #include <exception>
 #include <stdexcept>
 
@@ -8,12 +10,12 @@ Student::Student() {
     uid = -1;
     firstName = "invalid";
     lastName = "student";
+    gradeList = nullptr;
 }
 
-Student::Student(int newUid, string newLastName, string newFirstname) {
+Student::Student(int newUid, string newLastName, string newFirstName) : lastName(newLastName), firstName(newFirstName) {
     setUid(newUid);
-    lastName = newLastName;
-    firstName = newFirstname;
+    gradeList = nullptr;
 }
 
 int Student::getUid() {
@@ -26,4 +28,18 @@ void Student::setUid(int newUid) {
     }
 
     uid = newUid;
+}
+
+void Student::setLastName(string lastName) {
+    this->lastName = lastName;
+}
+
+void Student::print(ostream& os) {
+    os << lastName << ", " << firstName;
+    os << " (U" << setw(8) << setfill('0') << uid << ")" << endl;
+}
+
+void Student::addGrade(char newGrade) {
+    gradeList = new GradeNode();
+    gradeList->grade = newGrade;
 }
