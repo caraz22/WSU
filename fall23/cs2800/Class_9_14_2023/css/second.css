@@ -1,0 +1,12 @@
+section{
+    width:960px;
+    border-left:3px double #000;
+    margin:0px auto;
+    padding: 21px;
+}
+blockquote:nth-of-type(2){
+    background-color: #FF00FF;
+}
+blockquote:nth-of-type(4):hover{
+    font-size:1.98em;
+}
