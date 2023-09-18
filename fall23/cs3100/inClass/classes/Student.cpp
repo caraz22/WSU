@@ -18,6 +18,20 @@ Student::Student(int newUid, string newLastName, string newFirstName) : lastName
     gradeList = nullptr;
 }
 
+Student::Student(const Student &oldStudent) {
+    lastName = oldStudent.lastName;
+    firstName = oldStudent.firstName;
+    uid = oldStudent.uid;
+    gradeList = nullptr;
+
+    GradeNode  * current = oldStudent.gradeList;
+    while (current) {
+        addGrade(current->grade);
+        current = current->next;
+    }
+    
+}
+
 Student::~Student() {
     GradeNode * current = gradeList;
     while(current != nullptr) {
@@ -46,6 +60,15 @@ void Student::setLastName(string lastName) {
 void Student::print(ostream& os) {
     os << lastName << ", " << firstName;
     os << " (U" << setw(8) << setfill('0') << uid << ")" << endl;
+    os << "Grades: ";
+    GradeNode * current = gradeList;
+    // while (current != nullptr) {
+    while (current) {
+        os << current->grade << ", ";
+        current = current->next;
+    }
+
+    os << endl;
 }
 
 void Student::addGrade(char newGrade) {
@@ -61,4 +84,22 @@ void Student::addGrade(char newGrade) {
         current->next = new GradeNode();
         current->next->grade = newGrade; 
     }
+}
+
+void Student::changeGrade(int index, char newGrade) {
+    GradeNode * current = gradeList;
+    // if (current = nullptr) {
+    if (!current) {
+        throw exception();
+    }
+
+    // Find the right grade node
+    for (int i = 0; i < index; i++) {
+        current = current->next;
+        if (!current) {
+            throw exception();
+        }
+    }
+
+    current->grade = newGrade;
 }

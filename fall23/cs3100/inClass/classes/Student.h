@@ -17,16 +17,22 @@ class Student {
     void setUid(int);
 
     public:
+
     // Constructors
     // Default
     Student();
 
-    // Destructor
-    ~Student();
-
     // Parameterized
     Student(int, string, string);
 
+    // Copy constructor
+    Student(const Student &) {
+        
+    }
+
+    // Destructor
+    ~Student();
+    
     // Getters and setters
     int getUid();
     void setLastName(string);
@@ -34,4 +40,5 @@ class Student {
     // Other methods
     void print(ostream&);
     void addGrade(char);
+    void changeGrade(int, char);
 };
