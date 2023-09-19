@@ -6,6 +6,10 @@
 
 using namespace std;
 
+// Default constructor
+// We have to use Student:: before each method
+// definition to specify that this method belongs
+// to class Student
 Student::Student() {
     uid = -1;
     firstName = "invalid";
@@ -13,25 +17,26 @@ Student::Student() {
     gradeList = nullptr;
 }
 
+// Fully paramaterized constructor
 Student::Student(int newUid, string newLastName, string newFirstName) : lastName(newLastName), firstName(newFirstName) {
     setUid(newUid);
     gradeList = nullptr;
 }
 
+// Copy constructor
 Student::Student(const Student &oldStudent) {
     lastName = oldStudent.lastName;
     firstName = oldStudent.firstName;
     uid = oldStudent.uid;
     gradeList = nullptr;
-
-    GradeNode  * current = oldStudent.gradeList;
-    while (current) {
+    GradeNode * current = oldStudent.gradeList;
+    while(current) {
         addGrade(current->grade);
         current = current->next;
     }
-    
 }
 
+// Destructor
 Student::~Student() {
     GradeNode * current = gradeList;
     while(current != nullptr) {
@@ -41,29 +46,27 @@ Student::~Student() {
     }
 }
 
+// Getters and setters
 int Student::getUid() {
     return uid;
 }
 
 void Student::setUid(int newUid) {
-    if ((newUid <= 0 || newUid > MAX_UID)) {
+    if ((newUid <= 0) || (newUid > MAX_UID)) {
         throw invalid_argument("Invalid UID");
     }
 
     uid = newUid;
 }
 
-void Student::setLastName(string lastName) {
-    this->lastName = lastName;
-}
-
+// Print a student as follows:
+// "LastName, FirstName (U00000123)"
 void Student::print(ostream& os) {
     os << lastName << ", " << firstName;
     os << " (U" << setw(8) << setfill('0') << uid << ")" << endl;
     os << "Grades: ";
     GradeNode * current = gradeList;
-    // while (current != nullptr) {
-    while (current) {
+    while(current) {
         os << current->grade << ", ";
         current = current->next;
     }
@@ -74,21 +77,22 @@ void Student::print(ostream& os) {
 void Student::addGrade(char newGrade) {
     if (gradeList == nullptr) {
         gradeList = new GradeNode();
-        gradeList->grade = newGrade;        
-    } else {
+        gradeList->grade = newGrade;
+    } 
+    else {
         GradeNode * current = gradeList;
-        while (current->next != nullptr) {
+        while(current->next != nullptr) {
             current = current->next;
-        }       
+        }
 
         current->next = new GradeNode();
-        current->next->grade = newGrade; 
+        current->next->grade = newGrade;
     }
 }
 
 void Student::changeGrade(int index, char newGrade) {
     GradeNode * current = gradeList;
-    // if (current = nullptr) {
+    // if (current == nullptr)
     if (!current) {
         throw exception();
     }
@@ -103,3 +107,20 @@ void Student::changeGrade(int index, char newGrade) {
 
     current->grade = newGrade;
 }
+
+// float Student::getGPA() {
+//     int gpaPoints = 0;
+//     int gradeCount = 0;
+//     GradeNode * current = gradeList;
+//     while(current) {
+//         gpaPoints += current->getPoints();
+//         gradeCount++;
+//         current = current->next;
+//     }
+
+//     if (!gradeCount) {
+//         return 0.0;
+//     }
+
+//     return (float)gpaPoints/(float)gradeCount;
+// }

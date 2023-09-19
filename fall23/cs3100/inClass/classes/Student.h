@@ -10,32 +10,28 @@ class Student {
     int uid;
     string lastName;
     string firstName;
-    GradeNode* gradeList;
+    GradeNode * gradeList;
 
     // SetUid is a private setter
     // Can't change a student's UID once created
     void setUid(int);
 
     public:
-
     // Constructors
     // Default
     Student();
-
     // Parameterized
     Student(int, string, string);
-
-    // Copy constructor
-    Student(const Student &) {
-        
-    }
+    // Copy
+    Student(const Student &);
 
     // Destructor
     ~Student();
-    
+
     // Getters and setters
     int getUid();
     void setLastName(string);
+    float getGPA();
 
     // Other methods
     void print(ostream&);

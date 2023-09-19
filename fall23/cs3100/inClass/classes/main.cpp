@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "Student.h"
 
 using namespace std;
@@ -8,7 +9,6 @@ void changeStudent(Student);
 
 int main() {
     cout << "Ready" << endl;
-    
     Student s1(123, "Zozokos", "Cara");
     s1.addGrade('A');
     s1.addGrade('A');
@@ -17,11 +17,16 @@ int main() {
 
     changeStudent(s1);
     cout << "Back in main: " << endl;
+
     s1.print(cout);
+    // cout << "GPA: " << setprecision(2) << fixed << s1.getGPA() << endl;
+
+    cout << "Done" << endl;
+    // string response;
+    // cin >> response;
 }
 
 void foo() {
-    cout << "Ready" << endl;
     Student s1(123, "Zozokos", "Cara");
     s1.addGrade('A');
     s1.addGrade('A');
