@@ -15,23 +15,20 @@ int main() {
     cin >> firstCharName;
     cout << endl << firstCharName << "'s role?" << endl;
     cin >> firstCharRole;
-    Character firstChar(firstCharName, firstCharRole);
 
     cout << endl << firstCharName << " the " << firstCharRole << "'s hit points?" << endl;
     cin >> firstCharHP;
-    firstChar.setHP(firstCharHP);
 
     cout << endl << firstCharName << " the " << firstCharRole << "'s attack bonus?" << endl;
     cin >> firstCharAB;
-    firstChar.setAB(firstCharAB);
 
     cout << endl << firstCharName << " the " << firstCharRole << "'s damage bonus?" << endl;
     cin >> firstCharDB;
-    firstChar.setDB(firstCharDB);
 
     cout << endl << firstCharName << " the " << firstCharRole << "'s armor class?" << endl;
     cin >> firstCharAC;
-    firstChar.setAC(firstCharAC);
+
+    Character firstChar(firstCharName, firstCharRole, firstCharHP, firstCharAB, firstCharDB, firstCharAC);
 
     cout << endl;
     firstChar.print(cout);
@@ -48,23 +45,20 @@ int main() {
     cin >> secondCharName;
     cout << endl << secondCharName << "'s role?" << endl;
     cin >> secondCharRole;
-    Character secondChar(secondCharName, secondCharRole);
 
     cout << endl << secondCharName << " the " << secondCharRole << "'s hit points?" << endl;
     cin >> secondCharHP;
-    secondChar.setHP(secondCharHP);
 
     cout << endl << secondCharName << " the " << secondCharRole << "'s attack bonus?" << endl;
     cin >> secondCharAB;
-    secondChar.setAB(secondCharAB);
 
     cout << endl << secondCharName << " the " << secondCharRole << "'s damage bonus?" << endl;
     cin >> secondCharDB;
-    secondChar.setDB(secondCharDB);
 
     cout << endl << secondCharName << " the " << secondCharRole << "'s armor class?" << endl;
     cin >> secondCharAC;
-    secondChar.setAC(secondCharAC);
+
+    Character secondChar(secondCharName, secondCharRole, secondCharHP, secondCharAB, secondCharDB, secondCharAC);
 
     cout << endl;
     secondChar.print(cout);

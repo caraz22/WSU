@@ -12,10 +12,8 @@ class Character {
     int armorClass;         // value that determines how hard a character is to hit
 
     public:
-    // Default constructor
-    Character();
     // Parameterized constructor
-    Character(string, string);
+    Character(string, string, int, int, int, int);
 
     // print the character
     void print(ostream&);
@@ -23,19 +21,6 @@ class Character {
     void attack(Character &otherCharacter);
     // subtract amount from the character's current hp
     void damage(int amount);
-
-    // set the character's name
-    void setName(string);
-    // set the character's role
-    void setRole(string);
-    // set the character's hp
-    void setHP(int);
-    // set the character's attack bonus
-    void setAB(int);
-    // set the character's damage bonus
-    void setDB(int);
-    // set the characer's armor class
-    void setAC(int);
 
     // return the character's current health
     int getHP();

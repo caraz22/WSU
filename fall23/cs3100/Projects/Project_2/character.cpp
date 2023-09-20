@@ -4,9 +4,13 @@
 
 using namespace std;
 
-Character::Character(string newName, string newRole) {
-    setName(newName);
-    setRole(newRole);
+Character::Character(string newName, string newRole, int newHP, int newAB, int newDB, int newAC) {
+    name = newName;
+    role = newRole;
+    hp = newHP;
+    attackBonus = newAB;
+    dmgBonus = newDB;
+    armorClass = newAC;
 }
 
 void Character::setName(string newName) {
@@ -68,20 +72,18 @@ void Character::attack(Character &otherCharacter) {
 
     int diceRollTwo = (rand() % 10) + 1;
     int plusDB = diceRollTwo + getDB();
-    
-    Character * charTwo = &otherCharacter;
 
     cout << getName() << " attacks!" << endl;
     cout << "Attack roll: " << diceRollOne << " + " << getAB() << " = " << plusAB;
 
-    if ((plusAB + getAB()) < charTwo->getAC()) {
+    if ((plusAB + getAB()) < otherCharacter.getAC()) {
         cout << " --> MISS!" << endl;
     }
-    else if ((plusAB + getAB()) >= charTwo->getAC()) {
+    else if ((plusAB + getAB()) >= otherCharacter.getAC()) {
         cout << " --> HIT!" << endl;
         cout << "Damage: " << diceRollTwo << " + " << getDB() << " = " << plusDB << endl;
-        charTwo->damage(plusDB);
-        cout << charTwo->getName() << " has " << charTwo->getHP() << " hit points remaining";
+        otherCharacter.damage(plusDB);
+        cout << otherCharacter.getName() << " has " << otherCharacter.getHP() << " hit points remaining";
     }
 }
 
