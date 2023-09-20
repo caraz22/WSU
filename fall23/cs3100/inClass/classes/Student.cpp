@@ -128,3 +128,29 @@ void Student::changeGrade(int index, char newGrade) {
 
 //     return (float)gpaPoints/(float)gradeCount;
 // }
+
+bool Student::operator==(const Student & other) const {
+    return (uid == other.uid);
+}
+
+// Get rid of any existing grade list
+void Student::operator=(const Student & other) {
+    GradeNode * current = gradeList;
+    while(current) {
+        GradeNode * killMeNext = current->next;
+        delete current;
+        current = killMeNext;
+    }
+
+    gradeList = nullptr;
+
+    uid = other.uid;
+    lastName = other.lastName;
+    firstName = other.firstName;
+
+    current = other.gradeList;
+    while(current) {
+        addGrade(current->grade);
+        current = current->next;
+    }
+}

@@ -15,6 +15,18 @@ int main() {
     s1.addGrade('B');
     s1.addGrade('C');
 
+    Student s2(123, "Smith", "Michael");
+    
+    if (s1 == s2) {
+        cout << "They are the same!" << endl;
+    } else {
+        cout << "They are different!" << endl;
+    }
+
+    if (s1.operator==(s2)) {
+        cout << "SAME" << endl;
+    }
+    
     changeStudent(s1);
     cout << "Back in main: " << endl;
 

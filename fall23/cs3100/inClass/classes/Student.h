@@ -37,4 +37,10 @@ class Student {
     void print(ostream&);
     void addGrade(char);
     void changeGrade(int, char);
+
+    // Comparison operator
+    bool operator==(const Student &) const;
+
+    // Assignment operator
+    void operator=(const Student &);
 };
