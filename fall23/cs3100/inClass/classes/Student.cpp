@@ -59,6 +59,10 @@ void Student::setUid(int newUid) {
     uid = newUid;
 }
 
+void Student::setLastName(string newLastName) {
+    lastName = newLastName;
+}
+
 // Print a student as follows:
 // "LastName, FirstName (U00000123)"
 void Student::print(ostream& os) {
