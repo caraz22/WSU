@@ -1,5 +1,6 @@
 #include "character.h"
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -58,4 +59,38 @@ void Character::print(ostream& os) {
     os << "AB: " << getAB() << endl;
     os << "DB: " << getDB() << endl;
     os << "AC: " << getAC() << endl;
+}
+
+void Character::attack(Character &otherCharacter) {
+    srand(time(NULL));
+    int diceRollOne = (rand() % 20) +1;
+    int plusAB = diceRollOne + getAB();
+
+    int diceRollTwo = (rand() % 10) + 1;
+    int plusDB = diceRollTwo + getDB();
+    
+    Character * charTwo = &otherCharacter;
+
+    cout << getName() << " attacks!" << endl;
+    cout << "Attack roll: " << diceRollOne << " + " << getAB() << " = " << plusAB;
+
+    if ((plusAB + getAB()) < charTwo->getAC()) {
+        cout << " --> MISS!" << endl;
+    }
+    else if ((plusAB + getAB()) >= charTwo->getAC()) {
+        cout << " --> HIT!" << endl;
+        cout << "Damage: " << diceRollTwo << " + " << getDB() << " = " << plusDB << endl;
+        charTwo->damage(plusDB);
+        cout << charTwo->getName() << " has " << charTwo->getHP() << " hit points remaining";
+    }
+}
+
+void Character::damage(int amount) {
+    int currentHP = getHP();
+    if ((currentHP - amount) < 0) {
+        currentHP = 0;
+    }
+    else {
+        currentHP -= amount;
+    }
 }

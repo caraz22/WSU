@@ -69,4 +69,20 @@ int main() {
     cout << endl;
     secondChar.print(cout);
     cout << endl;
+
+    cout << endl << "Simulated Combat:" << endl;
+
+    while ((firstChar.getHP() > 0) || (secondChar.getHP() > 0)) {
+        firstChar.attack(secondChar);
+        cout << endl;
+        secondChar.attack(firstChar);
+        cout << endl;
+    }
+
+    if (firstChar.getHP() == 0) {
+        cout << secondChar.getName() << " wins!";
+    }
+    else if (secondChar.getHP() == 0) {
+        cout << firstChar.getName() << " wins!";
+    }
 }

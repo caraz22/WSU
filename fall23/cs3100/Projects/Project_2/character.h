@@ -38,13 +38,11 @@ class Character {
     void setAC(int);
 
     // return the character's current health
-    int getHealth();
+    int getHP();
     // return the character's name
     string getName();
     // return the character's role
     string getRole();
-    // return the character's hp
-    int getHP();
     // return the character's attack bonus
     int getAB();
     // return the character's damage bonus
