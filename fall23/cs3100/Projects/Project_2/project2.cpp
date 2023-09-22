@@ -67,16 +67,18 @@ int main() {
     cout << endl << "Simulated Combat:" << endl;
 
     while ((firstChar.getHP() > 0) || (secondChar.getHP() > 0)) {
+        firstChar.getHP();
         firstChar.attack(secondChar);
         cout << endl;
+        secondChar.getHP();
         secondChar.attack(firstChar);
         cout << endl;
     }
 
     if (firstChar.getHP() == 0) {
-        cout << secondChar.getName() << " wins!";
+        cout << secondChar.getName() << " the " << secondChar.getRole() << " wins!";
     }
     else if (secondChar.getHP() == 0) {
-        cout << firstChar.getName() << " wins!";
+        cout << firstChar.getName() << " the " << firstChar.getRole() << " wins!";
     }
 }
