@@ -1,0 +1,83 @@
+body {
+    background-color: rgb(255, 247, 240);
+}
+
+body section {
+    width: 95%;
+    border: 3px double rgb(0, 0, 0);
+    margin: auto;
+    padding: 10px
+}
+
+body section header .spacer {
+    height: 3px;
+    background-color: #000;
+}
+
+body section header nav {
+    height: 50px;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+body section header nav ul li {
+    margin: auto;
+    padding: 0px;
+    display: inline;    
+    padding-left: 15px;
+}
+
+body section header nav a {
+    text-decoration: none;
+        color: #920f15;
+} 
+
+body section header nav a:hover {
+    font-size: 1.65em;
+}
+
+body section main article p {
+    font-variant: small-caps;
+}
+
+body section main article h3 {
+    font-size: 1.65em;
+    text-decoration: underline;
+}
+
+body section main article .moveFromAboveParagraph {
+    margin-top: 50px;
+}
+
+body section aside h3 {
+    font-size: 22px;
+    font-style: italic;
+    color: #054d26;
+}
+
+body section aside div {
+    text-align: center;
+}
+
+body section aside div a {
+    padding-left: 35px;
+}
+
+body section main ul li a {
+    font-weight: bold;
+    color: #920f15;
+    text-decoration: none;
+}
+
+body section footer {
+    text-align: right;
+}
+
+body section main article h3 img {
+    float: left;
+}
+
+body section main article h3 .right {
+    float: right;
+}
