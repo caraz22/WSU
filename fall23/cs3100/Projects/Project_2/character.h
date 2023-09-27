@@ -18,9 +18,9 @@ class Character {
     // print the character
     void print(ostream&);
     // attack another character
-    void attack(Character &otherCharacter);
+    void attack(Character &otherCharacter, int, int);
     // subtract amount from the character's current hp
-    void damage(int amount);
+    void damage(int);
 
     // return the character's current health
     int getHP();
@@ -28,10 +28,4 @@ class Character {
     string getName();
     // return the character's role
     string getRole();
-    // return the character's attack bonus
-    int getAB();
-    // return the character's damage bonus
-    int getDB();
-    // return the character's armor class
-    int getAC();
 };
