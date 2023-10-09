@@ -2,14 +2,17 @@
 
 Sequence::Sequence(size_type sz)
 {
+
 }
 
 Sequence::Sequence(const Sequence& s)
 {
+
 }
 
 Sequence::~Sequence()
 {
+
 }
 
 Sequence& Sequence::operator=(const Sequence& s)
@@ -58,7 +61,7 @@ Sequence::size_type Sequence::size() const
 
 void Sequence::clear()
 {
-    throw exception();
+
 }
 
 void Sequence::erase(size_type position, size_type count)
@@ -66,8 +69,16 @@ void Sequence::erase(size_type position, size_type count)
     throw exception();
 }
 
+// Place code for printing sequence here (well not here, inside the method)
+void Sequence::print(ostream& os) const
+{
 
+}
+
+// Don't modify, do the output in the print() method
 ostream& operator<<(ostream& os, const Sequence& s)
 {
+    s.print(os);
     return os;
 }
+

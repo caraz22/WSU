@@ -107,7 +107,7 @@ public:
 	/// @param os ostream reference to output sequence
 	/// @param s sequence to be output
 	/// @return reference to the ostream passed in
-	friend ostream& operator<<(ostream& os, const Sequence s);
+	friend ostream& operator<<(ostream& os, const Sequence& s);
 
 	// YOU CAN MODIFY the following private declarations as needed to implement your sequence class
 private:
