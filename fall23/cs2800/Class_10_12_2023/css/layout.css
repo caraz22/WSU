@@ -1,0 +1,31 @@
+*{
+    margin:0; padding:0; box-sizing: border-box;
+}
+body{
+    font-family: 'Playfair Display', serif;
+}
+section{
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+header{
+    background-color: #CCC;
+    padding:20px;
+    text-align: center;
+}
+
+main{
+    display: flex;
+    flex:1;
+    justify-content: space-between;
+}
+.left_column{
+    flex:3 1;
+    border-right:2px solid #000;
+    padding-left:15px
+}
+.right_column{
+    flex:1;
+    padding-left:15px
+}
