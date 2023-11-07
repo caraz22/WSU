@@ -24,9 +24,16 @@ a {
     font-family: 'Lato', sans-serif;
     font-family: 'Playpen Sans', cursive;
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, 300px);
+    grid-template-rows: repeat(2, 200px);
+    grid-gap: 40px;
  }
 .pic {
     margin: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 100px);
+    grid-template-rows: repeat(2, 100px);
 }
 .pic img {
     border: 1px solid #333;
@@ -37,11 +44,17 @@ a {
 .pic p {
     line-height: 1.2;
     margin-block: 0;
-   
+    display: grid;
+    grid-template-columns: repeat(5, 250px);
+    grid-template-rows: repeat(2, 100px);
+    grid-gap: 20px;
 }
 .caption {
     font-size: 1.2rem;
     margin: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 400px);
+    grid-template-rows: repeat(2, 100px);
 }
 .link{
     padding:20px 0;
