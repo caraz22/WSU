@@ -1,0 +1,6 @@
+AFC North
+Team		W	L	T	Pct	PF	PA	Home	Away	Strk
+Ravns		6	2	0	.750	202	121	2-1	4-1	W3
+Steelers	4	3	0	.571	113	147	2-2	2-1	L1
+Browns		4	3	0	.571	154	139	3-1	1-2	L1
+Bengals		4	3	0	.571	131	144	2-1	2-2	W3	

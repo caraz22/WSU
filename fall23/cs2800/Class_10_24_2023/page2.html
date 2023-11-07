@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: sans-serif;
+            max-height: 100vh;
+            font-size: 2rem;
+            display:grid;
+            grid-template-columns: repeat(9, auto);
+            grid-template-rows: 75px auto 75px;
+            grid-template-areas: "hd hd hd hd hd hd hd hd hd"
+                                 "mn mn mn mn mn mn mn mn sb"
+                                 "ft ft ft ft ft ft ft ft ft";
+            gap:1rem;
+             }
+             .header{
+                grid-area:hd;
+             }
+             .sidebar{
+                grid-area:sb;  
+             }
+
+             .footer{
+                grid-area:ft;  
+             }
+             .customize{
+                background-color: aquamarine;
+             }
+        .container{
+           
+            gap:10px;
+            display:grid;
+            grid-area:mn;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: minmax(100px , auto);
+            align-content: center;
+
+        }
+        .box{
+            background-color: #000;
+            color:#FFF;
+            
+            
+        }
+        .box:first-child{
+            background-color: #2b09e8;
+           
+             grid-column: 1 / 4;
+             grid-row: 1 /3;
+
+        }
+        .box:nth-child(2){
+            background-color: #bb1085;
+            
+            grid-column: 1 / 5;
+            grid-row: 3/5;
+
+        }
+    </style>
+</head>
+<body>
+
+   <header class="header customize"><h1>Header</h1></header>
+   <main class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+   </main>
+   <aside class="sidebar customize"><h2>Aside element</h2></aside>
+   <footer class="footer customize"><h1>footer</h1></footer>
+</body>
+</html>
