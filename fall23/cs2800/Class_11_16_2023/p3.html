@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add numbers</title>
+    <style>
+        input:nth-of-type(1){
+            margin-left:200px;
+           
+        }
+        input{width:100px;  
+            height: 50px; 
+            padding:11px; 
+            font-size:1.25em ;}
+        button{
+            width:125px; 
+            height:50px;
+            margin-top:10px
+           
+           }
+           button:nth-of-type(1){
+            margin-left:200px;
+           }
+        p{
+            width:100px; 
+            height:50px;
+            margin-left:255px;
+            margin-top:10px;
+            margin-bottom:10px;
+            font-size:1.65em;
+            color:red;
+            font-weight:900 ;
+        
+        }
+    </style>
+</head>
+<body>
+    <h2>Adding two numbers</h2>
+    <input type="text" id="num1" placeholder="Enter a number">
+    <input type="text" id="num2" placeholder="Enter a number">
+    <br>
+    <button id="buttonAdd" >Add Numbers</button>
+    <button id="buttonSubtract" >Subtract Numbers</button>
+    <p id="result">Result:</p>
+
+    
+    <script>
+       function addNumbers (){
+        var num1 = parseFloat(document.getElementById('num1').value);
+        var num2 = parseFloat(document.getElementById('num2').value);
+        var result = num1 + num2;
+        document.getElementById('result').innerText="Result: " + result;
+       }
+       function subtractNumbers (){
+        var num1 = parseFloat(document.getElementById('num1').value);
+        var num2 = parseFloat(document.getElementById('num2').value);
+        var result = num1 - num2;
+        document.getElementById('result').innerText="Result: " + result;
+       }
+
+       // to display with addEventListener
+
+        document.getElementById('buttonAdd').addEventListener( 'click' , addNumbers  );
+        document.getElementById('buttonSubtract').addEventListener( 'click' , subtractNumbers  );
+         
+         
+    
+    </script>
+</body>
+</html>

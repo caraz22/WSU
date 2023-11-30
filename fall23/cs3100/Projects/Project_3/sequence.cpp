@@ -2,7 +2,16 @@
 
 Sequence::Sequence(size_type sz)
 {
-
+    if (sz == 0) {
+        numElts = 0;
+    } else {
+        numElts = sz;
+        SequenceNode * current = new SequenceNode();
+        for (int i = 0; i < numElts; i++) {
+            current->next = new SequenceNode();
+            current = current->next;
+        }
+    }
 }
 
 Sequence::Sequence(const Sequence& s)
