@@ -1,0 +1,21 @@
+*{
+    margin:0; padding:0; 
+    box-sizing: border-box;
+}
+nav{
+    display:flex;
+    justify-content: center;
+    background-color: rgb(18, 18, 2);
+    font-family: 'Lato', sans-serif;
+    height: 250px;
+}
+nav ul li{
+   list-style: none;
+   display:inline-block;
+   padding:10px 20px;
+}
+nav ul li a{
+    color:#FFF;
+    text-decoration: none;
+}
+

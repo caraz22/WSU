@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Tables</title>
+    <style>
+      table {
+       width: 900px;
+       border: 1px solid #000;
+      border-collapse: collapse;
+      }
+      td {
+        border-bottom: 1px solid #000;
+        width: 150px;
+        text-align:center;
+      }
+       tbody th{
+        border-bottom: 1px solid #000;
+        text-align:left;
+      }
+      tbody tr th img{
+        vertical-align: middle;
+        padding-right:11px;
+      }
+      tbody tr th{
+        width:500px;
+      }
+      
+      /* tr:nth-child(odd){
+        background-color: #CCC;
+      } */
+      tbody tr:hover{
+        background-color: #cccccc;
+      }
+
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        AFC North
+      </caption>
+      
+      <thead>
+        <tr>
+        <th scope="col">Team</th>
+        <th>W</th>
+        <th>L</th>
+        <th>T</th>
+        <th>PCT</th>
+        <th>PF</th>
+        <th>PA</th>
+        <th>Home</th>
+        <th>Away</th>
+        <th>Strk</th>
+    </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <th scope="row"><img src="img/ravns.png">Ravens</th>
+            <td>6</td>
+            <td>2</td>
+            <td>0</td>
+            <td>.750</td>
+            <td>202</td>
+            <td>121</td>
+            <td>2-1</td>
+            <td>4-1</td>
+            <td>w3</td>
+        </tr>
+        <tr>
+            <th scope="row"><img src="img/steelers.png">Steelers</th>
+            <td>4</td>
+            <td>3</td>
+            <td>0</td>
+            <td>.571</td>
+            <td>113</td>
+            <td>147</td>
+            <td>2-2</td>
+            <td>2-1</td>
+            <td>L1</td>
+        </tr>
+        <tr>
+            <th scope="row"><img src="img/browns.png">Browns</th>
+            <td>4</td>
+            <td>3</td>
+            <td>0</td>
+            <td>.571</td>
+            <td>113</td>
+            <td>147</td>
+            <td>2-2</td>
+            <td>2-1</td>
+            <td>L1</td>
+        </tr>
+        <tr>
+            <th scope="row"><img src="img/bengals.png">Bengals</th>
+            <td>4</td>
+            <td>3</td>
+            <td>0</td>
+            <td>.571</td>
+            <td>113</td>
+            <td>147</td>
+            <td>2-2</td>
+            <td>2-1</td>
+            <td>L1</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <td colspan="8">ffff</td>
+        <td>uuu</td>
+        <td>gggg</td>
+        
+      </tfoot>
+    </table>
+  </body>
+</html>
+

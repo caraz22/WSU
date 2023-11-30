@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: sans-serif;
+            max-height: 100vh;
+            font-size: 2rem;
+        }
+        .container{
+            width:960px;
+            margin:0 auto;
+            gap:10px;
+            display:grid;
+            /* grid-template-columns: 200px 200px 200px 200px 200px 200px; */
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: minmax(100px , auto);
+            align-content: center;
+
+        }
+        .box{
+            background-color: #000;
+            color:#FFF;
+            
+            
+        }
+        .box:first-child{
+            background-color: #2b09e8;
+            /* grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row-start:1;
+            grid-row-end:3;
+             */
+             grid-column: 1 / 4;
+             grid-row: 1 /3;
+
+        }
+        .box:nth-child(2){
+            background-color: #bb1085;
+            /* grid-column-start: 1;
+            grid-column-end: 5;
+            grid-row-start:3;
+            grid-row-end:5; */
+            grid-column: 1 / 5;
+            grid-row: 3/5;
+
+        }
+    </style>
+</head>
+<body>
+
+   
+   <main class="container">
+        <div class="box">1</div>
+        <div class="box">2</div>
+        <div class="box">3</div>
+        <div class="box">4</div>
+        <div class="box">5</div>
+        <div class="box">6</div>
+   </main>
+</body>
+</html>
