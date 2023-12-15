@@ -14,3 +14,7 @@ function changeImage() {
     }
     currentImage.src = imagePaths[arrayIndex];
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    $("year").innerHTML = new Date().getFullYear();
+});
