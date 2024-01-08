@@ -1,0 +1,119 @@
+//import java.util.Random;
+//import java.util.Scanner;
+
+class Main {
+  public static void main(String[] args) {
+
+		int randNum = (int) (Math.random() * 10) + 1;
+		System.out.println("The number is " + randNum);
+
+    /*
+		Scanner in = new Scanner(System.in);
+
+		String s = "Testing 1, 2, 3... Testing!";
+		char c = 'X';
+
+		String inputString = in.nextLine();
+
+		System.out.print("Enter a character: ");
+		char inputChar = in.nextLine().charAt(0);
+
+		System.out.println("Is alphabetic: " + Character.isAlphabetic(inputChar));
+		System.out.println("Is digit: " + Character.isDigit(inputChar));
+		System.out.println("Is whitespace: " + Character.isWhitespace(inputChar));
+		System.out.println("Is uppercase: " + Character.isUpperCase(inputChar));
+		System.out.println("Is lowercase: " + Character.isLowerCase(inputChar));
+*/
+    /*
+    Scanner in = new Scanner(System.in);
+    System.out.print("Enter a course : ");
+    String course = in.nextLine();
+
+    int spaceLoc = course.indexOf(" ");
+    String prefix = course.substring(0, spaceLoc);
+    String number = course.substring(spaceLoc+1);
+    System.out.println("prefix: " + prefix);
+    System.out.println("number: " + number);
+
+    Scanner in = new Scanner(System.in);
+    System.out.print("Enter a course number: ");
+    String course = in.nextLine();
+    System.out.println(course);
+    System.out.println(course + " has " + course.length() + " letters");
+
+    char first = course.charAt(0);
+    System.out.println("The first letter is " + first);
+
+    char last = course.charAt(course.length()-1);
+    System.out.println("The last letter is \"" + last + "\"");
+
+    System.out.println("in lowercase: " + course.toLowerCase());
+    course = course.toLowerCase();
+    System.out.println(course);
+
+    int locOf1 = course.indexOf("1");
+    System.out.println("\"1\" is at index " + locOf1);
+
+    String smallerString = course.substring(1, 4);
+    System.out.println("Smaller string is " + smallerString);
+        
+    long x = Integer.MAX_VALUE;
+    System.out.println("x = " + x);
+    x += 100;
+    System.out.println("x = " + x);
+
+    x = 5;
+    System.out.println("x = " + x);
+    System.out.println("x = " + ++x);
+    System.out.println("x = " + x++);
+    System.out.println("x = " + x);
+
+    Scanner keyboard = new Scanner(System.in);
+
+    int n1 = 9;
+    int n2 = 4;
+    System.out.println("n1 divided by n2 is " + (n1 / n2));
+    System.out.println("n1 modulus n2 is " + (n1 % n2));
+
+    n1 = n1 + 1;
+    System.out.println("n1 = " + n1);
+    
+    n1 += 1;
+    n1++;
+    n1--;
+    ++n1;
+    
+    n2 += 5;
+    n2 -= 5;
+
+
+    // prompt the user for the radius of a sphere
+    System.out.print("What is the radius of your sphere? ");
+    double radius = keyboard.nextDouble();
+
+    // compute the volume of a sphere with that radius
+    // volume = 4/3 *4.0/3 * Math.PI * Math.pow(radius, 3);
+
+    // print out the answer
+    //System.out.println("The volume of your sphere is " + volume);
+    //System.out.println("The ceiling of the volume is " + Math.ceil(volume));
+    System.out.printf("The volume of your sphere with radius %.1f is %.2f\n", radius, volume);
+    System.out.println("volume = " + volume);
+    volume = Math.round(volume * 100) / 100.0;
+    System.out.println("volume = " + volume);
+*/
+/*
+    System.out.print("Enter two numbers, separated by a space: ");
+    int number1 = keyboard.nextInt();
+    int number2 = keyboard.nextInt();
+    int sum = number1 + number2;
+    System.out.println("The sum of those numbers is " + sum);
+
+    System.out.print("How old are you? ");
+    int age = keyboard.nextInt();
+    System.out.print("What is your GPA? ");
+    double gpa = keyboard.nextDouble();
+    */
+
+  }
+}

@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": [
+        "Projects/src",
+        "Practice problems/src",
+        "Lecture/src",
+        "For fun/src"
+    ],
+    "explorer.sortOrderLexicographicOptions": "unicode",
+    "terminal.integrated.splitCwd": "workspaceRoot"
+}

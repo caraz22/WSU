@@ -1,4 +1,0 @@
-STRING Hello world!
-ENTER
-
-REM https://gist.github.com/jgamblin/0c2ca413b90e72c1e3fa1f9f53dc6fc6

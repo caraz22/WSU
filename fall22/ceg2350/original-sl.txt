@@ -1,1 +1,0 @@
-/home/ubuntu/ceg2350-caraz22/Lab08/original.txt

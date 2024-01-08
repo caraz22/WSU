@@ -1,0 +1,170 @@
+The numbers are: 6, 3, 11, 4, 9, 8, 17, 7 
+
+Bubble:
+Swap the first two numbers because the second one is smaller than the first: 
+[3, 6,] 11, 4, 9, 8, 17, 7
+
+Keep same sequence because the first number is already smaller than the second: 
+3, [6, 11,] 4, 9, 8, 17, 7
+
+Swap 4 with 11 because 4 is smaller than 11: 
+3, 6, [4, 11,] 9, 8, 17, 7
+
+Swap 9 with 11 because 9 is smaller than 11:
+3, 6, 4, [9, 11,] 8, 17, 7
+
+Swap 8 with 11 because 8 is smaller than 11:
+3, 6, 4, 9, [8, 11,], 17, 7
+
+Keep same sequence because 11 is already smaller than 17:
+3, 6, 4, 9, 8, [11, 17,] 7
+
+Swap 7 with 17 because 7 is smaller than 17:
+3, 6, 4, 9, 8, 11, [7, 17]
+
+Start back over from the beginning and conduct the same process.
+[3, 6,] 4, 9, 8, 11, 7, 17
+3, [4, 6,] 9, 8, 11, 7, 17
+3, 4, 6, [8, 9,] 11, 7, 17
+3, 4, 6, 8, [9, 11,] 7, 17
+3, 4, 6, 8, 9, [7, 11,] 17
+3, 4, 6, 8, 9, 7, [11, 17]
+
+Keep going until list is sorted.
+If list is sorted before the process has gone through the whole sequence, the process continues until the sequence has been completely ran through.
+3, 4, 6, 7, 8, 9, 11, 17
+
+Insertion:
+Keep same sequence because you are starting at the first number:
+[6], 3, 11, 4, 9, 8, 17, 7 
+
+Put 3 in the correct place:
+[3], 6, 11, 4, 9, 8, 17, 7
+
+Keep same sequence because 11 is currently the largest number:
+3, 6, [11], 4, 9, 8, 17, 7
+
+Put 4 in the correct place:
+3, [4], 6, 11, 9, 8, 17, 7
+
+Put 9 in the correct place:
+3, 4, 6, [9], 11, 8, 17, 7
+
+Put 8 in the correct place:
+3, 4, 6, [8], 9, 11, 17, 7
+
+Keep same sequence because 17 is currently the largest number:
+ 3, 4, 6, 8, 9, 11, [17], 7
+
+Put 7 in the correct place:
+3, 4, 6, [7], 8, 9, 11, 17
+
+All done!
+3, 4, 6, 7, 8, 9, 11, 17
+
+Selection:
+Starting with the first number, swap 3 with 6 because 3 is the smallest of the unsorted part of the list:
+([3]), [6], 11, 4, 9, 8, 17, 7
+
+Now that 3 is out of the way, we start at 6 again and swap it with 4 because 4 is the smallest of the unsorted part of the list:
+(3, [4]), 11, [6], 9, 8, 17, 7
+
+Now we start at 11 and swap it with 6 because 6 is the smallest of the unsorted part of the list:
+(3, 4, [6]), [11], 9, 8, 17, 7
+
+Now we start with 11 again and swap it with 7 because 7 is the smallest of the unsorted part of the list:
+(3, 4, 6, [7]), 9, 8, 17, 11
+
+Now we start with 9 and swap it with 8 because 8 is the smallest of the unsorted part of the list:
+(3, 4, 6, 7, [8]), [9], 17, 11
+
+Starting with 9 again, we keep it the same because 9 is the smallest of the unsorted part of the list:
+(3, 4, 6, 7, 8, [9]), 17, 11
+
+Now starting with 17, we swap it with 11 because 11 is the smallest of the unsorted part of the list:
+(3, 4, 6, 7, 8, 9, [11]), [17]
+
+Finally, 17 is the last part of the unsorted list, meaning it must be the largest, so it stays in the same place:
+(3, 4, 6, 7, 8, 9, 11, [17])
+
+All done!
+3, 4, 6, 7, 8, 9, 11, 17
+
+Quick: 
+First, pick a pivot (directions call for the left-most value to be the pivot, but if a different value is picked, it is easier if you swap it with the left-most value anyways):
+[6], 3, 11, 4, 9, 8, 17, 7
+
+Pick a lo and hi pointer:
+6, [3], 11, 4, 9, 8, 17, [7]
+    ^lo                   ^hi
+
+Move the lo pointer right until you find a value greater than the pivot:
+6, [3],      [11], 4, 9, 8, 17, [7]
+    ^old lo   ^new lo            ^hi
+
+Move the hi pointer left until you find a value less than the pivot:
+6, 3, [11], [4], 9, 8, 17, [7]
+       ^lo   ^new hi        ^old hi
+
+If the lo value's placement is less than the hi value's placement, swap them:
+6, 3, [4], [11], 9, 8, 17, 7
+       ^lo  ^hi
+
+If the lo value's placement was less than the hi value's placement, repeat the previous steps:
+6, 3, [4],            [11], 9, 8, 17, 7
+       ^new hi/old lo  ^new lo/old hi
+
+If the lo value's placement is not less than the hi value's placement, swap the hi with the pivot:
+[4], 3, [6],     [11], 9, 8, 17, 7
+ ^hi     ^pivot   ^lo
+
+Now, all the values to the left of the pivot should be lower, and all of the values to the right of the pivot should be higher.
+We repeat this process on each side.
+ 
+Left side:
+[4],      [3]
+ ^pivot    ^lo/hi
+
+The lo and hi are the same, so technically the lo value's placement is not less than the hi value's placement, so we swap the hi with the pivot:
+[3],   [4]
+ ^hi    ^pivot
+
+This side is now sorted, so we move onto the other side.
+
+Right side:
+[11],     [9], 8, 17, [7]
+ ^pivot    ^lo         ^hi
+
+11, [9], 8,   [17],     [7]
+      ^old lo   ^new lo   ^hi
+
+11, 9, 8, [17], [7]
+           ^lo   ^hi
+
+11, 9, 8, [7], [17]
+           ^lo  ^hi
+
+11, 9, 8, [7],      [17]
+           ^old lo   ^hi/new lo
+
+11, 9, 8, [7],       [17]
+           ^new hi    ^lo/old hi
+
+[7], 9, 8, [11],     [17]
+ ^hi        ^pivot    ^lo
+
+The right side's left side of the pivot still needs to be sorted, so now we repeat the process.
+[7],      [9], [8] 
+ ^pivot    ^lo  ^hi
+
+ 7, [8], [9]
+     ^lo  ^hi
+
+This side is now sorted.
+
+Now we put all the pieces back together:
+[3, 4,]                     [6],               [7, 8, 9],                         [11],                  [17]
+^left side of first pivot    ^original pivot   ^left side of right side's pivot   ^right side's pivot    ^right side of right side's pivot
+
+All done!
+3, 4, 6, 7, 8, 9, 11, 17
