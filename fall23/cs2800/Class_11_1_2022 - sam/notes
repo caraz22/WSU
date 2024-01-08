@@ -1,0 +1,6 @@
+
+password reg exp :
+must be at least 8 characters with at least one letter and one number
+
+
+pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
