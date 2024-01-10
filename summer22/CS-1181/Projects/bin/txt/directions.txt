@@ -1,0 +1,17 @@
+Calicojack is a take on the classic card game Blackjack. 
+This version originates from the video game Stardew Valley.
+Similar rules apply, where the objective is to score as high as you can without exceeding 21.
+It will be the player against the dealer.
+The player and dealer will both be dealt two cards, with values 1-11. The following dealt cards will also be 1-11.
+However, the player will only be able to see one of the dealer's two cards.
+The player may choose to “hit”, which is to draw another card, until they “stand” or “bust”.
+To “stand” is to stick with the cards you have, to “bust” is to go over 21, resulting in a loss for the player.
+After standing, the dealer’s second card will be shown, and will be dealt more cards.
+The dealer’s cards will keep being dealt until their total value is either higher than the player’s or over 21.
+If the player has a higher valid score, they win.
+The player will start with 500 points. They will bet 100 on the first game.
+If the player loses, they lose the 100 points that they bet.
+If the player wins, they can choose to take the 100 points and bet another 100 or decide to bet double or nothing.
+Choosing double or nothing will not award you the points that were won, and doubles it, meaning if you win the next one you will receive double the points. You can continue to choose double or nothing after each consecutive win.
+However, that also means that if you lose, you will lose double the points.
+Reach 2000 points, and you beat the game. Have fun!

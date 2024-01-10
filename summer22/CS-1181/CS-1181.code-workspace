@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"java.project.sourcePaths": [
+			"Practice problems/src",
+			"Lecture/src",
+			"Projects/src"
+		]
+	}
+}
