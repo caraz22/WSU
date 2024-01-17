@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/cszok/VS Code/WSU/cs3100/GettingStarted",
-      "program": "c:/Users/cszok/VS Code/WSU/cs3100/GettingStarted/build/Debug/outDebug",
+      "cwd": "c:/Users/cszok/VS Code/WSU/cs3100/in class/random",
+      "program": "c:/Users/cszok/VS Code/WSU/cs3100/in class/random/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

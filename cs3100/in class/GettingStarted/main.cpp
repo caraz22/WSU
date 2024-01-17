@@ -1,5 +1,8 @@
 #include <iostream>
 #include <iomanip>
+
+#define MAXVAL 20
+
 using namespace std;
 
 int main() {
@@ -19,6 +22,5 @@ int main() {
 
     arr[0] = 5;
     arr[1] = 7;
-
     
 }
