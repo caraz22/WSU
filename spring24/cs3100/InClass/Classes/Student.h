@@ -1,28 +1,40 @@
-#pragma once
 #include <iostream>
 #include <string>
+#include <iomanip>
+#include "GradeNode.h"
 
 using namespace std;
 
+#define MAX_UID 99999999
+
 class Student {
     private:
-        string lastName;
-        string firstName;
-        int uid;
+    string lastName;
+    string firstName;
+    int uid;
+    GradeNode* gradeList;
+
+    // Private setter
+    // Can't change a student's UID once created
+    void setUid(int);
 
     public:
 
-        // Parameterized constructor
-        Student(string,  string,  int);
-        
+    // Parameterized constructor
+    Student(string,  string,  int);
+    
 
-        // Default constructor
-        Student(); 
+    // Default constructor
+    Student(); 
 
-        // Accessors & mutators
-        void setLastName(string newLastName);
+    // Accessors & mutators
+    void setLastName(string newLastName);
 
-        string getLastName();
+    int getUid();
 
-        void print();
+    string getLastName();
+
+    void print(ostream&);
+
+    void addGrade(char);
 };
