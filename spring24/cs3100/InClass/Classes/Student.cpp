@@ -14,6 +14,18 @@
         gradeList = nullptr;
     }
 
+    // Destructor
+    Student::~Student() {
+        cout << "Calling destructor on student: U" << uid << endl;
+        GradeNode * current = gradeList;
+        while (current != nullptr) {
+            GradeNode * killMeNext = current->next;
+            cout << "Deleting grade: " << current->grade << endl;
+            delete current;
+            current = killMeNext;
+        }
+    }
+
     void Student::setLastName(string newLastName) {
         this->lastName = newLastName;
     }
@@ -24,6 +36,16 @@
     void Student::print(ostream& os) {
         os << lastName << ", " << firstName;
         os << " (U" << setw(8) << setfill('0') << uid << ")" << endl;
+        GradeNode * current = gradeList;
+        while (current) {
+            os << current->grade;
+            current = current->next;
+            if (current) {
+                os << ", ";
+            } else {
+                os << endl;
+            }
+        }
     }
 
     int Student::getUid() {
@@ -39,6 +61,17 @@
     }
 
     void Student::addGrade(char newGrade) {
-        gradeList = new GradeNode();
-        gradeList->grade = newGrade;
+        if (gradeList == nullptr) {
+            gradeList = new GradeNode();
+            gradeList->grade = newGrade;
+        } else {
+            GradeNode * current = gradeList;
+            while (current->next != nullptr) {
+                current = current->next;
+            }
+
+            current->next = new GradeNode();
+            current->next->grade = newGrade;
+        }
+
     }

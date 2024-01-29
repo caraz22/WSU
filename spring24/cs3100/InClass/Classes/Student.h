@@ -27,6 +27,9 @@ class Student {
     // Default constructor
     Student(); 
 
+    // Destructor
+    ~Student();
+
     // Accessors & mutators
     void setLastName(string newLastName);
 

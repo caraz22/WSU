@@ -3,14 +3,16 @@
 
 using namespace std;
 
+void foo(Student s);
+
 int main() {
-    Student s("Zozokos", "Cara", 5586);
-    s.addGrade('A');
+    Student s2("Jones", "Barbara", 1234);
+    s2.addGrade('A');
+    s2.addGrade('B');
+    foo(s2);
+}
+
+void foo(Student s) {
+    cout << "Printing thes student: " << endl;
     s.print(cout);
-
-    Student * p = new Student("Jones", "Sally", 4566);
-    (*p).print(cout);
-    p->print(cout); // line 11 and 12 do the same thing
-
-    GradeNode g;
 }
