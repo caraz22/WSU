@@ -16,7 +16,7 @@ int main() {
 
     // int * p = &a;
 
-/*    
+  
     int * p = &a;
     *p = 12; // reference or follow
 
@@ -27,7 +27,7 @@ int main() {
     cout << p << endl;
     cout << *p << endl;
     cout << r << endl;
-*/
+
 
 
 }
