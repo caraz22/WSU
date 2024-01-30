@@ -13,6 +13,6 @@ int main() {
 }
 
 void foo(Student s) {
-    cout << "Printing thes student: " << endl;
+    cout << "Printing the student: " << endl;
     s.print(cout);
 }
