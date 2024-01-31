@@ -37,7 +37,15 @@ class Student {
 
     string getLastName();
 
-    void print(ostream&);
+    void print(ostream&) const;
 
     void addGrade(char);
+
+    bool operator==(const Student &);
+
+    char operator[](unsigned int);
+
+    void operator=(const Student &);
+
+    friend ostream & operator<<(ostream &, const Student &);
 };
