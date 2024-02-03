@@ -12,7 +12,6 @@ Character::Character(string charName, string charRole, int charHP, int charAB, i
 void Character::attack(Character &otherCharacter) {
     cout << getName() << " attacks!" << endl;
     
-    // srand((unsigned int)time(NULL));
     bool attackHits;
 
     int diceRoll = (rand() % 20) + 1;
