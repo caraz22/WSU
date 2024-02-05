@@ -1,5 +1,8 @@
 #include "character.h"
 
+Character::Character() {
+}
+
 Character::Character(string charName, string charRole, int charHP, int charAB, int charDB, int charAC) {
     name = charName;
     role = charRole;
@@ -7,6 +10,18 @@ Character::Character(string charName, string charRole, int charHP, int charAB, i
     ab = charAB;
     db = charDB;
     ac = charAC;
+}
+
+string Character::getName() {
+    return name;
+}
+
+string Character::getRole() {
+    return role;
+}
+
+int Character::getHP() {
+    return hp;
 }
 
 void Character::attack(Character &otherCharacter) {
@@ -48,16 +63,27 @@ void Character::damage(int dmg) {
     }
 }
 
-string Character::getName() {
-    return name;
-}
+Character Character::getCharacter(string order, string charName, string charRole, int charHP, int charAB, int charDB, int charAC) {
+    cout << order << " character name?" << endl;
+    cin >> charName;
 
-string Character::getRole() {
-    return role;
-}
+    cout << endl << charName << "'s role?" << endl;
+    cin >> charRole;
 
-int Character::getHP() {
-    return hp;
+    cout << endl << charName << " the " << charRole << "'s hit points?" << endl;
+    cin >> charHP;
+
+    cout << endl << charName << " the " << charRole << "'s attack bonus?" << endl;
+    cin >> charAB;
+
+    cout << endl << charName << " the " << charRole << "'s damage bonus?" << endl;
+    cin >> charDB;
+
+    cout << endl << charName << " the " << charRole << "'s armor class?" << endl;
+    cin >> charAC;   
+
+    Character character(charName, charRole, charHP, charAB, charDB, charAC);
+    return character;
 }
 
 void Character::print(ostream &os) { // this.print(cout)

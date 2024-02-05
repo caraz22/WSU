@@ -13,6 +13,7 @@ class Character {
     int ac;
 
     public:
+    Character();
     Character(string, string, int, int ,int, int);
 
     string getName();
@@ -21,6 +22,8 @@ class Character {
     
     void attack(Character &);
     void damage(int);
+
+    Character getCharacter(string, string, string, int, int, int, int);
 
     void print(ostream&);
 };
