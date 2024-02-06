@@ -5,25 +5,22 @@ using namespace std;
 
 class Character {
     private:
-    string name;
-    string role;
-    int hp;
-    int ab;
-    int db;
-    int ac;
+    string name;            // the character's name
+    string role;            // the character's role
+    int hp;                 // the character's hit points
+    int ab;                 // the character's attack bonus
+    int db;                 // the character's damage bonus
+    int ac;                 // the character's armor class
 
     public:
-    Character();
-    Character(string, string, int, int ,int, int);
+    Character(string, string, int, int ,int, int);          // parameterized constructor
 
-    string getName();
-    string getRole();
-    int getHP();
+    string getName();                   // returns the character's name
+    string getRole();                   // returns the character's role
+    int getHP();                        // returns the character's hp
     
-    void attack(Character &);
-    void damage(int);
+    void attack(Character &);           // attack the other character
+    void damage(int);                   // take the damage from the attack and subtract it from the character's current hp
 
-    Character getCharacter(string, string, string, int, int, int, int);
-
-    void print(ostream&);
+    void print(ostream&);               // print the character's summary
 };
