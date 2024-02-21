@@ -91,15 +91,20 @@ void Sequence::push_back(const value_type& value)
 
 void Sequence::pop_back()
 {
-    if (numElts == 0) {
+    if (numElts <= 0) {
         throw exception();    
     } else {
         SequenceNode * current = head;
-        while(current->next != nullptr) {
+        if (current->next == nullptr) {
+            delete current;
+        }
+
+        while (current->next->next != nullptr) {
             current = current->next;
         }
 
-        delete current;
+        delete current->next;
+        current->next = nullptr;
         numElts--;
     }
 }
@@ -133,8 +138,11 @@ void Sequence::insert(size_type position, value_type value)
 
 const Sequence::value_type& Sequence::front() const
 {
-    throw exception();
+    if (numElts <= 0) {
+       throw exception();
+    }
 }
+    
 
 const Sequence::value_type& Sequence::back() const
 {

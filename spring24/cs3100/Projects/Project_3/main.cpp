@@ -11,7 +11,11 @@ int main() {
     mySequence[4] = 5;
     mySequence.print(cout);
 
-    mySequence.insert(2, 6);
+    mySequence.push_back(6);
+    cout << endl;
+    mySequence.print(cout);
+    
+    mySequence.pop_back();
     cout << endl;
     mySequence.print(cout);
 }
