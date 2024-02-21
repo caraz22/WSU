@@ -12,7 +12,7 @@ Sequence::Sequence(size_type sz)
        tail = head; 
     }
 
-    for (int i = 0; i < sz - 1; i++){
+    for (int i = 0; i < sz -1; i++){
         tail->next = new SequenceNode();
         tail->next->prev = tail;
         tail = tail->next;
@@ -140,23 +140,39 @@ const Sequence::value_type& Sequence::front() const
 {
     if (numElts <= 0) {
        throw exception();
+    } else {
+        SequenceNode * current = head;
+        return current->elt;
     }
 }
     
 
 const Sequence::value_type& Sequence::back() const
 {
-    throw exception();
+    if (numElts <= 0) {
+        throw exception();
+    } else {
+        SequenceNode * current = head;
+        while (current->next != nullptr) {
+            current = current->next;
+        }
+
+        return current->elt;
+    }
 }
 
 bool Sequence::empty() const
 {
-    return false;
+    if (numElts == 0) {
+        return true;
+    } else {
+        return false;    
+    }
 }
 
 Sequence::size_type Sequence::size() const
 {
-    return -1;
+    return numElts;
 }
 
 void Sequence::clear()
