@@ -104,35 +104,6 @@ void Sequence::pop_back()
     }
 }
 
-// void Sequence::insert(size_type position, value_type value)
-// {
-//     if (position < 0 || position > numElts) {
-//         throw exception();
-//     }
-    
-//     if (position == 0 || numElts == 0) {
-//         SequenceNode * newNode = new SequenceNode();
-//         newNode->elt = value;
-//         newNode->next = head;
-//         head = newNode;
-//     } else {
-//         SequenceNode * current = head;
-//         for (int i = 0; i < position - 1; i++) {
-//             if (current == nullptr) {
-//                 throw exception();
-//             }
-//             current = current->next;
-//         }
-
-//         SequenceNode * newNode = new SequenceNode();
-//         newNode->elt = value;
-//         newNode->next = current->next;
-//         current->next = newNode;     
-//     }
-
-//     numElts++;
-// }
-
 void Sequence::insert(size_type position, value_type value)
 {
     if (position < 0 || position > numElts) {
