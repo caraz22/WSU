@@ -26,12 +26,12 @@ class AVLTree {
     private:
     class TreeNode {
         public:
-        TreeNode* next;
-        TreeNode* prev;
+        TreeNode* left;
+        TreeNode* right;
         int key;
         string value;
 
-        TreeNode() : next(nullptr), prev(nullptr) {
+        TreeNode() : left(nullptr), right(nullptr) {
         } 
 
         TreeNode(int keyNum, string valueStr) : key(keyNum), value(valueStr) {

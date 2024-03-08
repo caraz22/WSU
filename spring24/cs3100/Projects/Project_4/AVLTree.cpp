@@ -5,9 +5,11 @@ AVLTree::AVLTree() {
     treeSize = 0;
 }
 
-bool AVLTree::insert(int key, string value) {
+bool AVLTree::insert(int keyNum, string valueStr) {
     if (treeSize == 0) {
-        root = new TreeNode(key, value);
+        root = new TreeNode(keyNum, valueStr);
+    } else {
+        TreeNode* current = new TreeNode(keyNum, valueStr);
     }
 }
 
