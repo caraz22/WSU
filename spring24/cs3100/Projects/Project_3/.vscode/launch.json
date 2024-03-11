@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/cszok/VS Code/WSU/spring24/cs3100/Projects/Project_4",
-      "program": "c:/Users/cszok/VS Code/WSU/spring24/cs3100/Projects/Project_4/build/Debug/outDebug",
+      "cwd": "c:/Users/cszok/VS Code/WSU/spring24/cs3100/Projects/Project_3",
+      "program": "c:/Users/cszok/VS Code/WSU/spring24/cs3100/Projects/Project_3/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -5,13 +5,30 @@
 using namespace std;
 
 class AVLTree {
+    private:
+    class TreeNode {
+        public:
+        TreeNode* left;
+        TreeNode* right;
+        
+        int key;
+        string value;
+
+        TreeNode() : left(nullptr), right(nullptr) {
+        } 
+
+        TreeNode(int keyNum, string valueStr) : key(keyNum), value(valueStr) {
+        }
+    };
 
     public:
-    typedef unsigned int size_type;
+    TreeNode* root;    
 
     AVLTree();
 
     bool insert(int, string);
+
+    bool insertHelper(int, string, TreeNode*&);
 
     int getHeight();
 
@@ -23,21 +40,5 @@ class AVLTree {
 
     vector<string> findRange(int, int);
 
-    private:
-    class TreeNode {
-        public:
-        TreeNode* left;
-        TreeNode* right;
-        int key;
-        string value;
 
-        TreeNode() : left(nullptr), right(nullptr) {
-        } 
-
-        TreeNode(int keyNum, string valueStr) : key(keyNum), value(valueStr) {
-        }
-    };
-
-    TreeNode* root;
-    size_type treeSize;
 };
