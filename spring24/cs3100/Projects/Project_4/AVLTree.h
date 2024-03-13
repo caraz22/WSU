@@ -36,7 +36,7 @@ class AVLTree {
 
     bool insertHelper(int, string, TreeNode*&);
 
-    int getHeight(TreeNode*&);
+    int getHeight();
 
     int getSize();
 
