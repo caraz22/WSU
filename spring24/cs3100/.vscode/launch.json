@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/cszok/VS Code/WSU/spring24/cs3100/InClass/Vectors",
-      "program": "c:/Users/cszok/VS Code/WSU/spring24/cs3100/InClass/Vectors/build/Debug/outDebug",
+      "cwd": "c:/Users/cszok/VS Code/WSU/spring24/cs3100/InClass/Tries",
+      "program": "c:/Users/cszok/VS Code/WSU/spring24/cs3100/InClass/Tries/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
