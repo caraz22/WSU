@@ -27,7 +27,11 @@ bool AVLTree::insertHelper(int keyNum, string valueStr, TreeNode*& current) {
 } 
 
 int AVLTree::getHeight() {
-    
+    if (root == nullptr) {
+        treeHeight = 0;
+    }
+
+    TreeNode*& current = root;
     return treeHeight;
 }
 
