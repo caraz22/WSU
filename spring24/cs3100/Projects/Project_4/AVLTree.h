@@ -1,3 +1,6 @@
+/*
+INCLUDE HEADER
+*/
 #include <iostream>
 #include <vector>
 #include <exception>
@@ -10,6 +13,7 @@ class AVLTree {
         public:
         TreeNode* left;
         TreeNode* right;
+        TreeNode* parent;
         
         int key;
         string value;
@@ -17,12 +21,14 @@ class AVLTree {
         TreeNode() : left(nullptr), right(nullptr) {
         } 
 
-        TreeNode(int keyNum, string valueStr) : key(keyNum), value(valueStr) {
+        TreeNode(int keyNum, string valueStr) : key(keyNum), value(valueStr), left(nullptr), right(nullptr) {
         }
     };
 
     public:
-    TreeNode* root;    
+    TreeNode* root;   
+    int treeSize; 
+    int treeHeight;
 
     AVLTree();
 
@@ -30,7 +36,7 @@ class AVLTree {
 
     bool insertHelper(int, string, TreeNode*&);
 
-    int getHeight();
+    int getHeight(TreeNode*&);
 
     int getSize();
 
