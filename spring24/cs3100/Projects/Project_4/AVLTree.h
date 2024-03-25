@@ -13,7 +13,8 @@ class AVLTree {
         public:
         TreeNode* left;
         TreeNode* right;
-        TreeNode* parent;
+        TreeNode* hook;
+        TreeNode* problem;
         
         int key;
         string value;
@@ -32,19 +33,31 @@ class AVLTree {
 
     AVLTree();
 
+    AVLTree(const AVLTree&);
+
+    AVLTree& operator=(const AVLTree&);
+
     bool insert(int, string);
 
     bool insertHelper(int, string, TreeNode*&);
 
     int getHeight();
 
+    int getHeightHelper(TreeNode*&);
+
     int getSize();
 
-    friend ostream& operator<<(ostream&, const AVLTree&);
+    // friend ostream& operator<<(ostream&, const AVLTree&);
 
     bool find(int, string&);
 
+    bool findHelper(int, string&, TreeNode*&);
+
     vector<string> findRange(int, int);
 
+    void findRangeHelper(vector<string>&, int, int, TreeNode*&);
 
+    // void rotate();
+
+    
 };

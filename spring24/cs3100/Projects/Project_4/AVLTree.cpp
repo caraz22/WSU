@@ -6,6 +6,7 @@ INCLUDE HEADER
 AVLTree::AVLTree() {
     root = nullptr;
     treeSize = 0;
+    treeHeight = 0;
 }
 
 bool AVLTree::insert(int keyNum, string valueStr) {
@@ -27,15 +28,58 @@ bool AVLTree::insertHelper(int keyNum, string valueStr, TreeNode*& current) {
 } 
 
 int AVLTree::getHeight() {
-    if (root == nullptr) {
-        treeHeight = 0;
+    return getHeightHelper(root);
+}
+
+int AVLTree::getHeightHelper(TreeNode*& current) {
+    if (current == nullptr) {
+        return 0;
     }
 
-    TreeNode*& current = root;
-    return treeHeight;
+    return max(getHeightHelper(current->left), getHeightHelper(current->right)) + 1;
 }
 
 int AVLTree::getSize() {
     return treeSize;
 }
 
+bool AVLTree::find(int keyNum, string& valueStr) {
+    return findHelper(keyNum, valueStr, root);
+}
+
+bool AVLTree::findHelper(int keyNum, string& valueStr, TreeNode*& current) {
+    if (current == nullptr) {
+        return false;
+    } else if (current->key == keyNum) {
+        valueStr = current->value;
+        return true;
+    } else if (current->key < keyNum) {
+        return findHelper(keyNum, valueStr, current->right);
+    } else if (current->key > keyNum) {
+        return findHelper(keyNum, valueStr, current->left);
+    }
+}
+
+vector<string> AVLTree::findRange(int start, int end) {
+    vector<string> range;
+    findRangeHelper(range, start, end, root);
+    return range;
+}
+
+void AVLTree::findRangeHelper(vector<string>& range, int start, int end, TreeNode*& current) {
+    if (current == nullptr) {
+        return;
+    } 
+    
+    if (current->key > start) {
+        findRangeHelper(range, start, end, current->left);
+    }
+    
+    if (start <= current->key && current->key <= end) {
+        range.push_back(current->value);
+    }
+
+    if (current->key < end) {
+        findRangeHelper(range, start, end, current->right);
+    }
+}
