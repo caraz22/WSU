@@ -13,8 +13,8 @@ class AVLTree {
         public:
         TreeNode* left;
         TreeNode* right;
-        TreeNode* hook;
-        TreeNode* problem;
+        // TreeNode* hook;
+        // TreeNode* problem;
         
         int key;
         string value;
@@ -35,7 +35,13 @@ class AVLTree {
 
     AVLTree(const AVLTree&);
 
+    TreeNode* copyTree(TreeNode*);
+
     AVLTree& operator=(const AVLTree&);
+
+    ~AVLTree();
+
+    void clear(TreeNode*);
 
     bool insert(int, string);
 
@@ -47,7 +53,9 @@ class AVLTree {
 
     int getSize();
 
-    // friend ostream& operator<<(ostream&, const AVLTree&);
+    friend ostream& operator<<(ostream&, const AVLTree&);
+
+    void print(ostream&, TreeNode*, string) const;
 
     bool find(int, string&);
 
@@ -57,7 +65,9 @@ class AVLTree {
 
     void findRangeHelper(vector<string>&, int, int, TreeNode*&);
 
-    // void rotate();
+    void singleRotate(TreeNode*&, TreeNode*&); // week 7 lecture 2
 
-    
+    void doubleRotate(TreeNode*&, TreeNode*&); // week 8 lecture 1
+
+    int getBalance(TreeNode*);
 };

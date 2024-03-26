@@ -25,4 +25,6 @@ int main() {
     }
 
     cout << myTree.getHeight();
+
+    cout << myTree;
 }
