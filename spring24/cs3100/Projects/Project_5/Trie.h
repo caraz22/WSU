@@ -29,9 +29,9 @@ class Trie {
     int count();
     int getSize();
     bool find(string);
+    bool findHelper(string, TrieNode*&);
     int completeCount(string);
-    vector<string> complete(string);
-    Trie& operator=(const Trie&);
-    
-    // num of leaf nodes = num of words
+    int completeCountHelper(string, TrieNode*&);
+    // vector<string> complete(string);
+    // Trie& operator=(const Trie&);
 };
