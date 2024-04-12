@@ -1,10 +1,11 @@
 #include <iostream>
 #include <vector>
 #include <exception>
+#include <array>
 
 using namespace std;
 
-#define HEAP_MIN_SIZE 20;
+#define HEAP_MIN_SIZE 20
 
 class MaxHeap {
     public:
@@ -26,12 +27,15 @@ class MaxHeap {
 
     friend ostream& operator<<(ostream&, const MaxHeap&);
 
-    void fullHeap(const MaxHeap&);
+    private:
+    void expandArray();
 
-    MaxHeap heapify(const MaxHeap&);
+    void heapify();
 
-    void siftDown(const MaxHeap&);
+    void siftDown();    
 
     int heapSize;
+    int maxArraySize;
     int maxVal;
+    int * heapArray;
 };
