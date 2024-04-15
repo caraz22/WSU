@@ -15,8 +15,8 @@ MaxHeap::MaxHeap(int * values, int count) {
     this->heapify();
 }
 
-MaxHeap::MaxHeap(const MaxHeap& heap) {
-    
+MaxHeap::MaxHeap(const MaxHeap& h) {
+
 }
 
 MaxHeap::~MaxHeap() {
@@ -44,7 +44,11 @@ bool MaxHeap::isEmpty() const {
 }
 
 int MaxHeap::peek() const {
-
+    if (heapSize == 0) {
+        throw exception();
+    } else {
+        return heapArray[0];
+    }
 }
 
 vector<int> MaxHeap::sorted() const {
