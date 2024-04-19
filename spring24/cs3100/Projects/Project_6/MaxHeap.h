@@ -35,11 +35,11 @@ class MaxHeap {
     private:
     void expandArray();
 
-    void heapify();
+    void buildHeap();
 
-    void siftDown();    
+    void heapify(int);    
 
-    void siftUp();
+    void siftUp(int);
 
     int getParent(int);
 
