@@ -14,5 +14,6 @@ int main() {
     myHeap.offer(17);
 
     cout << myHeap.peek() << endl;
+    cout << myHeap.isEmpty() << endl;
     cout << myHeap;
 }
