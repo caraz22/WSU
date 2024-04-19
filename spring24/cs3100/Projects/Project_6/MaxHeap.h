@@ -2,6 +2,7 @@
 #include <vector>
 #include <exception>
 #include <array>
+#include <algorithm>
 
 using namespace std;
 
@@ -28,6 +29,8 @@ class MaxHeap {
     vector<int> sorted() const;
 
     friend ostream& operator<<(ostream&, const MaxHeap&);
+    
+    void print(ostream&) const;
 
     private:
     void expandArray();
@@ -36,8 +39,17 @@ class MaxHeap {
 
     void siftDown();    
 
+    int getParent(int);
+
+    int getLeftChild(int);
+
+    int getRightChild(int);
+
+    bool isLeaf(int);
+
+    vector<int> sortHelper(int) const;
+
     int heapSize;
     int maxArraySize;
-    int maxVal;
     int * heapArray;
 };
