@@ -18,6 +18,8 @@ class MaxHeap {
     MaxHeap& operator=(const MaxHeap&);
 
     void offer(int);
+    
+    int poll();
 
     bool isEmpty() const;
 

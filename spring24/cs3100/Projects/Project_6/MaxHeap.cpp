@@ -28,11 +28,22 @@ MaxHeap& MaxHeap::operator=(const MaxHeap& h) {
 }
 
 void MaxHeap::offer(int value) {
-    if (heapSize == maxArraySize) {
+    if (heapSize == maxArraySize) 
         this->expandArray();
+    
+    heapArray[heapSize] = value;
+}
+
+int MaxHeap::poll() {
+    if (isEmpty() == true) {
+        throw exception();
+    } else {
+        maxVal = heapArray[0];
+        heapArray[0] = NULL;
+        this->heapify();
     }
 
-    heapArray[heapSize] = value;
+    return maxVal;
 }
 
 bool MaxHeap::isEmpty() const {
@@ -44,7 +55,9 @@ bool MaxHeap::isEmpty() const {
 }
 
 int MaxHeap::peek() const {
-
+    if (heapSize == 0) {
+        throw exception();
+    }
 }
 
 vector<int> MaxHeap::sorted() const {
