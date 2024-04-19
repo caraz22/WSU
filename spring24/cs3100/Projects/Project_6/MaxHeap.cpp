@@ -3,12 +3,18 @@
 MaxHeap::MaxHeap() {
     heapArray = new int[HEAP_MIN_SIZE];
     maxArraySize = HEAP_MIN_SIZE;
+    heapSize = 0;
 }
 
 MaxHeap::MaxHeap(int * values, int count) {
-    int * newArray = new int[count];
+    maxArraySize = HEAP_MIN_SIZE;
+    while (maxArraySize < count) {
+        maxArraySize *= 2;
+    }
+    
+    heapArray = new int[count];
     for (int i = 0; i < count; i++) {
-        newArray[i] = values[i];
+        heapArray[i] = values[i];
     }
 
     count = heapSize;
@@ -17,51 +23,51 @@ MaxHeap::MaxHeap(int * values, int count) {
 }
 
 MaxHeap::MaxHeap(const MaxHeap& h) {
+    heapSize = h.heapSize;
+    maxArraySize = h.maxArraySize;    
+    
+    heapArray = new int[heapSize];
     for (int i = 0; i < heapSize; i++) {
-        h.heapArray[i] = heapArray[i]; 
+        heapArray[i] = h.heapArray[i]; 
     }
 }
 
 MaxHeap::~MaxHeap() {
-    if (heapSize == 0) {
-        return;
-    }
-
     delete[] heapArray;
 }
 
 MaxHeap& MaxHeap::operator=(const MaxHeap& h) {
+    heapSize = h.heapSize;
+    maxArraySize = h.maxArraySize;    
+
     delete[] heapArray;
 
+    heapArray = new int[heapSize];
     for (int i = 0; i < heapSize; i++) {
-        h.heapArray[i] = heapArray[i];
+        heapArray[i] = h.heapArray[i]; 
     }
 
     return *this;
 }
 
 void MaxHeap::offer(int value) {
-    if (heapSize == maxArraySize) 
+    if (heapSize == maxArraySize) {
         this->expandArray();
-    
+    }
+
     heapArray[heapSize] = value;
+    heapSize++;
 }
 
 int MaxHeap::poll() {
-    if (isEmpty() == true) {
-        throw exception();
-    } else {
-        maxVal = heapArray[0];
-        heapArray[0] = NULL;
-        this->heapify();
-    }
+    int maxVal = peek();
 
-<<<<<<< HEAD
+    heapArray[0] = heapArray[heapSize - 1];
+    heapSize--;
+
+    // sift down
+
     return maxVal;
-=======
-    heapArray[heapSize] = value;
-    heapSize++;
->>>>>>> ec3470b2356368631d9a30bb9a8a7895cde32fa6
 }
 
 bool MaxHeap::isEmpty() const {
@@ -75,11 +81,8 @@ bool MaxHeap::isEmpty() const {
 int MaxHeap::peek() const {
     if (heapSize == 0) {
         throw exception();
-<<<<<<< HEAD
-=======
     } else {
         return heapArray[0];
->>>>>>> ec3470b2356368631d9a30bb9a8a7895cde32fa6
     }
 }
 
@@ -87,13 +90,8 @@ vector<int> MaxHeap::sorted() const {
     return sortHelper(heapSize);
 }
 
-vector<int> MaxHeap::sortHelper(int index) const {
-    vector<int> sortedHeap;
-    if (heapSize == 0) {
-        return sortedHeap;
-    } else {
-        
-    }
+vector<int> MaxHeap::sortHelper(int index) const { //heap sort
+    
 }
 
 void MaxHeap::print(ostream& os) const {
@@ -116,20 +114,15 @@ void MaxHeap::expandArray() {
     heapArray = newArray;
 }
 
-void MaxHeap::heapify() {
-    for (int i = heapSize - 1; i >= 0; i--) {
-        if (isLeaf(heapArray[i]) == false) {
-            int parent = getParent(i);
-            if (heapArray[i] > heapArray[parent]) {
-                int tempVal = heapArray[parent];
-                heapArray[parent] = heapArray[i];
-                heapArray[i] = tempVal;
-            }
-        }
-    }    
+void MaxHeap::heapify() { // start halfway down => leaf nodes
+    // week 11 lecture 2?
 }
 
-void MaxHeap::siftDown() {
+void MaxHeap::siftDown() { //same as heapify
+
+}
+
+void MaxHeap::siftUp() {
 
 }
 
@@ -155,11 +148,5 @@ int MaxHeap::getRightChild(int index) {
 }
 
 bool MaxHeap::isLeaf(int index) { 
-    int rightChildIndex = (2 * index) + 2; 
-    int leftChildIndex = (2 * index) + 1;
-    if (rightChildIndex >= heapSize && leftChildIndex >= heapSize) {
-        return true;
-    } else {
-        return false;
-    }
+    return (index >= heapSize / 2);
 }

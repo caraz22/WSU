@@ -39,6 +39,8 @@ class MaxHeap {
 
     void siftDown();    
 
+    void siftUp();
+
     int getParent(int);
 
     int getLeftChild(int);
