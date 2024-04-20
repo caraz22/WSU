@@ -12,12 +12,12 @@ MaxHeap::MaxHeap(int * values, int count) {
         maxArraySize *= 2;
     }
     
-    heapArray = new int[count];
+    heapArray = new int[maxArraySize];
     for (int i = 0; i < count; i++) {
         heapArray[i] = values[i];
     }
 
-    count = heapSize;
+    heapSize = count;
 
     this->buildHeap();
 }
@@ -54,12 +54,11 @@ void MaxHeap::offer(int value) {
     if (heapSize == maxArraySize) {
         this->expandArray();
     }
-    for (int i = heapSize/2; i >= 0; i--) {
-        siftUp(i);
-    }
 
     heapArray[heapSize] = value;
     heapSize++;
+
+    siftUp(heapSize - 1);
 }
 
 int MaxHeap::poll() {
@@ -68,9 +67,11 @@ int MaxHeap::poll() {
     heapArray[0] = heapArray[heapSize - 1];
     heapSize--;
 
-    for (int i = heapSize/2; i >= 0; i--) {
-        heapify(i);
+    if (heapSize < (maxArraySize/2) && heapSize > HEAP_MIN_SIZE) {
+        this->shrinkArray();
     }
+
+    heapify(0);
 
     return maxVal;
 }
@@ -92,31 +93,22 @@ int MaxHeap::peek() const {
 }
 
 vector<int> MaxHeap::sorted() const {
-    return sortHelper(heapSize);
-}
+    vector<int> sortedHeap;
+    MaxHeap heapCopy(heapArray, heapSize);
 
-vector<int> MaxHeap::sortHelper(int index) const { //heap sort
-    int * newArray = new int[heapSize];
-    for (int i = 0; i < heapSize; i++) {
-        newArray[i] = heapArray[i];
+    if (heapSize == 0) {
+        return sortedHeap;
     }
 
-    for (int i = heapSize - 1; i >= 0; i--) {
-        swap(newArray[0], newArray[i]);
-        
+    while (heapCopy.isEmpty() == false) {
+        int maxVal = heapCopy.poll();
+        sortedHeap.push_back(maxVal);
     }
-}
-// Heapsort(numbers, numbersSize) {
-//    // Heapify numbers array
-//    for (i = numbersSize / 2 - 1; i >= 0; i--) {
-//       MaxHeapPercolateDown(i, numbers, numbersSize)
-//    }
 
-//    for (i = numbersSize - 1; i > 0; i--) {
-//       Swap numbers[0] and numbers[i]
-//       MaxHeapPercolateDown(0, numbers, i)
-//    }
-// }
+    return sortedHeap;
+}
+
+
 
 void MaxHeap::print(ostream& os) const {
     for (int i = 0; i < heapSize; i++) {
@@ -138,6 +130,16 @@ void MaxHeap::expandArray() {
     heapArray = newArray;
 }
 
+void MaxHeap::shrinkArray() {
+    maxArraySize /= 2;
+    int * newArray = new int[maxArraySize];
+    for (int i = 0; i < heapSize; i++) {
+        newArray[i] = heapArray[i];
+    }
+    delete[] heapArray;
+    heapArray = newArray;
+}
+
 void MaxHeap::buildHeap() { 
     for (int i = heapSize/2; i >= 0; i--) {
         heapify(i);
@@ -147,24 +149,32 @@ void MaxHeap::buildHeap() {
 void MaxHeap::heapify(int index) { 
     int maxValIndex = index;
 
-    if (isLeaf(index) == true) {
-        if (getLeftChild(index) > heapArray[maxValIndex]) {
+    if (isLeaf(index) == false) {
+        if (heapArray[getLeftChild(index)] > heapArray[maxValIndex]) {
             maxValIndex = getLeftChild(index);
         }
-        if (getRightChild(index) > heapArray[maxValIndex]) {
-            maxValIndex = getRightChild(index);
+    
+        if (getRightChild(index) < heapSize && heapArray[getRightChild(index)] > heapArray[maxValIndex]) {
+            maxValIndex = getRightChild(index);            
         }
     }
 
-    if (maxValIndex = index) {
+    if (maxValIndex != index) {
         swap(heapArray[index], heapArray[maxValIndex]);
 
         heapify(maxValIndex);
-    }
+    } 
 }
 
 void MaxHeap::siftUp(int index) {
-
+    while (index > 0) {
+        if (heapArray[index] > heapArray[getParent(index)]) {
+            swap(heapArray[index], heapArray[getParent(index)]);
+            index = getParent(index);
+        } else {
+            return;
+        }
+    }
 }
 
 int MaxHeap::getParent(int index) {

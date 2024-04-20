@@ -15,5 +15,13 @@ int main() {
 
     cout << myHeap.peek() << endl;
     cout << myHeap.isEmpty() << endl;
-    cout << myHeap;
+    cout << myHeap << endl;
+
+    cout << myHeap.poll() << endl;
+    cout << myHeap << endl;
+
+    vector<int> sortedHeap = myHeap.sorted();
+    for (int val : sortedHeap) {
+        cout << val << ", ";
+    }
 }

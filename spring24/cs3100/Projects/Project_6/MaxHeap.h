@@ -35,6 +35,8 @@ class MaxHeap {
     private:
     void expandArray();
 
+    void shrinkArray();
+
     void buildHeap();
 
     void heapify(int);    
@@ -48,8 +50,6 @@ class MaxHeap {
     int getRightChild(int);
 
     bool isLeaf(int);
-
-    vector<int> sortHelper(int) const;
 
     int heapSize;
     int maxArraySize;
