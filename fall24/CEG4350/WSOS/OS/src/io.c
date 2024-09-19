@@ -142,3 +142,18 @@ void clearscreen()
     
 	return;
 }
+
+// Initializes the keyboard characters
+// Each index in the array "keymap" is the scancode
+// Each value in the array is the corresponding ASCII character
+// To fill out the rest of the characters refer to this chart:
+// https://wiki.osdev.org/PS/2_Keyboard#Scan_Code_Set_1
+void initkeymap()
+{
+    keymap[0x1E] = 'a';
+    keymap[0x30] = 'b';
+    keymap[0x2E] = 'c';
+    // Add remaining ascii characters for each scan code
+
+	return;
+}
