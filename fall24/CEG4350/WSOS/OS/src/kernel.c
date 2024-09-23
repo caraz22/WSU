@@ -2,6 +2,9 @@
 
 int main() 
 {
+	initkeymap();
+	
+
 	// Clear the screen
 	clearscreen();
 
