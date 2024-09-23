@@ -157,3 +157,35 @@ void initkeymap()
 
 	return;
 }
+
+// retrieves scancode from keybaord
+// once scancode is retrieved, it must be converted to ASCII using keyboard mapping
+char getchar(char character)
+{
+    char isKeyPressed = 0;
+    char character = 0;
+    while (!isKeyPressed) {
+        char isKeyboardReady = 0;
+
+        while (!isKeyboardReady) {
+            uint8 status = inb(0x64);
+            status &= 0x01;                         // if ready bit is bit 0 
+            isKeyboardReady = status == 1;          // if ready bit is bit 0            
+            // status &= 0x80;                      // if ready bit is bit 7
+            // isKeyboardReady = status == 0x80;    // if ready bit is bit 7
+        }
+
+        uint8 scancode = inb(0x60);
+
+        // isKeyPressed = scancode < 128;
+        isKeyPressed = (scancode & 0x80) == 0 && scancode < 128;
+
+        if (!isKeyPressed) {
+            continue;
+        }
+
+        character = keymap[scancode];
+    }
+
+    return character;
+} 
