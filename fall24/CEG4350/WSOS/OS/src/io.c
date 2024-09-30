@@ -76,16 +76,14 @@ int cursorNum(int num, int maxNum)
 // Every two addresses contain a character and a color
 char putchar(char character)
 {
-
-
     if (character == '\n') {
         cursorCol = 0;
         cursorRow++;
     } else {
-        char * index = (char *)(VIDEO_MEM + ((cursorRow * 80 * 2) + (cursorCol * 2)));
-        *index = character;
-        index++;
-        *index = TEXT_COLOR;
+		char * index = (char *)(VIDEO_MEM + ((cursorRow * 80 * 2) + (cursorCol * 2)));
+		*index = character;
+		index++;
+		*index = TEXT_COLOR;
         cursorCol++;
         if (cursorCol > 79) {
             cursorCol = 0;
