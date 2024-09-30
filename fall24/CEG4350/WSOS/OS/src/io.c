@@ -188,8 +188,8 @@ void initkeymap()
     keymap[0x09] = '8';    
     keymap[0x0A] = '9';     
     
-    keymap[0x39] = 'space';
-    keymap[0x1C] = 'enter';         
+    keymap[0x39] = ' ';
+    keymap[0x1C] = '\n';         
 
 	return;
 }
@@ -205,11 +205,8 @@ char getchar()
 
         while (!isKeyboardReady) {
             uint8 status = inb(0x64);
-            if (status &= 0x01) {
-                isKeyboardReady = status == 1;                 
-            } else if (status &= 0x80) {
-                isKeyboardReady = status == 0x80;
-            }
+            status &= 0x01;
+            isKeyboardReady = status == 1;
         }
 
         uint8 scancode = inb(0x60);
@@ -228,12 +225,18 @@ char getchar()
 
 void scanf(char string[]) 
 {
-    int index = 0;
-    char character = getchar();
-    while (getchar() != keymap[0x1C]) {
-        string[index] = putchar(getchar());
+    int index = 0; 
+    char character = 0;
+
+    while (character != '\n') {
+        character = getchar();
+        if (character = '\n') {
+            string[index] = '\0';
+            break;
+        } else {
+            string[index] = putchar(character);       
+        }
+        
         index++;
     }
-
-    string[index] = '\0';
 }
