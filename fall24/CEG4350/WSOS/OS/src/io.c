@@ -230,13 +230,16 @@ void scanf(char string[])
 
     while (character != '\n') {
         character = getchar();
-        if (character = '\n') {
+        if (character == '\n') {
             string[index] = '\0';
             break;
         } else {
-            string[index] = putchar(character);       
+            string[index] = character;       
+            putchar(character);
         }
         
         index++;
     }
+
+    return;
 }
