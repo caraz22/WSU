@@ -4,16 +4,20 @@ int main()
 {
 	initkeymap();
 	
-
 	// Clear the screen
 	clearscreen();
 
 	// Print "Hello World!"
-	printf("Hello World!\n");
+	printf("Hello World!");
+
+	char input[100];
 
 	while(1) {
-		printf("Please type something: ");
-		scanf();
+		printf("\nPlease type something: ");
+		scanf(input);
+		printf("\nYou typed: ");
+		printf(input);
+
 	}
 	
 	return 0;

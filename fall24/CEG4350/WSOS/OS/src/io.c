@@ -230,6 +230,7 @@ void scanf(char string[])
 {
     int index = 0;
     while (getchar() != keymap[0x1C]) {
-        putchar(getchar);
+        string[index] = putchar(getchar);
+        index++;
     }
 }
