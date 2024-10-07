@@ -1,16 +1,15 @@
 {
 	"folders": {},
 	"connections": {
-		"mariaDB-192077ca85f-7a759a9a7bdf51e2": {
+		"mariaDB-1920ba97444-688d3c86ce23f8e6": {
 			"provider": "mysql",
 			"driver": "mariaDB",
-			"name": "work_order_pro",
+			"name": "localhost 2",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
 				"port": "3306",
-				"database": "work_order_pro",
-				"url": "jdbc:mariadb://localhost:3306/work_order_pro",
+				"url": "jdbc:mariadb://localhost:3306/",
 				"configurationType": "MANUAL",
 				"home": "mysql_client",
 				"type": "dev",
@@ -18,7 +17,7 @@
 				"auth-model": "native"
 			}
 		},
-		"mariaDB-1920b70bf17-6320cb612e293eeb": {
+		"mariaDB-19253ab2605-56646857aa30a270": {
 			"provider": "mysql",
 			"driver": "mariaDB",
 			"name": "localhost",
