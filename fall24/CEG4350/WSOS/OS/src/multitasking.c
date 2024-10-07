@@ -34,6 +34,28 @@ int schedule()
 // Store the newly created process inside the processes array (proc_t processes[])
 int createproc(void *func, char *stack)
 {
+    // If we have filled our process array, return -1
+
+    if(process_index >= MAX_PROCS)
+    {
+        return -1;
+    }
+
+    // Create the new user process
+
+    proc_t userproc;
+    userproc.status = PROC_READY; // Processes start ready to run
+    userproc.type = PROC_USER;    // Process is a kernel process
+    userproc.eip = func;
+    userproc.esp = stack;
+    userproc.ebp = stack;
+
+    // Assign a process ID and add process to process array
+
+    userproc.pid = process_index;
+    processes[process_index] = userproc;
+    process_index++;
+
     return 0;
 }
 
@@ -89,8 +111,16 @@ void yield()
 {
     // if we are currently running a user process
     if (running->type == PROC_USER) {
+        if (next == 0) {
+            clearscreen(); 
+            printf("Error: next process is invalid\n");
+            while (1) {
+            }
+        }
         // select the kernel to run next
         next = kernel;
+    } else if (running->type == PROC_KERNEL) {
+        next = prev;
     }
 
     // context switch to the process "next"
