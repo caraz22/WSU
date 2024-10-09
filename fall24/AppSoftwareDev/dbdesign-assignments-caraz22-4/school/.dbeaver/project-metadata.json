@@ -1,1 +1,1 @@
-{"resources":{"Scripts/Script-1.sql":{"default-datasource":"mariaDB-19253b243e7-5680b318de6233fd","default-catalog":"work_order_pro"},"Scripts/Script.sql":{"default-datasource":"mariaDB-1920ba97444-688d3c86ce23f8e6","default-catalog":"shelter"}}}
+{"resources":{"Scripts/Script-1.sql":{"default-datasource":"mariaDB-19253b243e7-5680b318de6233fd"},"Scripts/Script.sql":{"default-datasource":"mariaDB-1920ba97444-688d3c86ce23f8e6","default-catalog":"shelter"}}}
