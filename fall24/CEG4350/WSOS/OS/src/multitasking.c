@@ -99,6 +99,22 @@ int startkernel(void func())
 // Context switch to the kernel process
 void exit()
 {
+    if (running->type == PROC_USER) {
+        running->status == PROC_TERMINATED;   
+
+        if (next == 0) {
+            clearscreen(); 
+            printf("Error: next process is invalid\n");
+            while (1) {
+            }
+        }
+        
+        next = kernel;
+        switchcontext();
+    } else if (running->type = PROC_KERNEL) {
+        running->status == PROC_TERMINATED;
+    }
+
     return;
 }
 
