@@ -17,6 +17,11 @@ proc_t *kernel;     // The kernel process
 // Selection must be made from the processes array (proc_t processes[])
 int schedule()
 {
+    process_index = 1;
+    for (int i = process_index; i < MAX_PROCS + 1; i++)
+    {
+        if ()
+    }
     // if user process is ready
     if (processes[1].status == PROC_READY && processes[1].type == PROC_USER) {
         // select user process to run next

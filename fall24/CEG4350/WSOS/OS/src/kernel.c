@@ -21,11 +21,15 @@ int main()
 
 void prockernel()
 {
-	printf("Starting Kernel Process...\n");
+	printf("Kernel Process Starting...\n");
 	
 	// Create the user processes
 
-	createproc(proca, (void *) 0x10000);
+	createproc(proca, (void *) 0x3000);
+	createproc(procb, (void *) 0x3100);
+	createproc(procc, (void *) 0x3200);
+	createproc(procd, (void *) 0x3300);
+	createproc(proce, (void *) 0x3400);
 
 	// Schedule the next process
 
@@ -33,22 +37,51 @@ void prockernel()
 
 	while(userprocs > 0)
 	{
-		yield();
-		printf("Resuming Kernel Process\n");
 		userprocs = schedule();
 	}
 
-	printf("Exiting Kernel Process...\n");
+	printf("Kernel Process Exiting...\n");
 }
 
 // The user processes
 
 void proca()
 {
-	printf("Starting User Process A\n");
+	printf("A");
+	exit();
+}
+
+void procb() 
+{
+	printf("B");
 	yield();
-	printf("Resuming User Process A\n");
 	yield();
-	printf("Exiting User Process A\n");
+	exit();
+}
+
+void procc() 
+{
+	printf("C");
+	yield();
+	yield();
+	yield();
+	yield();
+	exit();
+}
+
+void procd() 
+{
+	printf("D");
+	yield();
+	yield();
+	yield();
+	exit();
+}
+
+void proce() 
+{
+	printf("E");
+	yield();
+	yield();
 	exit();
 }
