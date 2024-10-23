@@ -120,7 +120,7 @@ void yield()
         running->status == PROC_READY;
         // select the kernel to run next
         next = kernel;
-    } else if (running->type == PROC_KERNEL) {
+    } else if (!schedule()) {
         if (next == 0) {
             clearscreen(); 
             printf("Error: next process is invalid\n");
@@ -143,7 +143,6 @@ void yield()
 void __attribute__((naked)) switchcontext()
 {
     // Capture all the register values so we can reload them if we ever run this process again
-
     register uint32 eax asm ("eax");    // General purpose registers
     register uint32 ebx asm ("ebx");
     register uint32 ecx asm ("ecx");
@@ -161,7 +160,6 @@ void __attribute__((naked)) switchcontext()
     register uint32 cr3  asm ("eax");   // CR3 for virtual addressing
 
     // Store all the current register values inside the process that is running
-
     running->eax    = eax;
     running->ebx    = ebx;
     running->ecx    = ecx;
@@ -177,16 +175,13 @@ void __attribute__((naked)) switchcontext()
     running->cr3    = cr3;
 
     // Set the next instruction for this process to be the resume after the context switch
-
     running->eip    = &&resume;
 
     // Start running the next process
-    
     running = next;
     running->status = PROC_RUNNING;
 
     // Reload all the registers previously saved from the process we want to run
-
     asm volatile("mov %0, %%eax" : : "r"(running->eflags));
     asm volatile("push %eax");
     asm volatile("popfl");
@@ -206,12 +201,10 @@ void __attribute__((naked)) switchcontext()
 
     // Jump to the last instruction we saved from the running process
     // If this is a new process this will be the beginning of the process's function
-
     asm volatile("jmp *%0" : : "r" (running->eip));
 
     // This resume address will eventually get executed when the previous process gets executed again
     // This will allow us to resume the previous process after our yield
-
     resume:
     asm volatile("ret");
 }
