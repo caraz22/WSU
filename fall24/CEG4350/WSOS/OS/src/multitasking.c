@@ -99,20 +99,10 @@ int startkernel(void func())
 // Context switch to the kernel process
 void exit()
 {
+    running->status == PROC_TERMINATED;      
     if (running->type == PROC_USER) {
-        running->status == PROC_TERMINATED;   
-
-        if (next == 0) {
-            clearscreen(); 
-            printf("Error: next process is invalid\n");
-            while (1) {
-            }
-        }
-        
         next = kernel;
         switchcontext();
-    } else if (running->type = PROC_KERNEL) {
-        running->status == PROC_TERMINATED;
     }
 
     return;
@@ -127,16 +117,16 @@ void yield()
 {
     // if we are currently running a user process
     if (running->type == PROC_USER) {
+        running->status == PROC_READY;
+        // select the kernel to run next
+        next = kernel;
+    } else if (running->type == PROC_KERNEL) {
         if (next == 0) {
             clearscreen(); 
             printf("Error: next process is invalid\n");
             while (1) {
             }
         }
-        // select the kernel to run next
-        next = kernel;
-    } else if (running->type == PROC_KERNEL) {
-        next = prev;
     }
 
     // context switch to the process "next"
