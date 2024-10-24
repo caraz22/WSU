@@ -20,7 +20,7 @@ int schedule()
     process_index = 1;
     for (int i = process_index; i < MAX_PROCS + 1; i++)
     {
-        if ()
+        // if ()
     }
     // if user process is ready
     if (processes[1].status == PROC_READY && processes[1].type == PROC_USER) {
