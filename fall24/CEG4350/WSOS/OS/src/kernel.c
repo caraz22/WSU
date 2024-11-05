@@ -19,30 +19,6 @@ int main()
 	return 0;
 }
 
-void prockernel()
-{
-	printf("Kernel Process Starting...\n");
-	
-	// Create the user processes
-
-	createproc(proca, (void *) 0x3000);
-	createproc(procb, (void *) 0x3100);
-	createproc(procc, (void *) 0x3200);
-	createproc(procd, (void *) 0x3300);
-	createproc(proce, (void *) 0x3400);
-
-	// Schedule the next process
-
-	int userprocs = schedule();
-
-	while(userprocs > 0)
-	{
-		userprocs = schedule();
-	}
-
-	printf("Kernel Process Exiting...\n");
-}
-
 // The user processes
 
 void proca()
@@ -85,3 +61,29 @@ void proce()
 	yield();
 	exit();
 }
+
+void prockernel()
+{
+	printf("Kernel Process Starting...\n");
+	
+	// Create the user processes
+
+	createproc(proca, (void *) 0x3000);
+	createproc(procb, (void *) 0x3100);
+	createproc(procc, (void *) 0x3200);
+	createproc(procd, (void *) 0x3300);
+	createproc(proce, (void *) 0x3400);
+
+	// Schedule the next process
+
+	int userprocs = schedule();
+
+	while(userprocs > 0)
+	{
+		yield();
+		userprocs = schedule();
+	}
+
+	printf("Kernel Process Exiting...\n");
+}
+
