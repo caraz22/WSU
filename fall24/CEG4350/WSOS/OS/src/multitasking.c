@@ -18,18 +18,17 @@ proc_t *kernel;     // The kernel process
 int schedule()
 {
     process_index = 1;
-    for (int i = process_index; i < MAX_PROCS + 1; i++)
+    int procs_ready = 0;
+    for (int i = 0; i < MAX_PROCS; i++)
     {
-        // if ()
-    }
-    // if user process is ready
-    if (processes[1].status == PROC_READY && processes[1].type == PROC_USER) {
-        // select user process to run next
-        next = &processes[1];
-        return 1;
+        if (processes[process_index].status == PROC_READY && processes[process_index].type == PROC_USER) {
+            next = &processes[process_index];
+            procs_ready++;
+        }
+        process_index++;
     }
 
-    return 0;
+    return procs_ready;
 }
 
 // Create a new user process
