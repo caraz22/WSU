@@ -79,9 +79,10 @@ void prockernel()
 	int userprocs = schedule();
 
 	while(userprocs > 0)
-	{
+	{	
 		yield();
 		userprocs = schedule();
+
 	}
 
 	printf("Kernel Process Exiting...\n");
