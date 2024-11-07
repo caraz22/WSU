@@ -1,0 +1,9 @@
+.active-class {
+    background-color: green;
+    color: white;
+}
+
+.inactive-class {
+    background-color: red;
+    color: black;
+}
