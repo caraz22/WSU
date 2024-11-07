@@ -17,15 +17,28 @@ proc_t *kernel;     // The kernel process
 // Selection must be made from the processes array (proc_t processes[])
 int schedule()
 {
-    process_index = 1;
+    int last_proc_index = 1;
     int procs_ready = 0;
-    for (int i = 0; i < MAX_PROCS; i++)
+    for (int i = 1; i < MAX_PROCS; i++)
     {
-        if (processes[process_index].status == PROC_READY && processes[process_index].type == PROC_USER) {
-            next = &processes[process_index];
+        if (processes[i].status == PROC_READY && processes[i].type == PROC_USER) {
             procs_ready++;
         }
-        process_index++;
+    }
+
+    if (procs_ready == 0) 
+    {
+        return 0;
+    }
+
+    for (int i = 0; i < MAX_PROCS - 1; i++)
+    {
+        int current_proc_index = (last_proc_index + i) % (MAX_PROCS - 1) + 1;
+        if (processes[current_proc_index].status == PROC_READY && processes[current_proc_index].type == PROC_USER) {
+            next = &processes[current_proc_index];
+            last_proc_index = current_proc_index;
+            break;
+        }
     }
 
     return procs_ready;
@@ -49,7 +62,7 @@ int createproc(void *func, char *stack)
 
     proc_t userproc;
     userproc.status = PROC_READY; // Processes start ready to run
-    userproc.type = PROC_USER;    // Process is a kernel process
+    userproc.type = PROC_USER;    // Process is a user process
     userproc.eip = func;
     userproc.esp = stack;
     userproc.ebp = stack;
@@ -103,7 +116,7 @@ int startkernel(void func())
 // Context switch to the kernel process
 void exit()
 {
-    running->status == PROC_TERMINATED;      
+    running->status = PROC_TERMINATED;      
     if (running->type == PROC_USER) {
         next = kernel;
         switchcontext();
@@ -121,9 +134,9 @@ void yield()
 {
     // if we are currently running a user process
     if (running->type == PROC_USER) {
-        running->status == PROC_READY;
+        running->status = PROC_READY;
         // select the kernel to run next
-        next = kernel;
+        // next = kernel;
     } else if (!schedule()) {
         if (next == 0) {
             clearscreen(); 
