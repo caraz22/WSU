@@ -1,0 +1,167 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="customer-form">
+
+  <div class="form-row">
+    <!-- First Name -->
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        id="firstName"
+        formControlName="firstName"
+        [class.invalid]="isControlInvalid('firstName')"
+        placeholder="Enter your first name"
+        required
+      />
+      <div *ngIf="isControlInvalid('firstName')" class="error-message">
+        <span *ngIf="customerForm.get('firstName')?.errors?.['required']">
+          First Name is required.
+        </span>
+        <span *ngIf="customerForm.get('firstName')?.errors?.['pattern']">
+          First Name must contain only letters.
+        </span>
+      </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        id="lastName"
+        formControlName="lastName"
+        [class.invalid]="isControlInvalid('lastName')"
+        placeholder="Enter your last name"
+        required
+      />
+      <div *ngIf="isControlInvalid('lastName')" class="error-message">
+        <span *ngIf="customerForm.get('lastName')?.errors?.['required']">
+          Last Name is required.
+        </span>
+        <span *ngIf="customerForm.get('lastName')?.errors?.['pattern']">
+          Last Name must contain only letters.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        [class.invalid]="isControlInvalid('phoneNumber')"
+        placeholder="Enter your phone number"
+        required
+      />
+      <div *ngIf="isControlInvalid('phoneNumber')" class="error-message">
+        <span *ngIf="customerForm.get('phoneNumber')?.errors?.['required']">
+          Phone Number is required.
+        </span>
+        <span *ngIf="customerForm.get('phoneNumber')?.errors?.['pattern']">
+          Phone Number must be 10 digits.
+        </span>
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        formControlName="email"
+        [class.invalid]="isControlInvalid('email')"
+        placeholder="Enter your email address"
+        required
+      />
+      <div *ngIf="isControlInvalid('email')" class="error-message">
+        <span *ngIf="customerForm.get('email')?.errors?.['required']">
+          Email is required.
+        </span>
+        <span *ngIf="customerForm.get('email')?.errors?.['email']">
+          Email must be a valid email address.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <!-- Address -->
+    <div class="form-group">
+      <label for="addressLine1">Address</label>
+      <input
+        id="addressLine1"
+        formControlName="addressLine1"
+        [class.invalid]="isControlInvalid('addressLine1')"
+        placeholder="Enter your address"
+        required
+      />
+      <div *ngIf="isControlInvalid('addressLine1')" class="error-message">
+        <span *ngIf="customerForm.get('addressLine1')?.errors?.['required']">
+          Address is required.
+        </span>
+      </div>
+    </div>
+
+    <!-- City -->
+    <div class="form-group">
+      <label for="city">City</label>
+      <input
+        id="city"
+        formControlName="city"
+        [class.invalid]="isControlInvalid('city')"
+        placeholder="Enter your city"
+        required
+      />
+      <div *ngIf="isControlInvalid('city')" class="error-message">
+        <span *ngIf="customerForm.get('city')?.errors?.['required']">
+          City is required.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <!-- State -->
+    <div class="form-group">
+      <label for="state">State</label>
+      <p-dropdown
+        id="state"
+        formControlName="state"
+        [options]="stateOptions"
+        placeholder="Select your state"
+        [showClear]="true"
+        appendTo="body"
+      ></p-dropdown>
+      <div *ngIf="isControlInvalid('state')" class="error-message">
+        <span *ngIf="customerForm.get('state')?.errors?.['required']">
+          State is required.
+        </span>
+      </div>
+    </div>
+
+    <!-- ZIP Code -->
+    <div class="form-group">
+      <label for="zip">ZIP Code</label>
+      <input
+        id="zip"
+        formControlName="zip"
+        [class.invalid]="isControlInvalid('zip')"
+        placeholder="Enter your ZIP Code"
+        required
+      />
+      <div *ngIf="isControlInvalid('zip')" class="error-message">
+        <span *ngIf="customerForm.get('zip')?.errors?.['required']">
+          ZIP Code is required.
+        </span>
+        <span *ngIf="customerForm.get('zip')?.errors?.['pattern']">
+          ZIP Code must be 5 digits.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="submit-button" [disabled]="customerForm.invalid">
+    Create Customer
+  </button>
+</form>

@@ -1,0 +1,41 @@
+<div class="header-container">
+  <h2>Customers</h2>
+
+  <!-- Button to open modal -->
+  <button (click)="showModal = true" class="new-customer-button">New Customer</button>
+</div>
+
+<!-- Filters Component -->
+<app-customer-filter
+  [customerNames]="customerNames"
+  (filterChanged)="onFilterChanged($event)"
+  (clearFilters)="onClearFilters()"
+></app-customer-filter>
+
+<!-- Modal Dialog -->
+<p-dialog
+  header="Add Customer"
+  [(visible)]="showModal"
+  [modal]="true"
+  [closable]="true"
+  [draggable]="false"
+>
+  <app-customer-form (formSubmitted)="onSubmit($event)"></app-customer-form>
+</p-dialog>
+
+<!-- Custom Table Component -->
+<app-custom-table
+  [data]="filteredCustomers"
+  [columns]="customerColumns"
+  (sort)="onSort($event)"
+></app-custom-table>
+
+<!-- Template for Customer Name -->
+<ng-template #customerNameTemplate let-row>
+  {{ row.firstName }} {{ row.lastName }}
+</ng-template>
+
+<!-- Template for Customer Address -->
+<ng-template #customerAddressTemplate let-row>
+  {{ row.addressLine1 }}, {{ row.city }}, {{ row.state }} {{ row.zip }}
+</ng-template>

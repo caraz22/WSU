@@ -1,0 +1,39 @@
+@import "src/styles/variables";
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100%;
+  background-color: darken($primary-color, 20%);
+  overflow: auto;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0;
+}
+
+.navbar a {
+  display: block;
+  color: $white;
+  padding: 16px;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: $black;
+  background-color: $accent-color;
+}
+.navbar a.active {
+  color: $black;
+  background-color: $accent-color;
+  text-decoration: underline;
+}

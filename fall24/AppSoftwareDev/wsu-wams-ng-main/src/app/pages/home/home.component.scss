@@ -1,0 +1,61 @@
+.home-container {
+  height: 100%;
+  width: 100%;
+  margin-bottom:-20px; // eliminate dead padding space
+}
+
+.options-column { // dropdown containers to route to other parts of the site
+  width: 50%;
+}
+
+.home-header {
+  height: 10%;
+}
+
+.home-quick-view { // rotating carousel
+  margin-top:4%;
+  flex-grow:3;
+}
+
+.default-text {
+  font-weight: bold;
+  font-size:18px;
+  line-height:2em;
+}
+
+.home-body {
+  height: 75%;
+}
+
+.home-footer { // bottom row footer content (contact us etc)
+  height: 15%;
+  justify-content: center;
+  position: absolute;
+  align-items: center;
+  background: var(--green-100);
+  margin: 0 -28px 0 -28px;
+  bottom: 0;
+  width: calc(100% - 200px);
+}
+
+.footer-mail {
+  font-weight:bold;
+  color: var(--indigo-400);
+  text-decoration: none;
+}
+
+.carousel-content { // carousel card body
+  margin: 0.3rem;
+  text-align: center;
+  border-radius:8px;
+  background: var(--blue-50);
+  padding: 30px;
+  align-items:center;
+  justify-content:center;
+
+  img { // image content in scrolling carousel
+    width: 50%;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16),
+    0 3px 6px rgba(0, 0, 0, 0.23);
+  }
+}

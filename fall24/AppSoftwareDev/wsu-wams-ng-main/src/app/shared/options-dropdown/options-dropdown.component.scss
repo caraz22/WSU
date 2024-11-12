@@ -1,0 +1,33 @@
+.dropdown-container { // parent container
+  transition: 0.4s;
+  width: 300px;
+  color: #4B5563; // set standard text color
+  cursor: pointer;
+  h4 {
+    margin: 0px; // override automatically set h4 margins
+  }
+
+  .link-list { // list of options
+    background:#e0e0d1;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 10;
+    width: 300px;
+    a {
+      border-radius: 5px;
+      padding: 5px;
+      &:hover {
+        background:#697565;
+        color: #e0ebeb;
+      }
+    }
+  }
+
+  .select-header { // header for selection
+    border-radius: 5px;
+    padding: 5px;
+    background:#697565;
+    color: #e0ebeb;
+  }
+
+}

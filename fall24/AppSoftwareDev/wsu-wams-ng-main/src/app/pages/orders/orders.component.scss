@@ -1,0 +1,28 @@
+@import "src/styles/variables";
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .new-order-button {
+    background-color: $primary-color;
+    color: $white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+.work-order-link {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
