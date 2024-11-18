@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
+      "cwd": "c:/Users/cszok/VS Code/WSU/fall24/CEG4350/WSOS/OS/src",
+      "program": "c:/Users/cszok/VS Code/WSU/fall24/CEG4350/WSOS/OS/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

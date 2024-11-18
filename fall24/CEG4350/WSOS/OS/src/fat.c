@@ -42,6 +42,8 @@ void closeFile(file_t *file)
 
 int openFile(file_t *file)
 {
+    file->startingAddress;
+    
     return 0;
 }
 
