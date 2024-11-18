@@ -1,23 +1,7 @@
 {
 	"folders": {},
 	"connections": {
-		"mariaDB-1920ba97444-688d3c86ce23f8e6": {
-			"provider": "mysql",
-			"driver": "mariaDB",
-			"name": "localhost 2",
-			"save-password": true,
-			"configuration": {
-				"host": "localhost",
-				"port": "3306",
-				"url": "jdbc:mariadb://localhost:3306/",
-				"configurationType": "MANUAL",
-				"home": "mysql_client",
-				"type": "dev",
-				"closeIdleConnection": true,
-				"auth-model": "native"
-			}
-		},
-		"mariaDB-19253b243e7-5680b318de6233fd": {
+		"mariaDB-1933676d7a2-763a08a3073531cc": {
 			"provider": "mysql",
 			"driver": "mariaDB",
 			"name": "localhost",
