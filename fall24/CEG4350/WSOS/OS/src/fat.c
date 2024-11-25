@@ -100,33 +100,3 @@ int findFile(char *filename, char* ext, directory_t directory, directory_entry_t
 
 	return 0;
 }
-
-int openFile(file_t *file)
-{
-
-}
-
-uint8 readByte(file_t *file, uint32 index)
-{
-
-}
-
-int writeByte(file_t *file, uint8 byte, uint32 index)
-{
-
-}
-
-void closeFile(file_t *file)
-{
-
-}
-
-int createFile(file_t *file, directory_t *parent)
-{
-
-}
-
-void deleteFile(file_t *file, directory_t *parent)
-{
-    
-}
