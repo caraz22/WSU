@@ -1,0 +1,68 @@
+<div class="home-container column">
+  <div class="home-header">
+    <h1>Welcome to Work Order Management</h1>
+  </div>
+  <div class="home-body column">
+    <div class="row">
+      <div class="options-column column">
+        <div class="options-column column">
+          <h3>Create a New...</h3>
+          <app-options-dropdown (optionSelected)="switchView($event)"
+            [options]="createOptions">
+          </app-options-dropdown>
+        </div>
+      </div>
+      <div class="options-column column">
+        <h3>View...</h3>
+        <app-options-dropdown (optionSelected)="switchView($event)"
+          [options]="viewOptions">
+        </app-options-dropdown>
+      </div>
+    </div>
+    <div class="home-quick-view">
+      <ng-container *ngIf="display === 'view'">
+        <app-custom-table
+        [columns]="headerColumns"
+        [data]="viewData"></app-custom-table>
+      </ng-container>
+      <!-- Quick Create Views -->
+      <ng-container *ngIf="display === 'create'">
+        <p-dialog
+          header="Add {{actionDataType}}"
+          [(visible)]="showModal"
+          [modal]="true"
+          [closable]="true"
+          [draggable]="false"
+        >
+          <app-customer-form (formSubmitted)="submitCustomer($event)" *ngIf="actionDataType === 'Customers'"></app-customer-form>
+          <app-technician-form (formSubmitted)="submitTechnician($event)" *ngIf="actionDataType === 'Orders'"></app-technician-form>
+          <app-order-form *ngIf="actionDataType === 'Customer'"></app-order-form>
+        </p-dialog>
+      </ng-container>
+      <!-- default view -->
+      <div class="default-view column" *ngIf="display !== 'view'">
+        <p class="default-text">From managing customers and technicians, to creating and viewing your work orders in detail, Work Order Management Pro is your one
+          stop shop to manage your business better! To get started, select an option from the dropdowns above, or navigate the site using the column to the left!
+        </p>
+        <p-carousel [style.margin-top]="'7%'"
+          [value]="carouselDisplays"
+          [numVisible]="1"
+          [numScroll]="1"
+          [circular]="true"
+        >
+          <ng-template let-carouselDisplay pTemplate="item">
+            <div class="carousel-content row">
+              <div><img alt="carousel data" src="{{carouselDisplay.image}}"></div>
+              <h4 class="carousel-txt">{{carouselDisplay.displayText}}</h4>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
+    </div>
+  </div>
+  <div class="home-footer column">
+    <b class="row">Contact Us:</b>
+    <span class="row">123-456-7890</span>
+    <a class="footer-mail" href="mailto:someone@example.com">someone&#64;example.com</a>
+  </div>
+</div>

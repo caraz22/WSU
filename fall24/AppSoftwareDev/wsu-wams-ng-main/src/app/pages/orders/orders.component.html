@@ -1,0 +1,69 @@
+<div class="header-container">
+  <h2>Orders</h2>
+  <button class="new-order-button">New Order</button>
+</div>
+
+<!-- Filters Component -->
+<app-order-filter
+  [customerNames]="customerNames"
+  [technicianNames]="technicianNames"
+  [workOrderNumbers]="workOrderNumbers"
+  [workOrderStatuses]="workOrderStatuses"
+  (filterChanged)="onFilterChanged($event)"
+  (clearFilters)="onClearFilters()"
+></app-order-filter>
+
+<div class="order-page-container">
+  <app-custom-table
+    [data]="filteredOrderSummaries"
+    [columns]="orderColumns"
+    (sort)="onSort($event)"></app-custom-table>
+
+  <!-- Template for Customer Name -->
+  <ng-template #customerNameTemplate let-row>
+    {{ row.customerFirstName }} {{ row.customerLastName }}
+  </ng-template>
+
+  <!-- Template for Technician Name -->
+  <ng-template #technicianNameTemplate let-row>
+    {{ row.technicianFirstName }} {{ row.technicianLastName }}
+  </ng-template>
+
+  <!-- Template for Date Scheduled -->
+  <ng-template #dateScheduledTemplate let-row>
+    {{ formatDate(row.dateScheduled) }}
+  </ng-template>
+
+  <!-- Template for Date Last Updated -->
+  <ng-template #dateLastUpdatedTemplate let-row>
+    {{ formatDate(row.dateLastUpdated) }}
+  </ng-template>
+
+  <!-- Template for Work Order Number -->
+  <ng-template #workOrderNumberTemplate let-row>
+    <a (click)="onWorkOrderNumberClick(row.workOrderNumber)" class="work-order-link">
+      {{ row.workOrderNumber }}
+    </a>
+  </ng-template>
+
+  <!-- Work Order Detail Modal -->
+  <p-dialog
+    [(visible)]="showWorkOrderModal"
+    [draggable]="false"
+    [style]="{width: '80vw'}"
+    [modal]="true"
+    (onHide)="closeWorkOrderModal()">
+    <ng-template pTemplate="header">
+      <h3>Work Order Details</h3>
+    </ng-template>
+    <ng-template pTemplate="content">
+      <div *ngIf="selectedWorkOrder">
+        <app-custom-table
+          [data]="selectedWorkOrder"
+          [columns]="workOrderDetailColumns"
+          (sort)="onSort($event)">
+        </app-custom-table>
+      </div>
+    </ng-template>
+  </p-dialog>
+</div>

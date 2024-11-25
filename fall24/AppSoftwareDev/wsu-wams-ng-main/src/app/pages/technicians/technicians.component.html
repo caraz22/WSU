@@ -1,0 +1,36 @@
+<div class="header-container">
+  <h2>Technicians</h2>
+
+  <!-- Button to open modal -->
+  <button (click)="showModal = true" class="new-tech-button">New Technician</button>
+</div>
+
+<!-- Modal Dialog -->
+<p-dialog header="Add Technician" [(visible)]="showModal" [modal]="true" [closable]="true" [draggable]="false">
+  <app-technician-form (formSubmitted)="onSubmit($event); showModal = false"></app-technician-form>
+</p-dialog>
+
+<!-- Filters Component -->
+<app-technician-filter
+  [technicianNames]="technicianNames"
+  [permitTypeOptions]="permitTypeOptions"
+  [permitStateOptions]="permitStateOptions"
+  (filterChanged)="onFilterChanged($event)"
+  (clearFilters)="onClearFilters()"
+></app-technician-filter>
+
+<!-- Custom Table Component -->
+<app-custom-table
+  [data]="filteredTechnicians"
+  [columns]="technicianColumns"
+  (sort)="onSort($event)"
+></app-custom-table>
+
+<!-- Template for Technician Name -->
+<ng-template #technicianNameTemplate let-row>
+  {{ row.firstName }} {{ row.lastName }}
+</ng-template>
+
+<ng-template #workPermitsTemplate let-row>
+  {{ formatWorkPermits(row.workPermits) }}
+</ng-template>

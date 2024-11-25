@@ -1,0 +1,31 @@
+<table class="custom-table">
+  <thead>
+  <tr>
+    <th
+      *ngFor="let column of columns"
+      (click)="column.sortable ? onSort(column.field) : null"
+      [class.sortable]="column.sortable"
+    >
+      {{ column.header }}
+      <!-- Sorting indicators can be added here -->
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let row of data; let i = index"
+    [ngClass]="{ 'odd-row': i % 2 === 0, 'even-row': i % 2 !== 0 }"
+  >
+    <td *ngFor="let column of columns" [attr.data-label]="column.header">
+      <ng-container *ngIf="column.template; else defaultCell">
+        <ng-container
+          *ngTemplateOutlet="column.template; context: { $implicit: row }"
+        ></ng-container>
+      </ng-container>
+      <ng-template #defaultCell>
+        {{ row[column.field] }}
+      </ng-template>
+    </td>
+  </tr>
+  </tbody>
+</table>

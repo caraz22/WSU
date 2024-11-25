@@ -17,10 +17,26 @@
 				"auth-model": "native"
 			}
 		},
-		"mariaDB-19253ab2605-56646857aa30a270": {
+		"mariaDB-19253b243e7-5680b318de6233fd": {
 			"provider": "mysql",
 			"driver": "mariaDB",
 			"name": "localhost",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"url": "jdbc:mariadb://localhost:3306/",
+				"configurationType": "MANUAL",
+				"home": "mysql_client",
+				"type": "dev",
+				"closeIdleConnection": true,
+				"auth-model": "native"
+			}
+		},
+		"mariaDB-193365b1fcc-1a7e997b7d210190": {
+			"provider": "mysql",
+			"driver": "mariaDB",
+			"name": "localhost 3",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",

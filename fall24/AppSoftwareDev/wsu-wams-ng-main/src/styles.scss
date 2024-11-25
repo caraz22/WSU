@@ -1,0 +1,121 @@
+@import "src/styles/variables";
+
+.column {
+  display: flex;
+  flex-direction:column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+button {
+  background-color: $primary-color;
+  color: $white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: darken($primary-color, 10%);
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  text-align: left;
+  padding: 12px;
+}
+
+.table thead {
+  background-color: $primary-color;
+  color: $white;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: $surface-color;
+}
+
+.table tbody tr:hover {
+  background-color: lighten($accent-color, 40%);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .table thead {
+    display: none;
+  }
+
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+
+  .table tr {
+    margin-bottom: 15px;
+  }
+
+  .table td {
+    text-align: right;
+    padding-left: 50%;
+    position: relative;
+  }
+
+  .table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+.filters-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+
+  .filter-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+
+    label {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+  }
+
+  .clear-filters-button {
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+    label {
+      visibility: hidden;
+      height: 0;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.p-multiselect {
+  width: 85%;
+}
+
+.p-multiselect-label-container,
+.p-multiselect-label {
+  width: 100%;
+}

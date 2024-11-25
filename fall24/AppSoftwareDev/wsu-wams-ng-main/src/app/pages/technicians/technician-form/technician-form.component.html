@@ -1,0 +1,79 @@
+<form [formGroup]="technicianForm" (ngSubmit)="onSubmit()" class="technician-form">
+
+  <!-- First Name -->
+  <div class="form-group">
+    <label for="technicianFirstName">First Name</label>
+    <input
+      id="technicianFirstName"
+      formControlName="firstName"
+      [class.invalid]="isControlInvalid('firstName')"
+      placeholder="Enter your first name"
+      required
+    />
+    <div *ngIf="isControlInvalid('firstName')" class="error-message">
+      <span *ngIf="technicianForm.get('firstName')?.errors?.['required']">
+        First Name is required.
+      </span>
+      <span *ngIf="technicianForm.get('firstName')?.errors?.['pattern']">
+        First Name must contain only letters.
+      </span>
+    </div>
+  </div>
+
+  <!-- Last Name -->
+  <div class="form-group">
+    <label for="technicianLastName">Last Name</label>
+    <input
+      id="technicianLastName"
+      formControlName="lastName"
+      [class.invalid]="isControlInvalid('lastName')"
+      placeholder="Enter your last name"
+      required
+    />
+    <div *ngIf="isControlInvalid('lastName')" class="error-message">
+      <span *ngIf="technicianForm.get('lastName')?.errors?.['required']">
+        Last Name is required.
+      </span>
+      <span *ngIf="technicianForm.get('lastName')?.errors?.['pattern']">
+        Last Name must contain only letters.
+      </span>
+    </div>
+  </div>
+
+  <!-- Work Permit Type -->
+  <div class="form-group">
+    <label for="workPermitType">Work Permit Type</label>
+    <input
+      id="workPermitType"
+      formControlName="type"
+      [class.invalid]="isControlInvalid('type')"
+      placeholder="Enter your work permit type"
+      required
+    />
+    <div *ngIf="isControlInvalid('type')" class="error-message">
+      <span *ngIf="technicianForm.get('type')?.errors?.['required']">
+        Work Permit Type is required.
+      </span>
+    </div>
+  </div>
+
+  <!-- Work Permit State -->
+  <div class="form-group">
+    <label for="workPermitStates">Work Permit States</label>
+    <p-multiSelect
+      id="workPermitStates"
+      appendTo="body"
+      [options]="stateOptions"
+      (onChange)="onStateChange($event.value)"
+      placeholder="Select Work Permit States"
+      [showToggleAll]="false"
+    ></p-multiSelect>
+  </div>
+
+  <!-- Submit Button (Centered, Spanning Two Columns) -->
+  <div class="form-group full-width">
+    <button type="submit" class="submit-button" [disabled]="technicianForm.invalid">
+      Create Technician
+    </button>
+  </div>
+</form>

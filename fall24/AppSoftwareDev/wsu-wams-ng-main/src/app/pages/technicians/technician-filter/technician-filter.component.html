@@ -1,0 +1,48 @@
+<div [formGroup]="filterForm" class="filters-container">
+  <!-- Technician Name Filter -->
+  <div class="filter-item">
+    <label for="technicianName">Technician Name:</label>
+    <p-autoComplete
+      id="technicianName"
+      formControlName="technicianName"
+      [suggestions]="filteredTechnicianNames"
+      (completeMethod)="filterTechnicianNames($event)"
+      optionLabel="fullName"
+      placeholder="Search by name..."
+      [showClear]="true"
+    ></p-autoComplete>
+  </div>
+
+  <!-- Permit Types MultiSelect -->
+  <div class="filter-item">
+    <label for="permitTypes">Permit Types:</label>
+    <p-multiSelect
+      id="permitTypes"
+      [options]="permitTypeOptions"
+      formControlName="permitTypes"
+      placeholder="Select Permit Types"
+      [showToggleAll]="false"
+      [showClear]="true"
+    ></p-multiSelect>
+  </div>
+
+  <!-- Permit States MultiSelect -->
+  <div class="filter-item">
+    <label for="permitStates">Permit States:</label>
+    <p-multiSelect
+      id="permitStates"
+      [options]="permitStateOptions"
+      formControlName="permitStates"
+      placeholder="Select Permit States"
+      [showToggleAll]="false"
+      [showClear]="true"
+    ></p-multiSelect>
+  </div>
+
+  <!-- Clear All Filters Button -->
+  <div class="filter-item clear-filters-button">
+    <!-- Empty label to align the button -->
+    <label for="clear-filters-tech">&nbsp;</label>
+    <button pButton type="button" label="Clear All Filters" id="clear-filters-tech" (click)="onClearFilters()"></button>
+  </div>
+</div>

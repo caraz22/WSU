@@ -1,0 +1,28 @@
+<div [formGroup]="filterForm" class="filters-container">
+  <!-- Customer Name Filter -->
+  <div class="filter-item">
+    <label for="customerName">Customer Name:</label>
+    <p-autoComplete
+      id="customerName"
+      formControlName="customerName"
+      [suggestions]="filteredCustomerNames"
+      (completeMethod)="filterCustomerNames($event)"
+      optionLabel="fullName"
+      placeholder="Search by name..."
+      [showClear]="true"
+    ></p-autoComplete>
+  </div>
+
+  <!-- Clear All Filters Button -->
+  <div class="filter-item button-item">
+    <!-- Empty label to align the button with other inputs -->
+    <label for="clearCustomerFilters">&nbsp;</label>
+    <button
+      pButton
+      id="clearCustomerFilters"
+      type="button"
+      label="Clear All Filters"
+      (click)="onClearFilters()"
+    ></button>
+  </div>
+</div>

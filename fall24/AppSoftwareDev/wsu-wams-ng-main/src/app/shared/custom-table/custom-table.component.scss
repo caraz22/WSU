@@ -1,0 +1,44 @@
+.custom-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  thead {
+    background-color: #f0f0f0;
+
+    th {
+      padding: 12px 15px;
+      text-align: left;
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        background-color: #e0e0e0;
+      }
+
+      span {
+        margin-left: 5px;
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #fafafa;
+      }
+
+      &:hover {
+        background-color: #f1f1f1;
+      }
+    }
+
+    td {
+      padding: 12px 15px;
+    }
+  }
+}

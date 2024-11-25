@@ -1,0 +1,10 @@
+<div class="dropdown-container" (mouseenter)="displayOptions = true" (mouseleave)="displayOptions = false">
+  <div *ngIf="!displayOptions" class="column select-header">
+    <h4>{{currentOption || 'SELECT--'}}</h4>
+  </div>
+  <div *ngIf="displayOptions" class="column link-list" [@expandContract]>
+    <ng-container *ngFor="let option of options">
+      <a (click)="setOption(option)">{{ option.displayLabel }}</a>
+    </ng-container>
+  </div>
+</div>

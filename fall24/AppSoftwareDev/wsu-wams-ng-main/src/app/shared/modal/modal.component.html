@@ -1,0 +1,6 @@
+<div class="modal-overlay" *ngIf="show" role="dialog" aria-modal="true">
+  <div class="modal-content">
+    <button class="close-button" (click)="onClose()">&#x2715;</button>
+    <ng-content></ng-content>
+  </div>
+</div>

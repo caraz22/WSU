@@ -1,0 +1,82 @@
+<div [formGroup]="filterForm" class="filters-container">
+  <!-- Customer Name Filter -->
+  <div class="filter-item">
+    <label for="customerName">Customer Name:</label>
+    <p-autoComplete
+      id="customerName"
+      formControlName="customerName"
+      [suggestions]="filteredCustomerNames"
+      (completeMethod)="filterCustomerNames($event)"
+      optionLabel="fullName"
+      placeholder="Search by customer..."
+      [showClear]="true"
+    ></p-autoComplete>
+  </div>
+
+  <!-- Work Order Number Filter -->
+  <div class="filter-item">
+    <label for="workOrderNumber">Work Order Number:</label>
+    <p-autoComplete
+      id="workOrderNumber"
+      formControlName="workOrderNumber"
+      [suggestions]="filteredWorkOrderNumbers"
+      (completeMethod)="filterWorkOrderNumbers($event)"
+      placeholder="Search by work order..."
+      [showClear]="true"
+    ></p-autoComplete>
+  </div>
+
+  <!-- Technician Name Filter -->
+  <div class="filter-item">
+    <label for="technicianName">Technician Name:</label>
+    <p-autoComplete
+      id="technicianName"
+      formControlName="technicianName"
+      [suggestions]="filteredTechnicianNames"
+      (completeMethod)="filterTechnicianNames($event)"
+      optionLabel="fullName"
+      placeholder="Search by technician..."
+      [showClear]="true"
+    ></p-autoComplete>
+  </div>
+
+  <!-- Date Scheduled Filter -->
+  <div class="filter-item">
+    <label for="dateScheduled">Date Scheduled:</label>
+    <p-calendar
+      id="dateScheduled"
+      formControlName="dateScheduled"
+      placeholder="Select a date"
+      [showClear]="true"
+    ></p-calendar>
+  </div>
+
+  <!-- Date Last Updated Filter -->
+  <div class="filter-item">
+    <label for="dateLastUpdated">Date Last Updated:</label>
+    <p-calendar
+      id="dateLastUpdated"
+      formControlName="dateLastUpdated"
+      placeholder="Select a date"
+      [showClear]="true"
+    ></p-calendar>
+  </div>
+
+  <!-- Work Order Status Filter -->
+  <div class="filter-item">
+    <label for="workOrderStatus">Work Order Status:</label>
+    <p-dropdown
+      id="workOrderStatus"
+      formControlName="workOrderStatus"
+      [options]="workOrderStatuses"
+      placeholder="Select status"
+      [showClear]="true"
+    ></p-dropdown>
+  </div>
+
+  <!-- Clear All Filters Button -->
+  <div class="filter-item button-item">
+    <label for="clearFilters">&nbsp;</label>
+    <button type="button" id="clearFilters" (click)="onClearFilters()">Clear All Filters</button>
+  </div>
+</div>
