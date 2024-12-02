@@ -42,7 +42,8 @@ void closeFile(file_t *file)
 
 int openFile(file_t *file)
 {
-    file->startingAddress;
+    startAddress = file->startingAddress;
+    uint16 currentCluster = file->entry->startingCluster;
     
     return 0;
 }
