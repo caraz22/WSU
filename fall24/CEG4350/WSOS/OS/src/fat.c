@@ -2,6 +2,7 @@
 #include "./fdc.h"
 #include <stddef.h>
 #include "./string.h"
+#include "./io.h"
 
 // FAT Copies
 // First copy is fat0 stored at 
@@ -48,9 +49,10 @@ void closeFile(file_t *file)
         while (remainingSize > 0)
         {
             // Write file contents to storage
-            floppy_write(0, 33 + (current - 2), (void *)(file->startingAddress + index), 512);
-            index += 512; // Offset by a sector of data
-            remainingSize -= 512; // Remove a sector of bytes
+            uint32 sectorSize = remainingSize > 512 ? 512 : remainingSize;
+            floppy_write(0, 33 + (current - 2), (void *)(file->startingAddress + index), 1);
+            index += sectorSize; // Offset by a sector of data
+            remainingSize -= sectorSize; // Remove a sector of bytes
 
             // If no more data to write and at EOF
             if (remainingSize > 0 && fat0->entries[current] == 0xFFFF)
@@ -72,7 +74,6 @@ void closeFile(file_t *file)
                 current = fat0->entries[current]; // Set current as new cluster
             }
         }
-
         file->isOpened = 0; // Make file open false (closed)
 
     } else {
@@ -82,7 +83,7 @@ void closeFile(file_t *file)
 
 int openFile(file_t *file)
 {
-    if (file != NULL || file->entry.startingCluster != 0)
+    if (file != NULL || file->entry.startingCluster >= 33) // Sector 33 is start of kernel executable 
     {
         uint16 current = file->entry.startingCluster;
         uint32 index = 0;
@@ -120,20 +121,14 @@ int createFile(file_t *file, directory_t *parent)
     if (file != NULL && parent != NULL && parent->entry.startingCluster != 0)
     {
         directory_entry_t *entry = (directory_entry_t *)parent->startingAddress;
-
-        // Find directory entry to save to
-        while (entry->filename[0] != 0)
-        {
-            entry++;
-        }
-
+       
         stringcopy((char *)file->entry.filename, (char *)entry->filename, 8);   // Filenames are 8 characters
         stringcopy((char *)file->entry.extension, (char *)entry->extension, 3); // Extensions are 3 chars
 
         // Set up metadata for new file
         entry->attributes = 0x00;   // Normal file code
         entry->fileSize = 0;        // 0 because no data stored
-        
+
         for (uint16 i=2; i<2304; i++)
         {
             if (fat0->entries[i] == 0x0000) // If cluster is free/empty
@@ -143,9 +138,11 @@ int createFile(file_t *file, directory_t *parent)
                 break;
             }
         }
+        file->entry = *entry; // Copy entry metadata to file data
 
         closeFile(file);                // Close file (not in use, just created)
     } else {
+
         return -1; // No file or parent directory found
     }
 
