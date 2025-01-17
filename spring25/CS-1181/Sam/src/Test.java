@@ -5,8 +5,10 @@ public class Test { // java classes are typically first letter capitalized
     public static void main(String[] args) { // this will always be the main function literally
 
         String str = "Hi Sam"; // don't forget semi-colons!
+        /*
         int num = 420; 
-        boolean trueFalse = true; 
+        boolean trueFalse = true;         
+        */
         // if you create a variable and don't use it, you'll usually get a warning (at least in in VS code), this won't cause a compile error tho
         // Java requires data type when creating variables, for some reason String is always capitalized but most others are not
 
