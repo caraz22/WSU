@@ -2,6 +2,7 @@ package SamProjects;
 
 import java.util.ArrayList;
 
+
 public class Consecutive {
     
     public static void main(String[] args) {
@@ -36,8 +37,13 @@ public class Consecutive {
             }
         }
 
-        System.out.println("The largest string of consecutive numbers is " + largestSize);
-        System.out.println("Here is a list of strings with that size:");
+        if (largestSize == 0) {
+            System.out.println("There were no strings of consecutive numbers.");
+        } else {
+            System.out.println("The largest string of consecutive numbers is " + largestSize + ".");
+            System.out.println("Here is a list of strings with that size:");            
+        }
+
 
         for (int i = 0; i < consecutiveNumsList.size(); i++) {
             if (consecutiveNumsList.get(i).size() == largestSize) {
