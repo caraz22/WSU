@@ -7,7 +7,7 @@ public class Consecutive {
     
     public static void main(String[] args) {
 
-        int[] randomNums = new int[300];
+        int[] randomNums = new int[1000];
 
         for (int i = 0; i < randomNums.length; i++) {
             int randomNum = (int) (Math.random() * 201) - 100;
@@ -18,7 +18,7 @@ public class Consecutive {
 
         for (int i = 0; i < randomNums.length; i++) {
             int index = 0;
-            if (i < 299 && randomNums[i + 1] == randomNums[i] + 1){
+            if (i < randomNums.length - 1 && randomNums[i + 1] == randomNums[i] + 1) {
                 consecutiveNumsList.add(consecutiveNums(i, randomNums));
                 if (consecutiveNumsList.get(index).isEmpty() == true) {
                     consecutiveNumsList.remove(consecutiveNumsList.get(index));
@@ -57,7 +57,7 @@ public class Consecutive {
         for (int i = value; i < array.length; i++) {
             int arrayValue = array[i];
             int increment = Math.incrementExact(arrayValue);
-            if (i < 299 && array[i + 1] == increment) {
+            if (i < array.length - 1 && array[i + 1] == increment) {
                 arrayList.add(array[i]);
             } else if (i > 0 && array[i] == Math.incrementExact(array[i - 1])) {
                 arrayList.add(array[i]);
