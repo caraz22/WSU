@@ -36,9 +36,10 @@ public class Main {
         System.out.println("Attempt 8: " + su2.authenticate("wrong4"));
         System.out.println("Attempt 9: " + su2.authenticate("world456"));
 
-        SecureUser su3 = new SecureUser("John", "Bear789");
+        SecureUser su3 = new SecureUser("John", "John7890");
         System.out.println("Password validity: " + su3.isValidPassword());
-        System.out.println("Attempt 1: " + su3.authenticate("bear"));
+        System.out.println("Attempt 1: " + su3.authenticate("john"));
+        System.out.println("Attempt 2: " + su3.authenticate("John7890"));
     }
 
 }

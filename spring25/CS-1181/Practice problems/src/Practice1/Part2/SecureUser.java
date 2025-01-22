@@ -14,6 +14,7 @@ public class SecureUser extends User {
     public boolean authenticate(String inputPassword) {
         if (isValidPassword() == false) {
             System.out.println("Invalid password, authentication will be denied.");
+            return false;
         }
 
         if (inputPassword.equals(password)) {
