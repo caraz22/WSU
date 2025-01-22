@@ -41,5 +41,4 @@ public class Main {
         System.out.println("Attempt 1: " + su3.authenticate("john"));
         System.out.println("Attempt 2: " + su3.authenticate("John7890"));
     }
-
 }
