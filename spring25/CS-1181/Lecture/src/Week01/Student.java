@@ -1,7 +1,5 @@
 package Week01;
 
-import java.beans.DefaultPersistenceDelegate;
-
 public class Student {
     private boolean inState = true;
     private double financialAid = 0.0;
