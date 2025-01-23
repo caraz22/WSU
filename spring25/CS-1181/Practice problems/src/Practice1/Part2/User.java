@@ -1,4 +1,5 @@
 package Part2;
+
 public class User {
 
     private String username;
