@@ -1,4 +1,4 @@
-package Part2;
+package PartB;
 
 public class SecureUser extends User {
     
