@@ -1,4 +1,4 @@
-package Part1;
+package PartA;
 
 public class helloworld {
     

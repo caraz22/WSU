@@ -45,19 +45,19 @@ public class GeneticAlgorithm {
         ArrayList<Item> initialPopulation = readData("Projects/src/txt/more_items.txt"); //reading in txt file
         ArrayList<Chromosome> currentPopulation = initializePopulation(initialPopulation, popSize); //creating current population using the initial population's items
 
-        ArrayList<Multithreading> threads = new ArrayList<>();
-        for (int i = 0; i < numThreads; i++) {
-            Multithreading thread = new Multithreading(popSize, numEpochs, numThreads, currentPopulation);
-            threads.add(thread);
-            thread.start();
-            thread.join();
-        }
+        // ArrayList<Multithreading> threads = new ArrayList<>();
+        // for (int i = 0; i < numThreads; i++) {
+        //     Multithreading thread = new Multithreading(popSize, numEpochs, numThreads, currentPopulation);
+        //     threads.add(thread);
+        //     thread.start();
+        //     thread.join();
+        // }
 
-        Collections.sort(threads);
+        // Collections.sort(threads);
 
-        for (Multithreading thread : threads) { //displaying the fittest individual to the console
-            System.out.println(thread);
-            System.out.println();
-        }
+        // for (Multithreading thread : threads) { //displaying the fittest individual to the console
+        //     System.out.println(thread);
+        //     System.out.println();
+        // }
     }
 }
